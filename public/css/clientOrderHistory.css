@@ -1,0 +1,92 @@
+.my-container{
+   
+    width: 100%;
+    margin: 0 !important;
+}
+.row{
+   /* background-color: red;*/
+   width: 100%;
+   margin: 0 !important;
+   padding: 10px 100px 10px 100px;
+}
+.main-hist{
+  /*  background-color: chartreuse; */
+    width: 75%;
+    float: left;
+    padding-left: 10px
+}
+
+.guide-float-right{
+   /* background-color: yellow;*/
+    width: 25%;
+    float: right;
+    padding-left: 10px;
+}
+.main-hist .breadcrumbs{
+    background-color: rgba(169, 169, 169, 0.4);
+    padding-left: 10px;
+} 
+/*
+.main-hist .orders thead tr{
+    display: block;
+}
+
+.main-hist .orders .table th{
+    width: 15%;
+    
+}
+.main-hist .orders .table th.title{
+    width: 40%;
+    
+}
+.main-hist .orders .table td{
+    width: 15%;
+}
+.main-hist .orders .table td.title{
+    width: 40% !important;
+}
+.main-hist .orders .table{
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.main-hist .orders .table tbody{
+    height: 100px !important;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*background-color: rgb(195, 245, 203);*/
+
+/*} */
+.main-hist .orders .table tr{
+  /*  line-height: 20px;
+    padding-top: 0 !important; 
+    padding-bottom: 0 !important;
+    height: 20px !important;
+*/
+/*display: block;*/
+padding-top: 0 !important; 
+padding-bottom: 0 !important;
+height: 20px !important;
+line-height: 20px;
+/*background-color: red;*/
+}
+
+.main-hist .orders .table td{
+ /*   height: 10px !important;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin: 0 !important;
+    background-color: crimson; */
+    margin-bottom: 0 !important;
+    margin-top: 0 !important; 
+    height: 10px !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.guide-float-right .title h6{
+    border-bottom: 1px;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+    
+}

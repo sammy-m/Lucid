@@ -1,0 +1,60 @@
+
+
+.fixed-sidenav{
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 55px;
+   /* margin-top: 55px;*/
+    left: 0px;
+    padding: 30px 20px 20px 20px;
+    background-color: rgba(80, 78, 78, 0.127);
+}
+
+.fixed-sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+  }
+  
+  .fixed-sidenav a:hover {
+    color: #2342f1;
+  }
+
+.content-area{
+    margin-top: 55px;
+    
+    min-height: 100vh;
+    margin-left: 20%;
+    background-color: white;
+}
+
+.content-area .table tr{
+ 
+padding-top: 0 !important; 
+padding-bottom: 0 !important;
+height: 20px !important;
+line-height: 20px;
+/*background-color: red;*/
+}
+
+.content-area .table td{
+ 
+    margin-bottom: 0 !important;
+    margin-top: 0 !important; 
+    height: 10px !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.btn-success{
+  height: 20px !important;
+  justify-content: center !important;
+}
+.btn{
+  height: 20px !important;
+  justify-content: center !important;
+}

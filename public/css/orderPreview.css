@@ -1,0 +1,50 @@
+.review{
+    width: 100%;
+    padding: 10px 8% 10px 8%;
+    margin: 0;
+}
+
+.this-order{
+    background-color: inherit;
+    
+    /*padding: 0;*/
+}
+
+.info .table tr, .specs .table tr{
+    /*background-color: orange;*/
+    
+    padding-top: 0 !important; 
+    padding-bottom: 0 !important;
+    height: 20px !important;
+    line-height: 20px;
+}
+.info .table td, .specs .table td{
+   /* background-color: yellow;*/
+    margin-bottom: 0 !important;
+    margin-top: 0 !important; 
+    height: 10px !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    
+}
+
+/*.right-float{
+   /* background-color: chartreuse;
+    /*padding: 0;*/
+/*} */
+
+.details{
+    background-color:whitesmoke;
+}
+
+.summary{
+    background-color: whitesmoke;
+}
+
+.guide-float-right .title h6{
+    border-bottom: 1px;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+    
+}
+

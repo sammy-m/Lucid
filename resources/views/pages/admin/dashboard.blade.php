@@ -1,0 +1,105 @@
+@extends('layouts.adminpages')
+
+@section('content')
+
+<link rel="stylesheet" href={{URL('css/adminDash.css')}}>
+
+<div class="platform">
+    <div class="fixed-sidenav">
+        <a href="#about">Home</a>
+        <a href="#">Orders</a>
+        <a href="#">Unassigned</a>
+        <a href="#">Unassigned</a>
+    </div>
+    <div class="content-area">
+    
+            <table class="table table-striped">
+                   
+                  
+                        
+               
+                    <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col" colspan="2">Title</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">payment</th>   
+                                <th scope="col">Action</th>                             
+                            </tr>
+                        </thead>
+
+                       
+                        <tbody>
+                                
+                               
+
+                            @if($orders != null)    
+                                
+                             <?php
+                           $len = sizeof($orders);
+                           $i=0; 
+                            while( $i<$len) {
+                                $ppp; $price; $status;
+
+                                if($orders[$i]['orderDetails'][0]->lineSpacing == 'double'){
+                                    $ppp = 19;
+                                }
+                                else {
+                                    $ppp = 39;
+                                }
+
+                                $price = $orders[$i]['orderDetails'][0]->pageCount * $ppp;
+
+                                if($orders[$i]['orderDetails'][0]->progressStatus == 'completed'){
+                                    $status = 'Completed';
+                                }
+                                else if($orders[$i]['orderDetails'][0]->progressStatus == 'assigned'){
+                                    $status = 'In Progress';
+                                }
+                                else if($orders[$i]['orderDetails'][0]->progressStatus == 'new'){
+                                    $status = 'Unallocated';
+                                }
+                                else {
+                                    $status = $orders[$i]['orderDetails'][0]->progressStatus;
+                                }
+
+                               
+                            echo"<tr>";
+                               echo" <td>{$orders[$i]['orderDetails'][0]->refId}</td>";
+                                echo "<td colspan='2'>{$orders[$i]['orderInstructions']->title}</td>";
+                               
+                                echo"<td>$ {$price}</td>";
+                                echo"<td>{$status}</td>";
+                                if($orders[$i]['orderDetails'][0]->paymentStatus == 'paid'){
+                                    echo"<td>Paid</td>";
+                                }
+                                else if($orders[$i]['orderDetails'][0]->paymentStatus != 'paid'){
+                                    echo"<td>Unpaid</td>";
+                                }
+                                echo"<td><a class=' btn-success' href='/admin/view-order/{$orders[$i]['orderDetails'][0]->refId}'>View</a></td>";
+                                
+                            echo"</tr>";
+
+                            $i++;
+                           }
+
+                          
+
+                        
+                            ?>
+                            @else
+                            <td colspan="7" style="text-align:center; color:orange; font-weight:bold;">you have no orders yet</td>
+                            @endif                            
+                        </tbody>
+                        
+                        
+                   
+
+                  
+                </table>
+
+    </div>
+</div>
+
+@endsection

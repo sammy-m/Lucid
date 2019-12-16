@@ -1,0 +1,241 @@
+.md-form input:focus + label {
+    font-size: 0.8rem;
+    transform: translateY(-140%) !important;
+   
+}
+
+.md-form input:not([value=""]):not(:focus):invalid + label {
+  font-size: 0.8rem;
+  transform: translateY(-140%) !important;
+ 
+}
+
+ .leefty .times{
+   /*background-color: orange;*/
+   width: 100%;
+   margin: 0 !important;
+   padding: 0 !important;
+ }
+
+ .times .ded-time{
+   
+   padding-right: 0;
+ }
+ .times .ded-date{
+ 
+  padding-left: 0;
+}
+
+.instructions{
+    background-color: white;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+    min-width: 320px;
+}
+
+.instructions .instruction-form{
+   
+    /*text-align: center;
+    justify-content: center;*/
+   /* background-color: aqua;*/
+    width: 100%;
+    /*margin-left: 15%;*/
+    padding: 10px 100px 10px 100px;
+    margin: 0 !important;
+}
+.instruction-form .main-form{
+ /* background-color: #ba68c8;*/
+  width: 100%;
+  margin: 0 !important;
+}
+
+.instructions .instruction-form .leefty{
+    /*display: table-cell;*/
+    /*width: 50%;*/
+    text-align: center !important;
+   /* background-color: blue;*/
+    margin: 0;
+}
+.instructions .instruction-form .righty{
+   /* display: table-cell;*/
+    /*width: 50%;*/
+    text-align: center;
+   /* background-color: brown;*/
+}
+/*
+.number-input{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.number-input input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    width: 50px;
+    height: 40px;
+    margin: -4px;
+    }
+   .number-input button{
+       margin: 0;
+       height: 40px;
+       width: 30px !important;
+   }
+   .number-input .btn{
+   
+    width: 30px !important;
+}
+   .number-input button span{
+     font-size: 20pt;
+     transform: translateY(-30px);
+   }*/
+
+
+
+
+
+    .paper-size{
+  /* background-color: bisque;*/
+    display: flex;
+    flex-direction: column;
+}
+
+ .paper-size input[type="radio"]{
+    display: none;
+}
+
+.paper-size .box2{
+  width: 200px;
+  height: 35px;
+  background-color: whitesmoke;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease;
+  will-change: transition;
+  display: inline-block;
+  position: relative;
+  margin-right: -4px;
+  border-style: solid;
+  border-color:   #2f3131bb;
+  border-width: 1px;
+  
+  
+}
+
+.paper-size .box2 span{
+  position: absolute;
+  transform: translate(0, 0px);
+  transition: all 250ms ease;
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  left: 0;
+  right: 0;
+  font-size: 12px;
+ 
+}
+
+.paper-size .box2[id="b1"] {
+  border-radius: 5px 0 0 5px;
+}
+
+.paper-size .box2[id="b2"] {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.paper-size input[type="radio"]:checked + .box2 {
+  background-color: rgb(218, 237, 251);
+  
+}
+
+.paper-size .box2:active {
+  transform: scaleY(0.8);
+} 
+
+.paper-size input[type="radio"]:checked + .box2 span {
+  transform: translateY(5px);
+  
+}
+
+.purple-border textarea {
+  border: 1px solid #ba68c8;
+}
+.purple-border .form-control:focus {
+  border: 1px solid #ba68c8;
+  box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+.green-border-focus .form-control:focus {
+  border: 1px solid #8bc34a;
+  box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+
+@media only screen and (min-width: 786px) {
+
+.paper-size .box2{
+    width: 125px;
+  }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+  .paper-size .box2{
+    width: 130px;
+  }
+} 
+
+@media only screen and (max-width: 683px) {
+.paper-size .box2{
+  width: 150px;
+}
+  
+  } 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+.instructions .instruction-form{
+ padding: 10px 50px 10px 50px;
+}
+ } 
+
+@media only screen and (max-width: 550px) {
+  .instructions .instruction-form{
+    padding: 10px 30px 10px 30px;
+   }
+} 
+@media only screen and (max-width: 500px) {
+  .instructions .instruction-form{
+    padding: 10px 20px 10px 20px;
+   }
+} 
+
+@media only screen and (max-width: 400px) {
+  .instructions .instruction-form{
+    padding: 0px 10px 0px 10px;
+   }
+} 
+
+@media only screen and (max-width: 380px) {
+  .instructions .instruction-form{
+    padding: 0;
+   }
+} 
+
+@media only screen and (max-width: 356px) {
+  .paper-size .box2{
+    width: 130px;
+  }
+  .md-form label{
+    font-size: 0.8rem;
+  }
+} 
+ 
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+} 

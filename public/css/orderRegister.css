@@ -1,0 +1,19 @@
+.register{
+    min-width: 250px;
+    width:40%;
+  
+    margin: 0;
+    
+} 
+.centers{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#continue{
+    text-align: center;
+    
+}
