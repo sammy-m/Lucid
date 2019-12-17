@@ -260,7 +260,7 @@
                     <div class="picture-heading" style="position:relative;">
                             <p id="heading" style="  font-size:120px;
                             color: rgb(0, 153, 204, 0.4);">EASY  STEPS</p>
-                            <P style="color: rgb(0, 153, 204, 0.4); font-size:40pt">TO A PERFECT ESSAY</P>
+                            <P style="color: rgb(0, 153, 204, 0.4); font-size:40pt">TO A PERFECT DOCUMENT</P>
                 
                             <div class="float-pane" style="height: 300px; width: 75%; background-color: white; position:absolute; top:600px; left:13%;">
                                   <div class="row-steps">
