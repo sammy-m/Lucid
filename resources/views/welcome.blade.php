@@ -274,7 +274,7 @@
                                         <div class="col">
                                                 <div class="row">
                                                         <div class="col"><h1>2.</h1></div>
-                                                        <div class="col">let the writer do the job.</div>
+                                                        <div class="col">let the consultant do the job.</div>
                                                     </div>
                                         </div>
                                         <div class="col">
