@@ -274,13 +274,13 @@
                                         <div class="col">
                                                 <div class="row">
                                                         <div class="col"><h1>2.</h1></div>
-                                                        <div class="col">let the consultant do the job.</div>
+                                                        <div class="col">let the consultants do the job.</div>
                                                     </div>
                                         </div>
                                         <div class="col">
                                                 <div class="row">
                                                         <div class="col"><h1>3.</h1></div>
-                                                        <div class="col"><p>download your paper.</p></div>
+                                                        <div class="col"><p>download your complete documents.</p></div>
                                                     </div>
                                         </div>
                                     </div>
