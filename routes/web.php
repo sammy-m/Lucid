@@ -44,6 +44,11 @@ Route::get('dashboard/orderhist', 'ClientsController@History');
 Route::get('/dashboard/myorders/{id}', 'OrdersController@showOrder');
 Route::get('/admin/view-order/{id}', 'OrdersController@adminShowOrder')->middleware('admin');
 
+//consultant routes
+Route::get('/consultant/auth', 'ConsultantController@auth');
+Route::post('/consultant/login', 'ConsultantController@authenticate')->name('consAuthenticate');
+Route::get('/consultant/signup', 'ConsultantController@signupForm');
+
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');
 Route::post('/admin/registration', 'AdminauthController@adminRegistering');
@@ -51,7 +56,7 @@ Route::post('/admin/store', 'AdminauthController@adminStore');
 Route::get('/manage/admin/login', 'AdminauthController@loginForm');
 Route::post('/manage/admin/logingin', 'AdminauthController@startSession');
 
-Route::get('/admin/dash', 'AdminController@dashBoard')->middleware('admin');
+Route::get('/admin/dash', 'AdminController@dashBoard')->middleware('admin'); 
 
 //admin assign task
 Route::put('/order/asign-writer', 'OrdersController@assignTask');
