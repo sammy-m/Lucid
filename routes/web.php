@@ -45,9 +45,9 @@ Route::get('/dashboard/myorders/{id}', 'OrdersController@showOrder');
 Route::get('/admin/view-order/{id}', 'OrdersController@adminShowOrder')->middleware('admin');
 
 //consultant routes
-Route::get('/consultant/auth', 'ConsultantController@auth');
+Route::get('/consultant/auth', 'ConsultantController@auth')->name('consAuth');
 Route::post('/consultant/login', 'ConsultantController@authenticate')->name('consAuthenticate');
-Route::get('/consultant/signup', 'ConsultantController@signupForm');
+Route::get('/consultant/signup', 'ConsultantController@signupForm')->name('consReg');
 
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');
