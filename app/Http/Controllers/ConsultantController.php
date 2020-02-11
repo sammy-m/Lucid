@@ -23,7 +23,7 @@ class ConsultantController extends Controller
         return view('pages.consultant.signup');
     }
 
-    public function addConsultant(Request $request)     
+    public function register(Request $request)     
     {
         $this->validate(request(), [
             'name' => 'required|min:2|max:50',
@@ -46,24 +46,24 @@ class ConsultantController extends Controller
             $user->password = bcrypt( $request->password );
             $user->remember_token = $request->_token;
             $user->phone = $request->phone;
-            $user->role = 1;
+            $user->role = 2;
             $user->save(); 
 
-            $admin = new Admin;
-            $admin->sysId = $id;
+            $consultant = new Consultant;
+            $consultant->sysId = $id;
             
-            $admin->email = $request->email;
-            $admin->name = $request->name;
-            $admin->phone = $request->phone;
-            $admin->status = 'pending approval'; 
-            $admin->save();
+            $consultant->email = $request->email;
+            $consultant->name = $request->name;
+            $consultant->phone = $request->phone;
+            $consultant->status = 'pending approval'; 
+            $consultant->save();
            
       // $user = User::create(request(['name', 'email', Hash::make('password'),'phone']));
         
        auth()->login($user);
         //return "success";
         
-        return redirect()->to('/admin/dash'); 
+        return redirect()->to('/consultant/dash'); 
 
        
     }
@@ -73,7 +73,7 @@ class ConsultantController extends Controller
         return Keygen::numeric(7)->prefix(mt_rand(1, 9))->generate(true);
     }
 
-    public function startSession()
+    public function logInCons()
     {
         if (auth()->attempt(request(['email', 'password'])) == false) {
             return back()->withErrors([
@@ -81,6 +81,6 @@ class ConsultantController extends Controller
             ]);
         }
         
-        return redirect()->to('/admin/dash');
+        return redirect()->to('/consultant/dash');
     }
 }

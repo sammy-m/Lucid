@@ -48,6 +48,8 @@ Route::get('/admin/view-order/{id}', 'OrdersController@adminShowOrder')->middlew
 Route::get('/consultant/auth', 'ConsultantController@auth')->name('consAuth');
 Route::post('/consultant/login', 'ConsultantController@authenticate')->name('consAuthenticate');
 Route::get('/consultant/signup', 'ConsultantController@signupForm')->name('consReg');
+Route::post('/consultant/authenticate', 'ConsultantController@logInCons')->name('logInCons');
+Route::post('/consultant/register', 'ConsultantController@register')->name('registerCons');
 
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');

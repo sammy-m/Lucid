@@ -9,7 +9,7 @@ consultant log in here
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('consAuthenticate') }}">
+                    <form method="POST" action="{{ route('logInCons') }}">
                         @csrf
 
                         <div class="form-group row">
