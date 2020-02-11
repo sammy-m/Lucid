@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Keygen;
+use App\User;
+use App\Consultants;
 
 class ConsultantController extends Controller
 {
@@ -49,7 +52,7 @@ class ConsultantController extends Controller
             $user->role = 2;
             $user->save(); 
 
-            $consultant = new Consultant;
+            $consultant = new Consultants;
             $consultant->sysId = $id;
             
             $consultant->email = $request->email;
