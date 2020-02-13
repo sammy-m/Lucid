@@ -29,6 +29,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{url('css/consultant.css')}}">
 </head>
 
 <body>

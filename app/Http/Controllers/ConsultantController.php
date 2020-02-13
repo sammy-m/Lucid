@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Keygen;
 use App\User;
 use App\Consultants;
@@ -84,6 +85,14 @@ class ConsultantController extends Controller
             ]);
         }
         
-        return redirect()->to('/consultant/dash');
+        return redirect()->to('/consultant/dashboard');
+    }
+
+    public function home()
+    {
+        if(Auth::check()){
+        return view('pages.consultant.home');
+        }
+        return \Redirect::to('/consultant/auth');
     }
 }

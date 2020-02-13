@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class consultant
 {
@@ -17,13 +18,16 @@ class consultant
     {
         //check if the user is a consultant
         //return $next($request);
+        if(Auth::check()){
         if(auth()->user()->role == 2){
 
             return $next($request);
             
             }
             
-            return redirect('consultant/dashboard')->with('error',"ERR: InValid ReQUESt!");
+            return redirect('/')->with('error',"ERR: InValid ReQUESt!");
+        }
+        return redirect('/consultant/auth')->with('error', 'please reauthenticate');
             
     }
 }

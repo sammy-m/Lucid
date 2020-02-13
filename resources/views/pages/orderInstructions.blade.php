@@ -3,7 +3,7 @@
 
 @section('content')
 <link rel="stylesheet" href={{url('css/orderInstructions.css')}}>
-<link rel="stylesheet" href={{URL('css/orderDetails.css')}}>
+<link rel="stylesheet" href={{url('css/orderDetails.css')}}>
 
 <!-- Timepicker-->
 <!--link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"-->

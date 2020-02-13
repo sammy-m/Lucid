@@ -50,6 +50,7 @@ Route::post('/consultant/login', 'ConsultantController@authenticate')->name('con
 Route::get('/consultant/signup', 'ConsultantController@signupForm')->name('consReg');
 Route::post('/consultant/authenticate', 'ConsultantController@logInCons')->name('logInCons');
 Route::post('/consultant/register', 'ConsultantController@register')->name('registerCons');
+Route::get('/consultant/dashboard', 'ConsultantController@home')->middleware('consultant');
 
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');
