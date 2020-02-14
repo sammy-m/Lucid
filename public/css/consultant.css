@@ -1,13 +1,83 @@
+.cons-navbar{
+    position: fixed;
+    min-width: 100%;
+    z-index: 1;
+    background-color: rgba(255,255,255,1);
+    
+}
+.my-container{
+   /* margin-top: 66px;*/
+}
 .side-nav{
+    margin-top: 66px;
     background-color: aqua;
     float: left;
     width: 10%;
     min-height: calc(100vh - 66px);
     max-height: calc(100vh - 66px);
+    position: fixed;
+    padding: 10px 10px;
+}
+
+.side-nav .user{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 150px;
 }
 .main{
-    background-color: darkgoldenrod;
+    margin-top: 66px;
     float: right;
     width: 90%;
     min-height: calc(100vh - 66px);
+}
+.dash-home{
+    background-image: linear-gradient(180deg, rgba(3,0,0,1) 0%, rgba(250,247,246,1) 0%, rgba(255,255,255,0) 0%, rgba(0,0,0,0) 0%, rgba(14,14,13,1) 100%, rgba(4,4,4,1) 100%),url('/images/portal/naturePic.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.curve{
+    min-height: 300px;
+    min-width: 100vw;
+    border-radius: 0 0 60% 60%;
+   /* background-color: rgba(255, 100, 255, 0.3); */
+}
+.greetings{
+    background-color: yellow;
+    display: inline-block;
+    position: relative;
+    left: 70%;
+    max-width: 30%;
+    overflow: hidden !important;
+    margin-bottom: 20px;
+  
+    
+}
+.greetings p {
+    font-family: "Montserrat","Roboto";
+    color: white;
+    font-size: 20px;
+    font-stretch: condensed;
+}
+.insight{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 45%);
+    min-height: 400px;
+    display: flex;
+    justify-content:  center;
+    padding: 20px 30px;
+    margin-top: 200px;
+
+}
+
+.insight-item{
+    min-height: 350px;
+    margin: 0px 20px 0px 20px;
+    min-width: 40%;
+}
+.random{
+    min-height: 200px;
+    min-width: 100%;
+    background-color: rgba(255,255,255,1);
 }

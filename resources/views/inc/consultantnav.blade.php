@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar cons-navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="logo">
       <a href="/">  <img src="{{asset('images/logo/studyref.png')}}" alt="Studyref logo" id="logo" height="50"> </a>  
     </div>
