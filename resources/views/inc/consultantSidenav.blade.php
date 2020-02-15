@@ -14,13 +14,19 @@
         </div>
         <div class="tab">
             <div class="tab-item"> <span class="tab-lable">Profile</span></div>
-            <div class="tab-link"><span class="link-lable">Edit</span></div>
+            <div class="tab-link-group">
+                <div class="tab-link"><span class="link-lable">Edit</span></div>
+            </div>           
         </div>
+
         <div class="tab">
             <div class="tab-item"> <span class="tab-lable">Work</span></div>
-           <div class="tab-link"><span class="link-lable">Ongoing</span></div>
-           <div class="tab-link"><span class="link-lable">Complete</span></div>
-           <div class="tab-link"><span class="link-lable">History</span></div>
+            <div class="tab-link-group">
+                <div class="tab-link"><span class="link-lable">Ongoing</span></div>
+                <div class="tab-link"><span class="link-lable">Complete</span></div>
+                <div class="tab-link"><span class="link-lable">History</span></div>
+            </div>
+           
            
         </div>
         <div class="tab">

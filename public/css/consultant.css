@@ -5,9 +5,7 @@
     background-color: rgba(255,255,255,1);
     
 }
-.my-container{
-   /* margin-top: 66px;*/
-}
+
 .side-nav{
     margin-top: 66px;
     background-color: aqua;
@@ -17,12 +15,25 @@
     max-height: calc(100vh - 66px);
     position: fixed;
     padding: 10px 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 .side-nav .user{
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 150px;
+}
+.tab {
+    border-bottom: grey 1px solid;
+    cursor: pointer;
+}
+
+.tab-link-group{
+    /*display: none;*/
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 .main{
     margin-top: 66px;
