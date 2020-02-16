@@ -95,4 +95,9 @@ class ConsultantController extends Controller
         }
         return \Redirect::to('/consultant/auth');
     }
+
+    public function work()
+    {
+        return view('pages.consultant.work');
+    }
 }

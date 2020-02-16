@@ -46,8 +46,9 @@
 
         <div class="my-container" id="app">
                 @yield('content')
+                <script type="Application/JavaScript" src="{{asset('js/consultant.js')}}"></script>
         </div>
-               
+      
            
        <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -62,6 +63,7 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+
     </body>
     </html>
     

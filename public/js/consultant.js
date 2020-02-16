@@ -1,4 +1,5 @@
-var insights = document.querySelector(".random").offsetTop;
+if(document.querySelector('.dash-home') !== null){
+    var insights = document.querySelector(".random").offsetTop;
 window.onscroll = function() {
   if (window.pageYOffset > 0) {
  var opac = (window.pageYOffset / insights * 3);
@@ -11,17 +12,25 @@ window.onscroll = function() {
   }
 }
 
+}
+
+
+
 
     var tabs = document.getElementsByClassName('tab-item');
-   // console.log(tabs);
+   console.log(tabs);
     var i;
      for(i=1; i< tabs.length; i++){
          var menu = tabs[i].parentElement;
-        tabs[i].addEventListener("click", accordion, false);
+         console.log(menu);
+         
+        tabs[i].addEventListener("click", accordion);
         menu.addEventListener("mouseover", accordionDrop, false);
         menu.addEventListener("mouseout", accordionClose, false);
      }
      function accordion () {
+        
+         
          var acc;
          if(this.nextElementSibling){
             acc =  this.nextElementSibling;
@@ -45,6 +54,7 @@ window.onscroll = function() {
     }
     function accordionDrop () {
         var acc = this.lastChild;
+        
         //console.log(acc + 'dvchdv');
         
        

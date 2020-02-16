@@ -31,5 +31,5 @@
        </div>
     </div>
 </div>
-<script type="Application/JavaScript" src="{{asset('js/consultant.js')}}"></script>
+
 @endsection

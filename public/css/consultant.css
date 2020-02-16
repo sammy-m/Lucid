@@ -47,6 +47,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 .curve{
     min-height: 300px;
@@ -55,21 +56,23 @@
    /* background-color: rgba(255, 100, 255, 0.3); */
 }
 .greetings{
-    background-color: yellow;
+   /* background-color: yellow; **/
     display: inline-block;
     position: relative;
-    left: 70%;
+    left: 65%;
     max-width: 30%;
     overflow: hidden !important;
     margin-bottom: 20px;
+    margin: 100px;
   
     
 }
 .greetings p {
     font-family: "Montserrat","Roboto";
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     font-stretch: condensed;
+    font-weight: 700;
 }
 .insight{
     background: rgb(255,255,255);
@@ -78,7 +81,7 @@
     display: flex;
     justify-content:  center;
     padding: 20px 30px;
-    margin-top: 200px;
+    margin-top: 100px;
 
 }
 
