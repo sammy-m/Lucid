@@ -10,30 +10,32 @@
     <div class="tabs">
         
         <div class="tab">
-            <div class="tab-item"> <span class="tab-lable">Home</span></div>
+           
+            <div class="tab-item"> <a href="/consultant/dashboard"> <span class="tab-lable">Home</span> </a></div>
+           
         </div>
         <div class="tab">
-            <div class="tab-item"> <span class="tab-lable">Profile</span></div>
+            <div class="tab-item"> <a href="/consultant/profile"><span class="tab-lable">Profile</span></a></div>
             <div class="tab-link-group">
-                <div class="tab-link"><span class="link-lable">Edit</span></div>
+                <div class="tab-link"><a href="/consultant/profile/edit"> <span class="link-lable">Edit</span></a></div>
             </div>           
         </div>
 
         <div class="tab">
-            <div class="tab-item"> <span class="tab-lable">Work</span></div>
+            <div class="tab-item"><a href="/consultant/work"> <span class="tab-lable">Work</span></a></div>
             <div class="tab-link-group">
-                <div class="tab-link"><span class="link-lable">Ongoing</span></div>
-                <div class="tab-link"><span class="link-lable">Complete</span></div>
-                <div class="tab-link"><span class="link-lable">History</span></div>
+               <div class="tab-link"> <a href="/consultant/work/ongoing"><span class="link-lable">Ongoing</span></a></div>
+               <div class="tab-link"><a href="/consultant/work/complete"><span class="link-lable">Complete</span></a></div>
+               <div class="tab-link"><a href="/consultant/work/history"> <span class="link-lable">History</span></a></div>
             </div>
            
            
         </div>
         <div class="tab">
-            <div class="tab-item"><span class="tab-lable">Reports</span></div>
+           <div class="tab-item"><a href="/consultant/reports"> <span class="tab-lable">Reports</span></a></div>
         </div>
         <div class="tab">
-            <a href="/logout">Log Out</a>
+            <div class="tab-link"><a href="/logout"> <span class="link-lable">Log Out</span></a></div>
         </div>
     </div>
 </div>
