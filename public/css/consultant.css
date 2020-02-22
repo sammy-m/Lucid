@@ -33,13 +33,17 @@
     /*display: none;*/
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.4s ease-out;
 }
 .main{
     margin-top: 66px;
     float: right;
     width: 90%;
     min-height: calc(100vh - 66px);
+}
+
+.main-home{
+    height: calc(100vh - 66px);
 }
 .dash-home{
     background-image: linear-gradient(180deg, rgba(3,0,0,1) 0%, rgba(250,247,246,1) 0%, rgba(255,255,255,0) 0%, rgba(0,0,0,0) 0%, rgba(14,14,13,1) 100%, rgba(4,4,4,1) 100%),url('/images/portal/naturePic.jpg');
@@ -94,4 +98,29 @@
     min-height: 200px;
     min-width: 100%;
     background-color: rgba(255,255,255,1);
+}
+
+.main .main-panel{
+    min-height: calc(100vh - 66px) !important;
+    background-color: yellow;
+    width: 70%;
+    float: left;
+    text-align: center;
+}
+.main .right-panel{
+    min-height: 100%;
+    float: right;
+    width: 30%;
+    background-color: yellowgreen;
+}
+
+.main .right-panel .right-pane-top, .main .right-panel .right-pane-bottom{
+    min-height: calc(100vh/2 - 33px);
+    height: 50%;
+    background-color: tomato;
+
+}
+.main-panel-table{
+    margin: auto;
+    width: 80%;
 }

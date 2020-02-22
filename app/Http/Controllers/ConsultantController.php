@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Keygen;
 use App\User;
 use App\Consultants;
+use App\Order;
+use App\OrderInstructions;
 
 class ConsultantController extends Controller
 {
@@ -98,6 +100,19 @@ class ConsultantController extends Controller
 
     public function work()
     {
-        return view('pages.consultant.work');
+       $availableTasks = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->get();
+      foreach($availableTasks as $available){
+          $tasks[] = array('details'=>$available,'instructions'=>OrderInstructions::where('refId', $available->refId)->get());
+      }
+
+        return view('pages.consultant.work')->with('tasks', $tasks);
+    }
+    public function history()
+    {
+        return view('pages.consultant.history');
+    }
+    public function inProgress()
+    {
+        return view('pages.consultant.workInProgress');
     }
 }

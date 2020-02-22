@@ -1,9 +1,14 @@
 if(document.querySelector('.dash-home') !== null){
+ 
+  
     var insights = document.querySelector(".random").offsetTop;
+    
+    
 window.onscroll = function() {
+  
   if (window.pageYOffset > 0) {
  var opac = (window.pageYOffset / insights * 3);
-   // console.log(opac);
+    
     document.querySelector(".dash-home").style.background = "linear-gradient(rgba(255, 255, 255, " + opac + "), rgba(255, 255, 255, " + opac + ")), url('/images//portal/naturePic.jpg') no-repeat ";
     document.querySelector(".dash-home").style.backgroundAttachment = "fixed"; 
     document.querySelector(".dash-home").style.backgroundPosition = "bottom";
@@ -18,11 +23,11 @@ window.onscroll = function() {
 
 
     var tabs = document.getElementsByClassName('tab-item');
-   console.log(tabs);
+  // console.log(tabs);
     var i;
      for(i=1; i< tabs.length; i++){
          var menu = tabs[i].parentElement;
-         console.log(menu);
+        // console.log(menu);
          
         tabs[i].addEventListener("click", accordion);
         menu.addEventListener("mouseover", accordionDrop, false);
