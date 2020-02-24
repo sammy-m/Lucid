@@ -124,3 +124,10 @@
     margin: auto;
     width: 80%;
 }
+.main table th,.main table td{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.main table .btn{
+    padding: 0.4rem 0.44rem !important;
+}

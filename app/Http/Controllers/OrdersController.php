@@ -71,5 +71,30 @@ class OrdersController extends Controller
         return \Redirect::to('/admin/view-order/'. $refId);
     }
 
+    public function consultantView($id)
+    {
+       $details = Order::whereRefid($id)->first();
+       $instructions = OrderInstructions::whereRefid($id)->first();
+       $task = array(['details'=>$details, 'instructions'=>$instructions]);
+
+       //return $task;
+
+        return view('pages.consultant.viewtask')->with('task', $task);
+
+    }
+    public function adoptOrder($id)
+    {
+        $order = Order::whereRefid($id)->first();
+        $instructions = OrderInstructions::whereRefid($id)->first();
+        $task = array(['details'=>$order, 'instructions'=>$instructions]);
+
+        $order->progressStatus = 'in progress';
+        $order->writerAssigned = Auth::User()->sysId;
+        $order->save();
+
+        return redirect()->action('ConsultantController@workOnTask',[$id]);
+
+    }
+
     
 }

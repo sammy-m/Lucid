@@ -54,6 +54,9 @@ Route::get('/consultant/dashboard', 'ConsultantController@home')->middleware('co
 Route::get('/consultant/work', 'ConsultantController@work')->middleware('consultant');
 Route::get('/consultant/work/history', 'ConsultantController@history')->middleware('consultant');
 Route::get('/consultant/work/ongoing', 'ConsultantController@inProgress')->middleware('consultant');
+Route::get('/consultant/work/task/view/{id}', 'OrdersController@ConsultantView')->middleware('consultant');
+Route::get('/consultant/work/handle/{id}', 'OrdersController@adoptOrder')->middleware('consultant');
+Route::get('/consultant/work/task/{id}', 'ConsultantController@workOnTask')->middleware('consultant');
 
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');

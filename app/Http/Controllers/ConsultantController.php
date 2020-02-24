@@ -101,10 +101,15 @@ class ConsultantController extends Controller
     public function work()
     {
        $availableTasks = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->get();
+      // return sizeof($availableTasks);
+      if(sizeof($availableTasks) > 0){
       foreach($availableTasks as $available){
           $tasks[] = array('details'=>$available,'instructions'=>OrderInstructions::where('refId', $available->refId)->get());
-      }
-
+      } 
+    } else{
+        $tasks = null;
+    }
+    //return $tasks;
         return view('pages.consultant.work')->with('tasks', $tasks);
     }
     public function history()
@@ -114,5 +119,12 @@ class ConsultantController extends Controller
     public function inProgress()
     {
         return view('pages.consultant.workInProgress');
+    }
+    public function workOnTask($id)
+    {
+       $details = Order::whereRefid($id)->first();
+       $instructions = OrderInstructions::whereRefid($id)->first();
+       $task = array(['details'=>$details, 'instructions'=>$instructions]);
+       return view('pages.consultant.workingOnTask')->with('task', $task);
     }
 }

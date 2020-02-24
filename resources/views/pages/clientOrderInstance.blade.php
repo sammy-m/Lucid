@@ -72,6 +72,12 @@
             </table>
         </div>
 
+        <div class="messages-tab">
+            <div id="app">
+                
+            </div>
+        </div>
+
     </div>
 
     <div class="guide-float-right">
