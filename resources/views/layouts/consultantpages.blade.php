@@ -46,7 +46,7 @@
 
         <div class="my-container" id="app">
                 @yield('content')
-                <script type="Application/JavaScript" src="{{asset('js/consultant.js')}}"></script>
+                <script type="Application/JavaScript" src="{{asset('js/consultant.js')}}" defer></script>
         </div>
       
            

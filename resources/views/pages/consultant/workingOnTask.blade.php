@@ -11,7 +11,7 @@
                 <br> <br> <br>
         <h5 style="border-bottom: 1px solid gray; text-align: left !important;">Order #{{$task[0]['details']->refId}} Details</h5>
 
-        <table class="table table-striped" style="text-align: left !important;">
+        <table class="table table-striped" style="text-align: left !important;" title="my table">
             <tbody>
                 <tr>
                     <th span="row">Order Id:</th>
@@ -67,9 +67,9 @@
             <div class="right-panel">
                 <div id="app">
 
-                   <chat-message></chat-message>
-                   <chat-log></chat-log>
-                   <message-composer></message-composer>
+                   <chat-log v-bind:messages="messages"></chat-log>
+                   
+                   <message-composer v-on:messagesent="addMessage"></message-composer>
 
                 </div>
             </div>

@@ -20,6 +20,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('chat-log', require('./components/ChatLog.vue').default);
+Vue.component('chat-message', require('./components/ChatMessage.vue').default);
+Vue.component('message-composer', require('./components/MessageComposer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,6 +32,24 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        messages:[{
+            'message': 'Hey Nicole',
+           user: 'Sam'
+          
+       },{
+            message: 'I am fine thank you',
+           user: 'Nicole'
+           
+       }]
+    },
+    methods: {
+        addMessage(message){
+            console.log("message added");
+            this.messages.push(message);
+            
+        }
+    }
 });
 
 // resources/assets/js/app.js

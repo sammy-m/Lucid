@@ -108,7 +108,8 @@
     text-align: center;
 }
 .main .right-panel{
-    min-height: 100%;
+    height: calc(100vh - 66px) !important;
+   
     float: right;
     width: 30%;
     background-color: yellowgreen;
