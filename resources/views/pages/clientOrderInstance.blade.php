@@ -73,7 +73,7 @@
         </div>
 
         <div class="messages-tab">
-            <div id="app">
+            <div id="app" style="overflow-y: hidden !important; height:100%">
                 
             </div>
         </div>
@@ -81,6 +81,18 @@
     </div>
 
     <div class="guide-float-right">
+        <div id="app">
+            <order-id :id='orderId' id={{$thisOrder[0]['orderDetails']->refId}}></order-id>
+           <chat-log v-bind:messages="messages" order-id={{$thisOrder[0]['orderDetails']->refId}}></chat-log>
+           
+           
+           <!--message-composer v-on:messagesent="addMessage" v-bind:messages="messages" messas='vxgdvxgvxdgcvd'></message-composer-->
+
+        </div>
+
+    </div>
+
+    <div class="guidelines">
         <div class="title">
             <h6><strong>Files</strong></h6>
         </div>
@@ -104,7 +116,6 @@
         <div>
             <p>Save big as you receive premium quality results.</p>
         </div>
-
     </div>
 </div>
 

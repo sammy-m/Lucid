@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     } */
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message','userId','sysId');
+    }
 }

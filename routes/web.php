@@ -58,6 +58,10 @@ Route::get('/consultant/work/task/view/{id}', 'OrdersController@ConsultantView')
 Route::get('/consultant/work/handle/{id}', 'OrdersController@adoptOrder')->middleware('consultant');
 Route::get('/consultant/work/task/{id}', 'ConsultantController@workOnTask')->middleware('consultant');
 
+//chat
+Route::get('/fetch/messages/{id}', 'MessageController@fetch')->middleware('auth');
+Route::post('/store/message', 'MessageController@store')->middleware('auth');
+
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');
 Route::post('/admin/registration', 'AdminauthController@adminRegistering');

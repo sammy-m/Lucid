@@ -65,11 +65,12 @@
 
             </div>
             <div class="right-panel">
-                <div id="app">
-
-                   <chat-log v-bind:messages="messages"></chat-log>
+                <div id="app" style="overflow-y: hidden !important; height:100%">
+                    <order-id :id='orderId' id={{$task[0]['details']->refId}}></order-id>
+                   <chat-log v-bind:messages="messages" order-id={{$task[0]['details']->refId}}></chat-log>
                    
-                   <message-composer v-on:messagesent="addMessage"></message-composer>
+                   
+                   <!--message-composer v-on:messagesent="addMessage" v-bind:messages="messages" messas='vxgdvxgvxdgcvd'></message-composer-->
 
                 </div>
             </div>

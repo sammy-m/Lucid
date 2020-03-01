@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('chat-log', require('./components/ChatLog.vue').default);
 Vue.component('chat-message', require('./components/ChatMessage.vue').default);
 Vue.component('message-composer', require('./components/MessageComposer.vue').default);
+Vue.component('order-id', require('./components/orderId.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,22 +34,30 @@ Vue.component('message-composer', require('./components/MessageComposer.vue').de
 const app = new Vue({
     el: '#app',
     data: {
-        messages:[{
-            'message': 'Hey Nicole',
-           user: 'Sam'
-          
-       },{
-            message: 'I am fine thank you',
-           user: 'Nicole'
-           
-       }]
+       messages:[],
+       tt: "wtf",
+       orderId:"",
+       userId:"",
     },
     methods: {
         addMessage(message){
             console.log("message added");
             this.messages.push(message);
             
-        }
+        },
+        
+       // fetchChat(id){
+
+      //  },
+    },
+    created() {
+       //var session = eval('(<?php echo json_encode($_SESSION)?>)');
+       // console.log(session);
+      /* var id = '';
+       this.fetchChat(id);*/
+       
+        console.log(this.orderId +'is');
+        
     }
 });
 
