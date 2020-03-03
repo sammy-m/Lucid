@@ -1,6 +1,6 @@
 <template>
     <div class="chat-log" >
-       <div class="chat-view" style="">
+       <div class="chat-view" style="" v-chat-scroll>
            <chat-message v-for="(message,index) in messages" :messagess="message" v-bind:key="index" :logedInUser="logedInUser"></chat-message> <br>
            </div> 
          <message-composer v-on:messagesent="addmessage" v-bind:messages="messages" :orderId="orderId" :userId="userId" :userName='userName'></message-composer>
@@ -45,7 +45,7 @@
                    console.log(response.data[1]);
 
                  var data =   JSON.stringify(response.data);
-                   console.log(data);
+                  // console.log(data);
 
                    this.messages = response.data[0];
                    //this.orderId = response.data.orderId;
@@ -82,11 +82,12 @@
                 };
                axios.post('/store/message', newText)
                 .then((response) => {
-                    if(response.status === 200){
+                    if(response.status === 200 || response.status ===201){
                         this.messages.push(newText);
                     }
                     else{
                         alert('failed to send');
+                       
                     }
                 console.log(response);
                 }, (error) => {
@@ -98,6 +99,17 @@
            console.log(this.orderId +" scream");
           this.mymes();
           this.fetchMessages(this.orderId);
+
+          Echo.private('chat').listen('MessageSent', (e) =>{
+             this.messages.push({
+                    message: e.message.message,
+                    orderId: e.message.orderId,
+                    userId: e.message.userId,
+                    user: e.user.name
+              }); 
+          //  console.log(e +' at chatlog');
+            
+          });
            
        },
     }

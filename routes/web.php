@@ -60,7 +60,8 @@ Route::get('/consultant/work/task/{id}', 'ConsultantController@workOnTask')->mid
 
 //chat
 Route::get('/fetch/messages/{id}', 'MessageController@fetch')->middleware('auth');
-Route::post('/store/message', 'MessageController@store')->middleware('auth');
+Route::post('/store/message', 'MessageController@stores')->middleware('auth');
+Route::get('/test/chat', 'MessageController@test')->middleware('auth');
 
 //admin stuff
 Route::get('/manage/admin/register', 'AdminauthController@register');
