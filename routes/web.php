@@ -23,6 +23,7 @@ Route::get('/manage/register', 'ClientauthController@orderRegister');
 Route::post('/register/ordering', 'ClientauthController@orderwRegistering');
 Route::get('/order/login', 'ClientauthController@orderLogin');
 Route::post('/order/logingin', 'ClientauthController@startSession');
+Route::get('/design/portfolio', 'PortfolioController@designPortfolio');
 //Route::post('/register/ordering', 'PagesController@orderwRegistering');
 
 Route::get('/order/details', 'PagesController@orderDetails');
