@@ -34,7 +34,14 @@
     </div>
     <div class="main" style="background-color: yellow;">
         <form action="" method="POST">
+            <div class="guide">
+                <p>You are just a few steps to designing your amazing portfolio. <br> With just a few clicks and a little typing, you will have a state of the art portfolio
+                    that will woo your next employers or financiers. <br>
+                    Lets get started!
+                </p>
+            </div>
             <div class="theme">
+                <p>Lucid is endevored to creating that personalized look and feel of your portfolio. You can select a theme of your liking from the available options.</p>
                 <label for="theme">Pick your prefered theme.</label> <br>
                     <label>
                         <input type="radio" name="theme" id="dark" value="dark">
@@ -54,6 +61,7 @@
             </div>
             <div class="about">
                 <div class="intro">
+                    <p>As a welcoming salutation, please provide your name and occupation.</p>
                     <div class="intro-greetings">
                         <p>Hi! I am</p>
                         <input type="text" name="name" id="name" placeholder="Enter your name...">
@@ -102,18 +110,39 @@
                 </div>
             </div>
 
-            <div class="contact">
-                <div class="message">
+            <div class="contact row" style="background-color: red; margin: 0px;">
+                <div class="message col-md-6">
                     <p>Leave me a message.</p>
+                    <div class="email-message">
+                        
+                    </div>
                 </div>
-                <div class="contacts">
-                    <div class="email"></div>
-                    <div class="phone"></div>
+                <div class="contacts col-md-6">
+                    <div class="email">
+                        <label for="email">This is your email.</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div class="phone">
+                        <label for="phone">Provide a phone number that portental employers can use to contact you</label>
+                        <input type="text" name="phone" id="phone">
+                    </div>
                     <div class="social">
-                        <div class="linkedin"></div>
-                        <div class="facebook"></div>
-                        <div class="twitter"></div>
-                        <div class="instagram"></div>
+                        <div class="linkedin">
+                            <label for="linkedin">Provide your LinkedIn URL</label>
+                            <input type="text" name="linkedin" id="linkedin">
+                        </div>
+                        <div class="facebook">
+                            <label for="facebook">Provide your Facebook URL</label>
+                            <input type="text" name="facebook" id="facebook">
+                        </div>
+                        <div class="twitter">
+                            <label for="twitter">Provide your Twitter URL</label>
+                            <input type="text" name="twitter" id="twitter">
+                        </div>
+                        <div class="instagram">
+                            <label for="instagram">Provide your Instagram URL</label>
+                            <input type="text" name="instagram" id="instagram">
+                        </div>
                     </div>
                 </div>
                 

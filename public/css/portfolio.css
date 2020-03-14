@@ -3,6 +3,7 @@
     width: 100%;
     top: 0px;
     background-color: white;
+    z-index: 1;
 }
 .side-nav{
     float: left;
@@ -11,6 +12,7 @@
     padding: 10px;
     background-color: rgb(0, 0, 26);
     color: white;
+    position: fixed;
 }
 .side-nav a {
     text-decoration: none !important;
