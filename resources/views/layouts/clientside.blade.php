@@ -58,6 +58,23 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script type="application/javascript">
+        var input = document.getElementById('intro-portrait');
+    var label = input.nextElementSibling; 
+    var labelVal = label.innerHTML;
+    //console.log(labelVal);
+    input.addEventListener('change', function(e){
+        var fileName = '';
+        fileName = e.target.value.split(' \ ').pop();
+        console.log('haha');
+        
+
+    });
+    function log(){
+        console.log('bs bs');
+        
+    }
+    </script>
     </body>
     </html>
     
