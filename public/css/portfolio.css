@@ -51,6 +51,7 @@
 }
 .guide p{
     background:linear-gradient(75deg, rgba(210,69,8,0.9864145487296481) 0%, rgba(219,9,112,0.9275910193178833) 25%, rgba(231,11,145,1) 50%, rgba(184,5,249,0.9275910193178833) 75%, rgba(241,12,12,0.8491596467688638) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -148,12 +149,41 @@
 #port-view{
     height: 100%;
     background-image: url('');
+   
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
     min-height: 300px;
     background-color: teal;
     text-align: right;
+    position: relative;
+}
+#port-view .img-sizing{
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    bottom: 2px;
+}
+#port-view .img-sizing span{
+   
+    color: black;
+   
+}
+#port-view .img-sizing .btn{
+    
+    background-color: whitesmoke;
+    max-height: 30px;
+    padding: 5px 20px 20px 20px;
+    transition: all 0.2s ease-out;
+    
+}
+#port-view .img-sizing .btn:active{
+    background-color: grey;
+}
+#portrait-pic {
+    width: 200px;
+    height: 150px;
+    position:relative; /* or fixed or absolute */
 }
 .greetings-portrait .inp-portrait-image + label{
     background-color: black;
@@ -169,4 +199,7 @@
 .inp-portrait-image:focus + label{
     outline: 2px solid yellowgreen;
     outline: -webkit-focus-ring-color auto 5px;
+}
+canvas{
+    background-color: black;
 }

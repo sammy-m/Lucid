@@ -83,36 +83,50 @@
                         </div>
                         </div>
                         <div class="greetings-portrait" id="port-view">
-                            <input type="file" name="intro-portrait" id="intro-portrait" class="inp-portrait-image">
+                            <input type="file" name="intro-portrait" id="intro-portrait" class="inp-portrait-image" accept="image/*">
                             <label for="intro-portrait">Upload high quality portrait</label>
-                        </div>
-                        <script type="application/javascript">
-                        /*    var input = document.getElementById('intro-portrait');
-                            var label = input.nextElementSibling; 
-                            var labelVal = label.innerHTML;
+                            <div id="canvd"></div>
 
-                           
-                            //console.log(input);
-                            function filename(){
-                                console.log('bs bs');
-                                var fileName = '';
-                                console.log(input.file);
-                                
-                                if('files' in input){
-                                    console.log('yes'+ input.files.length);
-                                     
-                                } else{
-                                    console.log('no');
-                                    
-                                }
-                                
-                                console.log(input.files[0]);
-                                
-                                
-                            }*/
+                            <div class="img-sizing">
+                               <span class="btn" id="z-in" >+</span>
+                               <span class="btn" id="" onclick="zooomOut1()">-</span>
+                               <span id="clear" class="btn">clear</span>
+                            </div>
+                        </div>
+                        
+                        
+                        <script type="application/javascript" defer>
+                        var zooomOut1;
+                        var board, canvasArea,canvImg;
+                        var ctx = ctx2 = null;
+                      window.onload = ()=>{
                             var inputs = document.querySelectorAll( '.inp-portrait-image' );
+                            //var ctx = null;
+                            
+                            canvImg = new Image();
+                            var canvImg2 = new Image();
+                            canvImg2.src ="http://lucid.test/images/themes/portfolio%20dark%20theme.jpg";
+                            var five=5, two=2;
+                            //console.log(document.getElementById('canvd') +'yass');
+                           /* var canvasArea = document.getElementById('canvd');
+                            var board = document.createElement('canvas');
+                            canvasArea.appendChild(board);*/
+                            var canvasArea = document.getElementById('canvd');
+                            var board = document.createElement('canvas');
+                            board.width = 400;
+                            board.height= 200;
+                            board.draggable = true;
+                            ctx2 = board.getContext('2d');
+                             ctx = board.getContext('2d');
+                            canvasArea.appendChild(board);
+                            ctx.drawImage(canvImg2,0,0);
+                            transformations(ctx, board, canvImg);
+                            
+                            
                             Array.prototype.forEach.call( inputs, function( input )
                             {
+                               
+
                                 var label	 = input.nextElementSibling,
                                     labelVal = label.innerHTML;
 
@@ -127,11 +141,80 @@
                                     if(this.files){
                                         var img = this.files[0];
                                         var reader = new FileReader();
+                                        var readerCanv = new FileReader();
+                                        var bd = board;
                                         console.log(img.name);
-                                        reader.onloadend = function () {
+                                        reader.readAsDataURL(img);
+                                        readerCanv.readAsDataURL(img);
+                                        //var canvImg = new Image();
+
+                                        
+                                      /* canvasArea = document.getElementById('canvd');
+                                        board = document.createElement('canvas');
+                                        board.width = 400;
+                                        board.height= 200;
+                                        board.draggable = true;*/
+                                        
+                                       //console.log(  canvasArea.appendChild(board));
+                                        canvasArea.appendChild(bd); 
+                                        console.log(canvasArea);
+                                        console.log(bd);
+                                        console.log(board.parentElement);
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+
+                                       //console.log(board+ 'this is the board');
+
+                                       readerCanv.onloadend = ()=>{
+                                           var file;
+                                            canvImg.src = readerCanv.result;
+                                           // console.log(canvImg.src);
+                                         /* board.width = 400;
+                                        board.height= 200;
+                                        board.draggable = true;
+                                         ctx = board.getContext('2d');*/
+                                        console.log(board);
+                                        
+                                        
+                                    
+                                        
+                                        //ctx.drawImage(canvImg, 0, 0);
+                                       
+                                        console.log(five+two);
+                                       
+                                        
+                                        
+                                        draw(canvImg, ctx, board);
+                                        
+                                           
+                                         
+                                                
+                                           
+                                            
+                                      
+                                      /* tutaangalia baadaye   
+                                        ctx.canvas.toBlob((blob) => {
+                                         file = new File([blob], fileName, {
+                                            type: 'image/jpeg',
+                                            lastModified: Date.now()
+                                        }
+                                       
+                                        );
+                                    }, 'image/jpeg', 1);*/
+                                    console.log(ctx); 
+                                           
+                                        }
+                                        
+                                       
+                                        reader.onloadend = () => {
                                             $('#port-view').css('background-image', 'url("' + reader.result + '")');
+                                           
                                          }
-                                         reader.readAsDataURL(img);
+                                       //  reader.readAsDataURL(img);
 
                                     }
                                     
@@ -143,8 +226,104 @@
                                         label.innerHTML = labelVal;
                                 });
                             });
+
+                            document.getElementById('z-in').addEventListener('click', function(e){
+                               // alert('zoom in');
+                               //ctx.scale(1.1,1.1);
+                                //draw(ctx);
+                                zoomIn();
+                            }); 
+                            document.getElementById('clear').addEventListener('click', ()=>{
+                                alert("width: "+board.width+" Height: "+board.height);
+                               ctx2.clearRect(0,0, 400,200);
+                            });
+
+                            function clickZoom(dir){
+                                
+                            }
+                           function zoomIn(){
+                              //  alert('zoomed in');
+                            
+                               ctx.scale(1.1,1.1);
+                              // ctx.clearRect(0,0, board.width, board.height);
+                               //ctx.drawImage(canvImg, 0, 0);
+                               redraw(ctx2, board, canvImg);
+                            }
+                            function zoomOut(){
+                                ctx.scale(0.9, 0.9);
+                                draw();
+                            }
+                             zooomOut1 = function () {
+                               // alert('I am good');
+                               console.log(ctx);
+                               //ctx.clearRect(0,0,board.width,board.height);
+                               
+                               ctx.scale(0.9, 0.9);
+                               redraw(ctx2, board, canvImg);
+                                //draw(canvImg, ctx, board);
+                            }
+                            function draw(canvImg ,ctx, board){
+                               // alert('called');
+                                var myctx, myImg, bd;
+                                myctx = ctx;
+                                myImg = canvImg, bd=board;
+                                canvImg.onload = ()=>{
+                                         
+                                //ctx.drawImage(canvImg, 0, 0);
+                            // ctx = board.getContext('2d');
+                                 ctx.clearRect(0,0, board.width, board.height);
+                               // ctx.drawImage(canvImg, 0, 0);
+                                ctx.drawImage(canvImg, 0, 0);
+                                }
+                                }
+                                
+
+                                
+                                
+                            }
+                            function zooomOut(){
+                                alert('okay');
+                            }
+                            function redraw(ctx2, board, canvImg){
+                                ctx2.clearRect(0,0, 400, board.height);
+                               //ctx.drawImage(canvImg, 0, 0);
+                            }
+                            function transformations(ctx, board, canvImg){
+                               // var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg');
+                                var transform = new DOMMatrix();
+                               // console.log(transform);
+
+                               ctx.getTransform = ()=>{
+                                   return transform;
+                               }
+
+                               ctx.saveTransform = ()=>{
+
+                               }
+                               ctx.restoreTransform = ()=>{
+                                   
+                               }
+
+                               ctx.scale = ()=>{
+
+                               }
+
+                               ctx.translate = ()=>{
+
+                               }
+
+                               var transformPoint = ctx.transformPoint;
+                               ctx.transformPoint = ()=>{
+
+                               }
+                                
+
+                            }
+
+                            
                             
                         </script>
+                   
                         
                     </div>
                 </div>
@@ -248,7 +427,7 @@
     </div>
 
 </div>
-<script src="{{asset('js/croppic.min.js')}}"></script>
+
 
 
 
