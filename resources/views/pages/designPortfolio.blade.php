@@ -88,8 +88,8 @@
                             <div id="canvd"></div>
 
                             <div class="img-sizing">
-                               <span class="btn" id="z-in" >+</span>
-                               <span class="btn" id="" onclick="zooomOut1()">-</span>
+                               <span class="btn" id="z-in">+</span>
+                               <span class="btn" id="z-out" >-</span>
                                <span id="clear" class="btn">clear</span>
                             </div>
                         </div>
@@ -113,14 +113,23 @@
                             canvasArea.appendChild(board);*/
                             var canvasArea = document.getElementById('canvd');
                             var board = document.createElement('canvas');
-                            board.width = 400;
-                            board.height= 200;
-                            board.draggable = true;
+                            board.width = 700;
+                            board.height= 350;
+                            board.draggable = false;
                             ctx2 = board.getContext('2d');
-                             ctx = board.getContext('2d');
+                            ctx = board.getContext('2d');
                             canvasArea.appendChild(board);
+                            console.log(board);
+                            
                             ctx.drawImage(canvImg2,0,0);
-                            transformations(ctx, board, canvImg);
+                            transformations(ctx);
+
+                            //lastX and lastY are the last points to be touched. default set to the middle of canvas
+                            var lastX = board.width/2;
+                            var lastY = board.height/2;
+
+                            //remove user selection on the canvas area
+                            document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = "none";
                             
                             
                             Array.prototype.forEach.call( inputs, function( input )
@@ -143,52 +152,30 @@
                                         var reader = new FileReader();
                                         var readerCanv = new FileReader();
                                         var bd = board;
-                                        console.log(img.name);
+                                        //console.log(img.name);
                                         reader.readAsDataURL(img);
                                         readerCanv.readAsDataURL(img);
                                         //var canvImg = new Image();
-
                                         
-                                      /* canvasArea = document.getElementById('canvd');
-                                        board = document.createElement('canvas');
-                                        board.width = 400;
-                                        board.height= 200;
-                                        board.draggable = true;*/
-                                        
-                                       //console.log(  canvasArea.appendChild(board));
+                                        ctx.mozCurrentTransform = [1,0,0,1,0,0]; 
                                         canvasArea.appendChild(bd); 
-                                        console.log(canvasArea);
-                                        console.log(bd);
-                                        console.log(board.parentElement);
                                         
-                                        
-                                        
-                                        
-                                        
-                                        
-
-                                       //console.log(board+ 'this is the board');
 
                                        readerCanv.onloadend = ()=>{
                                            var file;
                                             canvImg.src = readerCanv.result;
-                                           // console.log(canvImg.src);
-                                         /* board.width = 400;
-                                        board.height= 200;
-                                        board.draggable = true;
-                                         ctx = board.getContext('2d');*/
-                                        console.log(board);
+                                        //console.log(board);
                                         
                                         
                                     
                                         
                                         //ctx.drawImage(canvImg, 0, 0);
                                        
-                                        console.log(five+two);
+                                       // console.log(five+two);
                                        
                                         
                                         
-                                        draw(canvImg, ctx, board);
+                                        redraw();
                                         
                                            
                                          
@@ -205,7 +192,7 @@
                                        
                                         );
                                     }, 'image/jpeg', 1);*/
-                                    console.log(ctx); 
+                                   // console.log(ctx); 
                                            
                                         }
                                         
@@ -214,7 +201,7 @@
                                             $('#port-view').css('background-image', 'url("' + reader.result + '")');
                                            
                                          }
-                                       //  reader.readAsDataURL(img);
+                                      
 
                                     }
                                     
@@ -228,54 +215,91 @@
                             });
 
                             document.getElementById('z-in').addEventListener('click', function(e){
-                               // alert('zoom in');
-                               //ctx.scale(1.1,1.1);
-                                //draw(ctx);
-                                zoomIn();
+                               
+                                Zoom(1);
+                            }); 
+                            document.getElementById('z-out').addEventListener('click', function(e){
+                               
+                                Zoom(-1);
                             }); 
                             document.getElementById('clear').addEventListener('click', ()=>{
                                 alert("width: "+board.width+" Height: "+board.height);
                                ctx2.clearRect(0,0, 400,200);
                             });
-
-                            function clickZoom(dir){
-                                
-                            }
-                           function zoomIn(){
-                              //  alert('zoomed in');
-                            
-                               ctx.scale(1.1,1.1);
-                              // ctx.clearRect(0,0, board.width, board.height);
-                               //ctx.drawImage(canvImg, 0, 0);
-                               redraw(ctx2, board, canvImg);
-                            }
-                            function zoomOut(){
-                                ctx.scale(0.9, 0.9);
-                                draw();
-                            }
-                             zooomOut1 = function () {
-                               // alert('I am good');
-                               console.log(ctx);
-                               //ctx.clearRect(0,0,board.width,board.height);
+                            var dragPoint; var dragged;
+                            board.addEventListener('mousedown', (evt)=>{
+                                lastX = evt.offsetX;
+                                lastY = evt.offsetY;
                                
-                               ctx.scale(0.9, 0.9);
-                               redraw(ctx2, board, canvImg);
-                                //draw(canvImg, ctx, board);
+                                
+                                dragPoint = ctx.transformPoint(lastX,lastY);
+                                
+                                
+                                dragged = false;
+                                
+
+                            }, false );
+                            board.addEventListener('mousemove', (e)=>{
+                                lastX = e.offsetX;
+                                lastY = e.offsetY;
+
+                                dragged = true;
+
+                                if(dragPoint){
+                                   var point = ctx.transformPoint(lastX,lastY);
+                                   console.log(point.x+" "+point.y);
+                                    ctx.translate(point.x-dragPoint.x, point.y-dragPoint.y);
+                                   
+                                    
+                                    redraw();
+                                }
+                                
+                            }, false );
+                            board.addEventListener('mouseup', (e)=>{
+                                dragPoint = null;
+                                if (!dragged){
+                                    Zoom(e.shiftKey ? -1 : 1);
+                                }
+
+                            }, true );
+                            //set the scale factor to 10%
+                            var scaleFactor = 1.1;
+
+                            function Zoom(dir){
+                               // alert(dir);
+                                var pt = ctx.transformPoint(lastX, lastY);
+                                //shift the img to the right
+                                ctx.translate(pt.x, pt.y);
+                                //scale the image
+                                var factor = Math.pow(scaleFactor,dir);
+                                ctx.scale(factor, factor);
+                                //shift the img to the left
+                                ctx.translate(-pt.x, -pt.y);
+                                
+
+                                redraw();
                             }
-                            function draw(canvImg ,ctx, board){
-                               // alert('called');
-                                var myctx, myImg, bd;
-                                myctx = ctx;
-                                myImg = canvImg, bd=board;
-                                canvImg.onload = ()=>{
-                                         
-                                //ctx.drawImage(canvImg, 0, 0);
-                            // ctx = board.getContext('2d');
-                                 ctx.clearRect(0,0, board.width, board.height);
-                               // ctx.drawImage(canvImg, 0, 0);
-                                ctx.drawImage(canvImg, 0, 0);
-                                }
-                                }
+                           
+                            
+                            
+
+                                function redraw(){
+                                    var pt1 = ctx.transformPoint(0,0);
+                                    var pt2 = ctx.transformPoint(board.width,board.height);
+                                   // alert(pt2.x+" "+pt2.y);
+                                    ctx.clearRect(pt1.x, pt1.y, pt2.x-pt1.x, pt2.y-pt1.y);
+                                    ctx.save();
+                                    //restore transformation matrix to normal
+                                    ctx.setTransform(1,0,0,1,0,0);
+
+                                    ctx.clearRect(0,0,board.width,board.height);
+
+                                    ctx.restore();
+                                    
+                                    ctx.drawImage(canvImg, 0,0);
+
+                               
+                            }
                                 
 
                                 
@@ -284,36 +308,84 @@
                             function zooomOut(){
                                 alert('okay');
                             }
-                            function redraw(ctx2, board, canvImg){
-                                ctx2.clearRect(0,0, 400, board.height);
-                               //ctx.drawImage(canvImg, 0, 0);
-                            }
-                            function transformations(ctx, board, canvImg){
-                               // var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg');
-                                var transform = new DOMMatrix();
-                               // console.log(transform);
+                           
+                            function transformations(ctx){
+                                
+                               
+                                var transMatrix = new DOMMatrix();
+                                var savedTransformations = [];
+                                
+                                
+
+
+                               
 
                                ctx.getTransform = ()=>{
-                                   return transform;
+                                   return transMatrix;
                                }
 
-                               ctx.saveTransform = ()=>{
+                               var saveTransform = ctx.save;
+                               ctx.save = function(){
+                                   //alert("saved");
+                                   savedTransformations.push(transMatrix.translate(0,0));
+                                   
+                                  return saveTransform.call(ctx);
 
                                }
-                               ctx.restoreTransform = ()=>{
+
+                               var restore = ctx.restore;
+                               ctx.restore = ()=>{
+                                   transMatrix = savedTransformations.pop();
+                                  // alert("restored");
+                                  // return transMatrix;
+                                  return restore.call(ctx);
                                    
                                }
 
-                               ctx.scale = ()=>{
+                               var scale = ctx.scale;
+                               ctx.scale = (px,py)=>{
+                                   //alert('scale');
+                                transMatrix = transMatrix.scaleNonUniform(px,py);
+                                return scale.call(ctx, px, py);
+                               }
+                               var translate = ctx.translate;
+                               ctx.translate = (dx, dy)=>{
 
+                                    transMatrix = transMatrix.translate(dx, dy);
+                                    return translate.call(ctx,dx,dy);
                                }
 
-                               ctx.translate = ()=>{
+                               //var setTrans = 1;//ctx.setTransformation;
+                               var setTransform =  ctx.setTransform;
+                                ctx.setTransform = function (a,b,c,d,e,f) {
+                                   //alert(a+' '+b+' '+c+' '+d+' '+e+' '+f);
+                                   //console.log(transMatrix);
+                                   
+                                   transMatrix.a = a;
+                                   transMatrix.b = b;
+                                   transMatrix.c = c;
+                                   transMatrix.d = d;
+                                   transMatrix.e = e;
+                                   transMatrix.f = f;
+                                   //console.log(transMatrix);
 
+                                return setTransform.call(ctx,a,b,c,d,e,f);
+                                   
                                }
 
+                               var pt = new DOMPoint();
                                var transformPoint = ctx.transformPoint;
-                               ctx.transformPoint = ()=>{
+                               ctx.transformPoint = (px, py)=>{
+                                   
+                                   
+                                   
+                                   pt.x = px;
+                                   pt.y = py;
+                                   //transMatrix.m11 = 0;
+                                  
+                                   
+
+                                   return pt.matrixTransform(transMatrix.inverse());
 
                                }
                                 
