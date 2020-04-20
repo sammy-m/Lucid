@@ -76,10 +76,10 @@
                     <div class="intro-greetings">
                         <div class="greetings-text">
                         <p>Hi! I am</p>
-                        <input type="text" name="name" id="name" placeholder="Enter your name...">
+                        <input type="text" name="name" id="name" class="text" placeholder="Enter your name...">
                         <div class="occupation">
                             <p>I</p>
-                            <input type="text" name="occupation" id="occupation"  placeholder="am an architect working with Doe Company">
+                            <input type="text" name="occupation" id="occupation" class="text" placeholder="am an architect working with Doe Company">
                         </div>
                         </div>
                         <div class="greetings-portrait" id="port-view">
@@ -106,20 +106,19 @@
                             canvImg = new Image();
                             var canvImg2 = new Image();
                             canvImg2.src ="http://lucid.test/images/themes/portfolio%20dark%20theme.jpg";
-                            var five=5, two=2;
-                            //console.log(document.getElementById('canvd') +'yass');
-                           /* var canvasArea = document.getElementById('canvd');
-                            var board = document.createElement('canvas');
-                            canvasArea.appendChild(board);*/
+                           
+                            
                             var canvasArea = document.getElementById('canvd');
                             var board = document.createElement('canvas');
-                            board.width = 700;
-                            board.height= 350;
+                            //console.log(canvasArea);
+                            
+                            board.width = canvasArea.clientWidth;
+                            board.height= board.width / 2;
                             board.draggable = false;
                             ctx2 = board.getContext('2d');
                             ctx = board.getContext('2d');
                             canvasArea.appendChild(board);
-                            console.log(board);
+                            //console.log(board);
                             
                             ctx.drawImage(canvImg2,0,0);
                             transformations(ctx);
@@ -128,8 +127,6 @@
                             var lastX = board.width/2;
                             var lastY = board.height/2;
 
-                            //remove user selection on the canvas area
-                            document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = "none";
                             
                             
                             Array.prototype.forEach.call( inputs, function( input )
@@ -164,17 +161,7 @@
                                        readerCanv.onloadend = ()=>{
                                            var file;
                                             canvImg.src = readerCanv.result;
-                                        //console.log(board);
-                                        
-                                        
-                                    
-                                        
-                                        //ctx.drawImage(canvImg, 0, 0);
                                        
-                                       // console.log(five+two);
-                                       
-                                        
-                                        
                                         redraw();
                                         
                                            
@@ -240,6 +227,9 @@
 
                             }, false );
                             board.addEventListener('mousemove', (e)=>{
+                                //remove user selection on the canvas area
+                            document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = "none";
+                            
                                 lastX = e.offsetX;
                                 lastY = e.offsetY;
 
@@ -256,6 +246,10 @@
                                 
                             }, false );
                             board.addEventListener('mouseup', (e)=>{
+
+                                 //return user selection on the canvas area
+                            document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = "auto";
+                            
                                 dragPoint = null;
                                 if (!dragged){
                                     Zoom(e.shiftKey ? -1 : 1);
@@ -284,6 +278,12 @@
                             
 
                                 function redraw(){
+                                    var finalImg = new Image();
+                                    finalImg.src =  board.toDataURL('image/jpeg', 1.0);
+                                    console.log(finalImg.width+" "+finalImg.height);
+                                    console.log(board.width+" "+finalImg.height);
+                                       
+
                                     var pt1 = ctx.transformPoint(0,0);
                                     var pt2 = ctx.transformPoint(board.width,board.height);
                                    // alert(pt2.x+" "+pt2.y);
@@ -297,6 +297,21 @@
                                     ctx.restore();
                                     
                                     ctx.drawImage(canvImg, 0,0);
+                                   // $('#imagePre').css('background-image', 'url("' + finalsrc + '")');
+                                  
+                                   // finalImg.src =  board.toDataURL('image/jpeg', 1.0);
+                                   
+                                    
+                                    console.log(finalImg);
+                                    $('#imagePre').css('background-image', 'url("' + finalImg.src + '")');
+                                   
+
+
+                                    
+                                      
+
+                                   
+                                  
 
                                
                             }
@@ -314,11 +329,6 @@
                                
                                 var transMatrix = new DOMMatrix();
                                 var savedTransformations = [];
-                                
-                                
-
-
-                               
 
                                ctx.getTransform = ()=>{
                                    return transMatrix;
@@ -358,8 +368,6 @@
                                //var setTrans = 1;//ctx.setTransformation;
                                var setTransform =  ctx.setTransform;
                                 ctx.setTransform = function (a,b,c,d,e,f) {
-                                   //alert(a+' '+b+' '+c+' '+d+' '+e+' '+f);
-                                   //console.log(transMatrix);
                                    
                                    transMatrix.a = a;
                                    transMatrix.b = b;
@@ -367,26 +375,18 @@
                                    transMatrix.d = d;
                                    transMatrix.e = e;
                                    transMatrix.f = f;
-                                   //console.log(transMatrix);
 
-                                return setTransform.call(ctx,a,b,c,d,e,f);
-                                   
+                                return setTransform.call(ctx,a,b,c,d,e,f);                                   
                                }
 
                                var pt = new DOMPoint();
                                var transformPoint = ctx.transformPoint;
                                ctx.transformPoint = (px, py)=>{
                                    
-                                   
-                                   
                                    pt.x = px;
                                    pt.y = py;
-                                   //transMatrix.m11 = 0;
-                                  
                                    
-
                                    return pt.matrixTransform(transMatrix.inverse());
-
                                }
                                 
 
@@ -398,14 +398,18 @@
                    
                         
                     </div>
+                    <div id="imagePre" style="background-image: URL(''); height: 700px; background-repeat: no-repeat; background-size: contain;">
+
+                    </div>
                 </div>
                 <div class="bio">
                     <div class="guide-min">
                         <p>A short story about yourself is important in telling the world about yourself. Make it as captivating and interesting as it can be.</p>
                     </div>
-                    
-                    <label for="bio">Write a brief description (Bio) of yourself</label>
-                    <input type="text" name="bio" id="bio" placeholder="Type your Bio...">
+                    <textarea name="bio" id="bio-text" cols="30" rows="5" placeholder="Type something about you here...">
+
+                    </textarea>
+                   
                 </div>
                 <div class="skills-experience">
                     <div class="guide-min">
@@ -460,34 +464,35 @@
                 <div class="message col-md-6">
                     <p>Leave me a message.</p>
                     <div class="email-message">
+                        <textarea name="email-message" id="email-message"  rows="10" placeholder="This is..."   disabled></textarea>
                         
                     </div>
                 </div>
                 <div class="contacts col-md-6">
                     <div class="email">
                         <label for="email">This is your email.</label>
-                        <input type="text" name="email" id="email">
+                        <input type="text" class="text" name="email" id="email">
                     </div>
                     <div class="phone">
-                        <label for="phone">Provide a phone number that portental employers can use to contact you</label>
-                        <input type="text" name="phone" id="phone">
+                        <label for="phone">Provide a phone number that potential employers can use to contact you</label>
+                        <input type="text" class="text" name="phone" id="phone">
                     </div>
                     <div class="social">
                         <div class="linkedin">
                             <label for="linkedin">Provide your LinkedIn URL</label>
-                            <input type="text" name="linkedin" id="linkedin">
+                            <input type="text"  class="text" name="linkedin" id="linkedin">
                         </div>
                         <div class="facebook">
                             <label for="facebook">Provide your Facebook URL</label>
-                            <input type="text" name="facebook" id="facebook">
+                            <input type="text" class="text" name="facebook" id="facebook">
                         </div>
                         <div class="twitter">
                             <label for="twitter">Provide your Twitter URL</label>
-                            <input type="text" name="twitter" id="twitter">
+                            <input type="text" class="text" name="twitter" id="twitter">
                         </div>
                         <div class="instagram">
                             <label for="instagram">Provide your Instagram URL</label>
-                            <input type="text" name="instagram" id="instagram">
+                            <input type="text" class="text" name="instagram" id="instagram">
                         </div>
                     </div>
                 </div>

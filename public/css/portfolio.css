@@ -203,3 +203,43 @@
 canvas{
     background-color: black;
 }
+.bio{
+    padding: 0 10%;
+}
+#bio-text{
+    resize: none;
+    word-wrap: break-word;
+    overflow: hidden;
+    width: 100%;
+    padding: 37px 70px 30px 100px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    background-image:url("/images/notebookTextarea/lines1.png"), url("/images/notebookTextarea/paper.png");
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	/*-webkit-box-shadow: 0px 2px 14px #000;
+    box-shadow: 0px 2px 14px #000;*/
+    line-height: 30px;
+    border: #f9e9d3;
+    
+}
+ .text{
+    border-radius: 8px 8px 0 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px #f9e9d3 solid;
+    height: 40px;
+    min-width: 500px;
+    background-image: url("/images/notebookTextarea/paper.png") !important;
+    text-align: center;
+ }
+ #email-message{
+     width: 90%;
+     border-radius: 8px;
+     background-image: url("/images/notebookTextarea/paper.png");
+     min-height: 350px;
+     padding: 30px;
+     border: #f9e9d3;
+ }
