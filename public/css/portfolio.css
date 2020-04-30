@@ -115,7 +115,7 @@
 }
 .svg-wave .divsep{
     position: relative;
-    bottom: -130px;
+    bottom: -40px;
 }
 .intro{
     text-align: center;
@@ -221,19 +221,24 @@ canvas{
 	/*-webkit-box-shadow: 0px 2px 14px #000;
     box-shadow: 0px 2px 14px #000;*/
     line-height: 30px;
-    border: #f9e9d3;
+    border: 1px solid #63626221;
     
 }
  .text{
     border-radius: 8px 8px 0 0;
-    border-top: 0;
+    /*border-top: 0;
     border-left: 0;
-    border-right: 0;
+    border-right: 0;*/
+    border: 1px solid #6362624d;
     border-bottom: 1px #f9e9d3 solid;
     height: 40px;
-    min-width: 500px;
+    width: 100%;
+   /* min-width: 300px;*/
     background-image: url("/images/notebookTextarea/paper.png") !important;
     text-align: center;
+ }
+ .message{
+     text-align: center;
  }
  #email-message{
      width: 90%;
@@ -241,5 +246,153 @@ canvas{
      background-image: url("/images/notebookTextarea/paper.png");
      min-height: 350px;
      padding: 30px;
-     border: #f9e9d3;
+     border: 2px solid #6362624d;
  }
+ .btn-rounded{
+     display: inline-block !important;
+     display: initial;
+     min-width: 200px;
+     height: 40px !important;
+     overflow: hidden;
+     border-radius: 15px;
+     align-self: center;
+     border: none;
+     padding-bottom: 20px;
+ }
+ .btn-gradient {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.4s;
+    background-size: 200% auto;
+    color: white;
+   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+    /*box-shadow: 0 0 20px #eee;*/
+    border-radius: 10px;
+    background-image: linear-gradient(75deg, rgba(210,69,8,0.9864145487296481) 0%, rgba(219,9,112,0.9275910193178833) 25%, rgba(231,11,145,1) 50%, rgba(184,5,249,0.9275910193178833) 65%, rgba(241,12,12,0.8491596467688638) 90%);
+
+   }
+
+  .btn-1 {
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+    
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+  }
+
+ /*.btn-gradient {
+     background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+    }*/
+.btn-gradient:hover {
+     background-position: right center;
+}
+.btn-gradient:active{
+    background-position: bottom center;
+    transition: all 0.1s ease-in-out;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%)}
+.btn-grad:hover { background-position: right center !important; } 
+
+.carousel{
+    display: flex;
+    width: 100%;
+    background-color: greenyellow;
+    align-items: center;
+    justify-content: center;
+
+}
+.carousel .right-arrow{
+    float: right;
+    position: absolute;
+    right: 10px;
+}
+.carousel .left-arrow{
+    float: left;
+    position: absolute;
+    left: 10px;
+}
+
+.carousel .card-holder{
+    width: 100%;
+    min-width: 400px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: violet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel .card-holder .add-card{
+    position: absolute;
+    right: 50px;
+    font-size: 40pt;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(163, 164, 238, 0.473);
+    text-align: center;
+    padding-top: 15px;
+    line-height: 30px;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.carousel .card-holder .carousel-card{
+    background-color: orange;
+    width: 238px;
+    min-width: 238px;
+    height:500px;
+    padding: 130px 5px 20% 5px;
+    margin: 0 5px;
+    position: relative;
+    
+}
+.carousel .card-holder .carousel-card .rm-card{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    user-select: none;
+    -moz-user-select: none;
+}
+.carousel .card-holder .quality{
+    background-image: url('/images/portfolio/skills/skill1.svg');
+    background-repeat: no-repeat;
+   
+}
+
+/*.carousel .card-holder .carousel-card .card-title{
+    background-color: rebeccapurple;
+    
+}
+.carousel .card-holder .carousel-card .card-detail{
+    background-color: blue;
+} */
+.carousel .card-holder .carousel-card .card-title input{
+    background-color: transparent !important;
+    width: 100%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: rgba(23, 26, 226, 0.601) 2px solid;
+    color: rgba(23, 26, 226, 0.9901);
+    text-align: center;
+
+}
+.carousel .card-holder .carousel-card .card-detail textarea{
+    width: 100%;
+    min-height: 200px;
+    max-height: 210px;
+    background-color: transparent !important;
+    border: rgba(23, 26, 226, 0.801) 2px solid;
+    border-radius: 5px;
+}
