@@ -717,11 +717,16 @@ function removeCard( e){
             }else if (thisCard.classList.contains('projects') && e.target.id == 'card'){
                 alert('projects card');
             }
-            var cards = document.getElementsByClassName('carousel-')
+            //var cards = document.getElementsByClassName('carousel-')
         }
 
-    function stackCards(){
-            
+    function stackCards(activeCard){
+        let cards = document.getElementsByClassName('carousel-card');
+        var length = cards.length();
+        var NonActive = length - 1; //lenght of cards not active
+        var activeIndex = Array.prototype.indexOf.call(cards, activeCard); //index of active cards
+        var noLeftcards = Math.trunc(length/2); //number of cards on the left
+        var noRightcards = length - noLeftcards; //number of cards on the right
     }
 
    /* carouselCard[0].addEventListener('click', (e)=>{
