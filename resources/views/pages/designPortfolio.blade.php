@@ -124,11 +124,11 @@
                         <span class="left-arrow"><</span>
                         <div class="card-holder" id="skill-holder">
 
-                            <div class="quality carousel-card left-stack" id="card">
+                            <div class="quality carousel-card left-stack" id="card" onclick="clicked(this)">
                                 
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality" id="quality" placeholder="0Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
@@ -137,11 +137,11 @@
                                 </div>
                                 
                             </div>
-                            <div class="quality carousel-card left-stack" id="card">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(this)">X</span>
+                            <div class="quality carousel-card left-stack" id="card" onclick="clicked(this)">
+                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality" id="quality" placeholder="1Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
@@ -150,11 +150,11 @@
                                 </div>
                                 
                             </div>
-                            <div class="quality carousel-card right-stack" id="card">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(this)">X</span>
+                            <div class="quality carousel-card right-stack" id="card" onclick="clicked(this)">
+                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality" id="quality" placeholder="2Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
@@ -164,11 +164,11 @@
                                 
                             </div>
 
-                            <div class="quality carousel-card right-stack" id="card">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(this)">X</span>
+                            <div class="quality carousel-card right-stack" id="card" onclick="clicked(this)">
+                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality" id="quality" placeholder="3Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
@@ -592,7 +592,10 @@ function addskill(){
             var divCard = document.createElement('DIV');
             divCard.classList.add('quality', 'carousel-card');
             divCard.id = 'card';
-            divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(this)">X</span>
+            divCard.onclick = function () {
+                clicked(divCard);
+            }
+            divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
                                     <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
@@ -610,58 +613,72 @@ function addskill(){
         }
 function removeCard( e){
     
+    e.stopPropagation();
+    
     var cards = document.getElementsByClassName('quality');
     var wasActive = false;
-    if(e.parentElement.classList.contains('active')){
+    var actives =document.querySelectorAll('.active', '.quality');
+    var newActive = actives[0];
+    console.log(newActive);
+    
+    if(e.target.parentElement.classList.contains('active')){
         wasActive = true;
     }
     
-    var freeIndex = Array.prototype.indexOf.call(cards, e.parentElement); 
-    e.parentElement.remove();
+    var freeIndex = Array.prototype.indexOf.call(cards, e.target.parentElement); 
+    e.target.parentElement.remove();
     cards = document.getElementsByClassName('quality');
     if(wasActive){
        
         if(cards[freeIndex] != null){
             var cardss = document.getElementsByClassName('quality');
            
-            var newActive = cardss[freeIndex];
+            newActive = cardss[freeIndex];
             
             newActive.classList.add('active');
+           
             }else{    
-            cards[freeIndex - 1].classList.add('active');
-            }
+                newActive = cards[freeIndex - 1];
+            newActive.classList.add('active');
+            } 
     }
     
- 
+    stackCards(newActive);
     
 }
 
 
 ///this is for new created cards
-    document.querySelectorAll(".card-holder").forEach(holder=>{
+    document.querySelectorAll(".card-holders").forEach(holder=>{
         holder.addEventListener('click', ()=>{
             document.querySelectorAll('.carousel-card').forEach(card=>{
                     card.addEventListener('click', (e)=>{
                         //console.log(e);
+                        var thisCard;
                         if(e.target.id == 'card'){
-                            let thisCard = e.target;
+                            thisCard = e.target;
                             deactivateCard(e,thisCard);
                             e.target.classList.remove('left-stack', 'right-stack');
                             e.target.classList.add('active');
+                            console.log("1");
+                            
                         } else{
                             if(e.target.parentElement.id == "card"){
-                                let thisCard = e.target.parentElement;
+                                thisCard = e.target.parentElement;
                                 deactivateCard(e,thisCard);
                                 thisCard.classList.remove('left-stack', 'right-stack');
                                 thisCard.classList.add('active');
+                                console.log("2");
                             }else if(e.target.parentElement.id != "card"){
-                                let thisCard = e.target.parentElement.parentElement;
+                                thisCard = e.target.parentElement.parentElement;
                                 deactivateCard(e,thisCard);
                                 thisCard.classList.remove('left-stack', 'right-stack');
                                 thisCard.classList.add('active');
+                                console.log("3");
+                                
                             }
                         }
-
+                        stackCards(thisCard);
 
                         
                     }, false);
@@ -669,42 +686,62 @@ function removeCard( e){
         });
     });
 
+function clicked(e) {
 
-    document.querySelectorAll('.carousel-card').forEach(card=>{
+    //console.log(e.classList.contains('active'));
+   
+    
+    
+    var thisCard = e;
+
+            if(!thisCard.classList.contains('active')){
+            deactivateCard(thisCard);
+            thisCard.classList.remove('left-stack', 'right-stack');
+            thisCard.classList.add('active');
+            stackCards(thisCard);
+            }
+    
+   
+   // stackCards(thisCard); */
+    
+}
+
+  /*  document.querySelectorAll('.carousel-card').forEach(card=>{
         card.addEventListener('click', (e)=>{
             //console.log(e);
-            
+            var thisCard;
             if(e.target.id == 'card'){
-                let thisCard = e.target;
+                 thisCard = e.target;
                
                 deactivateCard(e,thisCard);
                 thisCard.classList.remove('left-stack', 'right-stack');
                 e.target.classList.add('active');
             } else{
                 if(e.target.parentElement.id == "card"){
-                    let thisCard = e.target.parentElement;
+                    thisCard = e.target.parentElement;
                     deactivateCard(e,thisCard);
                     thisCard.classList.remove('left-stack', 'right-stack');
                     thisCard.classList.add('active');
                 }else if(e.target.parentElement.id != "card"){
-                    let thisCard = e.target.parentElement.parentElement;
+                    thisCard = e.target.parentElement.parentElement;
                     deactivateCard(e,thisCard);
                     thisCard.classList.remove('left-stack', 'right-stack');
                     thisCard.classList.add('active');
                 }
             }
+           // stackCards(thisCard);
 
             
         }, false);
 
 
-    });
+    }); */
 
-    function deactivateCard(e,thisCard){
-            //alert('called');
+    function deactivateCard(thisCard){
+           // alert('called');
             //console.log(e);
             
-            if(thisCard.classList.contains('quality') && e.target.id != 'rm-card'){
+            if(thisCard.classList.contains('quality')){
                // alert('quality card');
                 var cards = document.getElementsByClassName('quality');
                var index = Array.prototype.indexOf.call(cards, thisCard);
@@ -716,23 +753,38 @@ function removeCard( e){
                     //console.log(card);
                     
                 });
-            }else if (thisCard.classList.contains('projects') && e.target.id == 'card'){
+            }else if (thisCard.classList.contains('projects')){
                 alert('projects card');
             }
             //var cards = document.getElementsByClassName('carousel-')
         }
 
-    function stackCards(activeCard){
+    function stackCards(card){
+        var activeCard;
+        if(card.classList.contains('active')){
+            activeCard = card;
+        }else{
+            activeCard = document.querySelectorAll('.active', '.quality')[0];
+        }
         let cards = document.getElementsByClassName('carousel-card');
-        var length = cards.length();
+        console.log('the card');
+        
+        console.log(activeCard);
+        
+        //console.log(cards);
+        
+        var length = cards.length;
         var NonActive = length - 1; //lenght of cards not active
         var activeIndex = Array.prototype.indexOf.call(cards, activeCard); //index of active cards
+        console.log(activeIndex+" active index");
+        
         var noLeftcards = Math.trunc(NonActive/2); //number of cards on the left
         var noRightcards = NonActive - noLeftcards; //number of cards on the right
-        var arrayR; //an array of card indexes on the right
-        var arrayL; //an array of card indexes on the left
+        var arrayR = cardsOnRight.call(); //an array of card indexes on the right
+        var arrayL = cardsOnLeft.call();//an array of card indexes on the left
 
-        var cardsOnRight = () =>{
+        
+        function cardsOnRight() {
             var i = 1;
             var j = activeIndex + 1;
             arrayR = [];
@@ -743,7 +795,7 @@ function removeCard( e){
                 }else{
                     arrayR.push(j-length);
                 }
-                console.log(arrayR);
+                
                 
                 ++j;
                 ++i;
@@ -751,16 +803,27 @@ function removeCard( e){
 
             return arrayR;
         }
-        var cardsOnLeft = () =>{
+        function cardsOnLeft() {
             var i = noLeftcards;
-            var j;
+            var j = activeIndex - 1;
             arrayL = [];
             while(i > 0){
-
-
+                if(j>=0){
+                    arrayL.push(j);
+                } else{
+                    arrayL.push(j + length);
+                }
+               
+                --j;
                 --i;
             }
+            return arrayL;
         }
+        console.log(arrayL);
+        console.log(arrayR);
+        cardsOnRight();
+        cardsOnLeft();
+        
 
 
     }
