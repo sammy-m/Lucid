@@ -678,16 +678,18 @@ function removeCard( e){
                 let thisCard = e.target;
                
                 deactivateCard(e,thisCard);
-               
+                thisCard.classList.remove('left-stack', 'right-stack');
                 e.target.classList.add('active');
             } else{
                 if(e.target.parentElement.id == "card"){
                     let thisCard = e.target.parentElement;
                     deactivateCard(e,thisCard);
+                    thisCard.classList.remove('left-stack', 'right-stack');
                     thisCard.classList.add('active');
                 }else if(e.target.parentElement.id != "card"){
                     let thisCard = e.target.parentElement.parentElement;
                     deactivateCard(e,thisCard);
+                    thisCard.classList.remove('left-stack', 'right-stack');
                     thisCard.classList.add('active');
                 }
             }
@@ -725,8 +727,42 @@ function removeCard( e){
         var length = cards.length();
         var NonActive = length - 1; //lenght of cards not active
         var activeIndex = Array.prototype.indexOf.call(cards, activeCard); //index of active cards
-        var noLeftcards = Math.trunc(length/2); //number of cards on the left
-        var noRightcards = length - noLeftcards; //number of cards on the right
+        var noLeftcards = Math.trunc(NonActive/2); //number of cards on the left
+        var noRightcards = NonActive - noLeftcards; //number of cards on the right
+        var arrayR; //an array of card indexes on the right
+        var arrayL; //an array of card indexes on the left
+
+        var cardsOnRight = () =>{
+            var i = 1;
+            var j = activeIndex + 1;
+            arrayR = [];
+            while(i<=noRightcards){
+
+                if(j < length){
+                    arrayR.push(j);
+                }else{
+                    arrayR.push(j-length);
+                }
+                console.log(arrayR);
+                
+                ++j;
+                ++i;
+            }
+
+            return arrayR;
+        }
+        var cardsOnLeft = () =>{
+            var i = noLeftcards;
+            var j;
+            arrayL = [];
+            while(i > 0){
+
+
+                --i;
+            }
+        }
+
+
     }
 
    /* carouselCard[0].addEventListener('click', (e)=>{
