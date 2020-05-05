@@ -819,11 +819,31 @@ function clicked(e) {
             }
             return arrayL;
         }
-        console.log(arrayL);
-        console.log(arrayR);
+       // console.log(arrayL);
+       // console.log(arrayR);
         cardsOnRight();
         cardsOnLeft();
-        
+        var sl = sr = maxscale = 0.8;
+        var tl = tr = 10;
+        var minscale = 0.5;
+        var scalediff = maxscale - minscale;
+        var scalefactor = scalediff/noRightcards;
+        arrayL.forEach(card => {
+            cards[card].classList.remove('right-stack');
+            cards[card].classList.add('left-stack');
+            cards[card].style.transform = 'scale('+sl+','+sl+')';
+            sl = sl - scalefactor;
+            cards[card].style.transform = 'translateX('+tl+')';
+            tl += 10;
+        });
+        arrayR.forEach(card => {
+            cards[card].classList.remove('left-stack');
+            cards[card].classList.add('right-stack');
+            cards[card].style.transform = 'scale('+sr+','+sr+')';
+            sl = sl - scalefactor;
+            cards[card].style.transform = 'translateX('+tr+')';
+            tr += 10;
+        });
 
 
     }
