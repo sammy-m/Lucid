@@ -121,10 +121,10 @@
                     
                     <div class="carousel">
 
-                        <span class="left-arrow"><</span>
+                        <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
                         <div class="card-holder" id="skill-holder">
 
-                            <div class="quality carousel-card left-stack" id="card" onclick="clicked(this)">
+                            <div class="quality carousel-card active" id="card" onclick="clicked(this)">
                                 
                                 <div class="card-title quality-title">
                                     
@@ -183,7 +183,7 @@
 
                         </div>
                         
-                        <span class="right-arrow">></span>
+                        <span class="quality-scroll right-arrow" onclick="scrollCarouselQ(event)">></span>
 
                     </div>
                     
@@ -197,28 +197,98 @@
                         <p>Tell us about the exciting projects and achievements that you have had previously.</p>
                     </div>
                     
-                    <span><</span>
-                    <div class="past-activity">
-                        <label for="past-project">Type a project you have done in the past</label>
-                        <input type="text" name="past-project" id="past-project" placeholder="project">
-                        <label for="past-project-description">Tell people more about the project</label>
-                        <input type="text" name="past-project-description" placeholder="tell us more about this project...">
+                    <div class="carousel">
+
+                        <span class="project-scroll left-arrow" onclick="scrollCarouselP(event)"><</span>
+                        <div class="card-holder" id="project-holder">
+
+                            <div class="project carousel-card active" id="card" onclick="clicked(this)">
+                                
+                                <div class="card-title project-title">
+                                    
+                                    <input type="text" name="project" id="project" placeholder="0Type in a past project or work you have done">
+                                </div>
+
+                                <div class="card-detail project-detail">
+                                    
+                                    <textarea name="projectdescription" id="project-description" placeholder="describe the skill or experience"></textarea>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="project carousel-card right-stack" id="card" onclick="clicked(this)">
+                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
+                                <div class="card-title project-title">
+                                    
+                                    <input type="text" name="project" id="project" placeholder="Type in a past project or work you have done">
+                                </div>
+
+                                <div class="card-detail quality-detail">
+                                    
+                                    <textarea name="projectdescription" id="project-description" placeholder="describe the work or project"></textarea>
+                                </div>
+                                
+                            </div>
+
+                           
+
+
+                            <span class="add-card" id="add-skill" title="Add a project" onclick="addproject()">+</span>
+
+                        </div>
+                        
+                        <span class="project-scroll right-arrow" onclick="scrollCarouselP(event)">></span>
+
                     </div>
-                    <span>></span>
                 </div>
                 <div class="current-work-projects">
                     <div class="guide-min">
                         <p>Your current work is equally important. Impress people and tell them more about what you have been up to!</p>
                     </div>
                     
-                    <span><</span>
-                    <div class="current-activity">
-                        <label for="current-project">Type a project you are currently handling</label>
-                        <input type="text" name="current-project" id="current-project" placeholder="project">
-                        <label for="current-project-description">Tell people more about this project</label>
-                        <input type="text" name="current-project-description" placeholder="tell us more about this project...">
+                    <div class="carousel">
+
+                        <span class="cproject-scroll left-arrow" onclick="scrollCarouselPC(event)"><</span>
+                        <div class="card-holder" id="cproject-holder">
+
+                            <div class="cproject carousel-card active" id="card" onclick="clicked(this)">
+                                
+                                <div class="card-title cproject-title">
+                                    
+                                    <input type="text" name="cproject" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
+                                </div>
+
+                                <div class="card-detail cproject-detail">
+                                    
+                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the skill or experience"></textarea>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="cproject carousel-card right-stack" id="card" onclick="clicked(this)">
+                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
+                                <div class="card-title cproject-title">
+                                    
+                                    <input type="text" name="cproject" id="cproject" placeholder="2Type in a quality, skill or experience you posses">
+                                </div>
+
+                                <div class="card-detail cproject-detail">
+                                    
+                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the skill or experience"></textarea>
+                                </div>
+                                
+                            </div>
+
+                           
+
+
+                            <span class="add-card" id="add-skill" title="Add a current project or work" onclick="addcproject()">+</span>
+
+                        </div>
+                        
+                        <span class="cproject-scroll right-arrow" onclick="scrollCarouselCP(event)">></span>
+
                     </div>
-                    <span>></span>
                 </div>
             </div>
 
@@ -608,43 +678,175 @@ function addskill(){
                                
                                 
             //cardHolder.innerHTML += newCard;
+            divCard.classList.add('active');
             cardHolder.appendChild(divCard);
+            stackCards(divCard);
+            
+        }
+        function addproject(){
+            //alert('hihiho');
+            var i = 1;
+            var cardHolder = document.getElementById("project-holder");
+
+            var divCard = document.createElement('DIV');
+            divCard.classList.add('project', 'carousel-card');
+            divCard.id = 'card';
+            divCard.onclick = function () {
+                clicked(divCard);
+            }
+            divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
+                                <div class="card-title project-title">
+                                    
+                                    <input type="text" name="project" id="project" placeholder="Type in a project or work you have handled in the past">
+                                </div>
+
+                                <div class="card-detail project-detail">
+                                    
+                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                </div>`;
+                               
+                                
+            //cardHolder.innerHTML += newCard;
+            divCard.classList.add('active');
+            cardHolder.appendChild(divCard);
+            stackCards(divCard);
+            
+        }
+        function addcproject(){
+            //alert('hihiho');
+            var i = 1;
+            var cardHolder = document.getElementById("cproject-holder");
+
+            var divCard = document.createElement('DIV');
+            divCard.classList.add('cproject', 'carousel-card');
+            divCard.id = 'card';
+            divCard.onclick = function () {
+                clicked(divCard);
+            }
+            divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
+                                <div class="card-title cproject-title">
+                                    
+                                    <input type="text" name="cproject" id="cproject" placeholder="Type in your current project or work">
+                                </div>
+
+                                <div class="card-detail cproject-detail">
+                                    
+                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                </div>`;
+                               
+                                
+            //cardHolder.innerHTML += newCard;
+            divCard.classList.add('active');
+            cardHolder.appendChild(divCard);
+            stackCards(divCard);
             
         }
 function removeCard( e){
     
     e.stopPropagation();
     
-    var cards = document.getElementsByClassName('quality');
+    //console.log(e.target.parentElement);
+    
+    var cardType;
+    if(e.target.parentElement.classList.contains('quality')){
+        cardType = 'quality';
+    }else if(e.target.parentElement.classList.contains('project')){
+        cardType = 'project';
+    }else{
+        cardType = 'cproject';
+    }
+    
+    
+    var cards = document.getElementsByClassName(cardType);
     var wasActive = false;
-    var actives =document.querySelectorAll('.active', '.quality');
+   // alert(`.${cardType}`);
+    var actives =document.querySelectorAll(`.active.${cardType}`);
+   
+    
     var newActive = actives[0];
-    console.log(newActive);
+    
     
     if(e.target.parentElement.classList.contains('active')){
         wasActive = true;
     }
     
     var freeIndex = Array.prototype.indexOf.call(cards, e.target.parentElement); 
+    
+    
     e.target.parentElement.remove();
-    cards = document.getElementsByClassName('quality');
+    cards = document.getElementsByClassName(cardType);
     if(wasActive){
        
         if(cards[freeIndex] != null){
-            var cardss = document.getElementsByClassName('quality');
-           
+            var cardss = document.getElementsByClassName(cardType);
+            
             newActive = cardss[freeIndex];
             
             newActive.classList.add('active');
+            newActive.classList.remove('left-stack');
+            newActive.classList.remove('right-stack');
            
             }else{    
                 newActive = cards[freeIndex - 1];
+               
             newActive.classList.add('active');
+            newActive.classList.remove('left-stack');
+            newActive.classList.remove('right-stack');
             } 
     }
     
     stackCards(newActive);
     
+}
+
+function scrollCarouselQ(e){
+    var cards = document.getElementsByClassName('quality');
+    var actives =document.querySelectorAll('.active', '.quality');
+    var currentActive = actives[0];
+    var newActive;
+    var ActiveIndex = Array.prototype.indexOf.call(cards, currentActive); 
+    var lastIndex = cards.length - 1;
+
+    if(e.target.classList.contains('right-arrow')){
+    var newActiveIndex = ActiveIndex+1;
+
+        if(cards[newActiveIndex] != null){
+                var cardss = document.getElementsByClassName('quality');
+            
+                newActive = cardss[newActiveIndex];
+                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+            
+                }else{    
+                    newActive = cards[0];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+
+    } else{
+        var newActiveIndex = ActiveIndex-1;
+
+        if(cards[newActiveIndex] != null){
+                var cardss = document.getElementsByClassName('quality');
+            
+                newActive = cardss[newActiveIndex];
+                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+            
+                }else{    
+                    newActive = cards[lastIndex];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+
+    }
+            stackCards(newActive);
 }
 
 
@@ -750,23 +952,32 @@ function clicked(e) {
                     if(card.classList.contains('active')){
                         card.classList.remove('active');
                     }
-                    //console.log(card);
+                    //console.log(card); 
+                    
                     
                 });
-            }else if (thisCard.classList.contains('projects')){
-                alert('projects card');
+            }else if (thisCard.classList.contains('project')){
+                //alert('projects card');
             }
             //var cards = document.getElementsByClassName('carousel-')
         }
 
     function stackCards(card){
         var activeCard;
+        var cardType;
+        if(card.classList.contains('quality')){
+            cardType = 'quality';
+        }else if(card.classList.contains('project')){
+            cardType = 'project';
+        }else{
+            cardType = 'cproject';
+        }
         if(card.classList.contains('active')){
             activeCard = card;
         }else{
-            activeCard = document.querySelectorAll('.active', '.quality')[0];
+            activeCard = document.querySelectorAll('.active', '.quality', `.${cardType}`)[0];
         }
-        let cards = document.getElementsByClassName('carousel-card');
+        let cards = document.getElementsByClassName(cardType);
         console.log('the card');
         
         console.log(activeCard);
@@ -823,27 +1034,49 @@ function clicked(e) {
        // console.log(arrayR);
         cardsOnRight();
         cardsOnLeft();
+        //arrayR.reverse();
         var sl = sr = maxscale = 0.8;
         var tl = tr = 10;
+        var zr = zl = 20;
         var minscale = 0.5;
         var scalediff = maxscale - minscale;
         var scalefactor = scalediff/noRightcards;
         arrayL.forEach(card => {
             cards[card].classList.remove('right-stack');
+            if(cards[card].classList.contains('active')){
+                
+            }
+            cards[card].classList.remove('active');
             cards[card].classList.add('left-stack');
-            cards[card].style.transform = 'scale('+sl+','+sl+')';
+            cards[card].style.transform = 'scale('+sl+','+sl+') translateX('+-tl+'px)';
+            cards[card].style.zIndex = ''+zl+'';
             sl = sl - scalefactor;
-            cards[card].style.transform = 'translateX('+tl+')';
-            tl += 10;
+           // cards[card].style.transform = 'translateX('+-tl+'px)';
+            tl += 40;
+            --zl;
+            //console.log(cards[card]);
+            
+           // console.log(tl+' the left translate');
+            
         });
         arrayR.forEach(card => {
             cards[card].classList.remove('left-stack');
+            cards[card].classList.remove('active');
             cards[card].classList.add('right-stack');
-            cards[card].style.transform = 'scale('+sr+','+sr+')';
-            sl = sl - scalefactor;
-            cards[card].style.transform = 'translateX('+tr+')';
-            tr += 10;
+            cards[card].style.transform = 'scale('+sr+','+sr+') translateX('+tr+'px)';
+            cards[card].style.zIndex = ''+zr+'';
+            sr = sr - scalefactor;
+           // cards[card].style.transform = 'translateX('+tr+')';
+            tr += 40;
+            --zr;
+            console.log(cards[card]);
+            
+            console.log(tr+' the right translate');
         });
+
+        console.log(arrayL); console.log(arrayR);
+        
+        
 
 
     }

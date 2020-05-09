@@ -4,7 +4,7 @@
     width: 100%;
     top: 0px;
     background-color: white;
-    z-index: 1;
+    z-index: 40;
 }
 .side-nav{
     float: left;
@@ -357,8 +357,12 @@ canvas{
     position: absolute;
     left: 40%;
    /* right: 50%;*/
-    z-index: 1;
+    z-index: 30 !important;
+    transform: scale(1) translateX(0px)!important;
+    transition: all 0.8s ease-in-out;
+    animation:fading 1s 1;
 }
+@keyframes fading{0%{opacity:0}100%{opacity:1}}
 .carousel .card-holder .carousel-card .rm-card{
     position: absolute;
     right: 10px;
@@ -415,10 +419,22 @@ canvas{
 .left-stack{
     position: absolute !important;
     left: 25% !important;
+    transition: all 0.7s ease-in;
     
 }
 .right-stack{
     position: absolute !important;
     right: 25% !important;
-    
+    transition: all 0.7s ease-in-out;
+}
+.carousel .card-holder .project{
+    background-image: url('/images/portfolio/projects/project.svg');
+    background-repeat: no-repeat;
+   
+}
+
+.carousel .card-holder .cproject{
+    background-image: url('/images/portfolio/cprojects/cproject.svg');
+    background-repeat: no-repeat;
+   
 }
