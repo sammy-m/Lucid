@@ -33,8 +33,9 @@
 
 
     </div>
-    <div class="main" style="">
-        <form action="" method="POST">
+    <div class="main" id="apsi" style="">
+    <form action="{{ route('storePortfolio')}}" method="POST">
+        @csrf
             <div class="guide">
                 <p>You are just a few steps to designing your amazing portfolio. <br> With just a few clicks and a little typing, you will have a state of the art portfolio
                     that will woo your next employers or financiers. <br>
@@ -63,45 +64,50 @@
                         <span>Vibrant Theme</span>
                     </label>
             </div>
+            <div class="intro">
+                <div class="guide-min">
+                <p>Welcome your viewers with a greeting! Tell them your name and occupation. You can also provide an image of yourself that will appear</p>
+                </div>
+                <div class="view-port">
+                <div class="intro-greetings">
+                    <span class="file-input">
+                        <input type="file" name="intro-portrait" id="intro-portrait" class="inp-portrait-image" accept="image/*">
+                        <label for="intro-portrait">Upload high quality portrait</label>
+                        <input type="hidden" name="landscapePic" id="finalImg" value="">
+                    </span>
+                    <div class="greetings-text">
+                    <p>Hi there! I am</p>
+                    <input type="text" name="name" id="name" class="text" placeholder="Enter your name...">
+                    <div class="occupation">
+                        <p>I</p>
+                        <input type="text" name="occupation" id="occupation" class="text" placeholder="am an architect working with Doe Company">
+                    </div>
+                    </div>
+                    <div class="greetings-portraits" id="port-views">
+                        
+                        
+
+                      
+                        
+
+                        <div class="img-sizing">
+                           <span class="btn" id="z-in">+</span>
+                           <span class="btn" id="z-out" >-</span>
+                           <span id="clear" class="btn">clear</span>
+                        </div>
+                    </div>                    
+                </div>
+                <div id="canvd"></div>
+            </div>
+                {{-- <div id="imagePre" style="background-image: URL(''); height: 700px; background-repeat: no-repeat; background-size: contain;">
+
+                </div> --}}
+            </div>
             <div class="about">
                 <div class="svg-wave" style="height: 0px;">
                     <span class="divsep" >
                     <img src="{{asset('/images/svg bg/wavy.svg')}}" alt="">
                     </span>
-                </div>
-                <div class="intro">
-                    <div class="guide-min">
-                    <p>Welcome your viewers with a greeting! Tell them your name and occupation. You can also provide an image of yourself that will appear</p>
-                    </div>
-                    <div class="intro-greetings">
-                        <div class="greetings-text">
-                        <p>Hi! I am</p>
-                        <input type="text" name="name" id="name" class="text" placeholder="Enter your name...">
-                        <div class="occupation">
-                            <p>I</p>
-                            <input type="text" name="occupation" id="occupation" class="text" placeholder="am an architect working with Doe Company">
-                        </div>
-                        </div>
-                        <div class="greetings-portrait" id="port-view">
-                            <input type="file" name="intro-portrait" id="intro-portrait" class="inp-portrait-image" accept="image/*">
-                            <label for="intro-portrait">Upload high quality portrait</label>
-                            <div id="canvd"></div>
-
-                            <div class="img-sizing">
-                               <span class="btn" id="z-in">+</span>
-                               <span class="btn" id="z-out" >-</span>
-                               <span id="clear" class="btn">clear</span>
-                            </div>
-                        </div>
-                        
-                        
-
-                   
-                        
-                    </div>
-                    <div id="imagePre" style="background-image: URL(''); height: 700px; background-repeat: no-repeat; background-size: contain;">
-
-                    </div>
                 </div>
                 <div class="bio">
                     <div class="guide-min">
@@ -112,83 +118,46 @@
                     </textarea>
                    
                 </div>
-                <div class="skills-experience">
-                    <div class="guide-min">
-                        <p>Skills and experience speak a lot about your qualifications and capabilities. Tell people about the experince that you have. Do not shy away from letting
-                            people know about your skills either.
-                        </p>
-                    </div>
-                    
-                    <div class="carousel">
 
-                        <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
-                        <div class="card-holder" id="skill-holder">
+            </div>
 
-                            <div class="quality carousel-card active" id="card" onclick="clicked(this)">
+            <div class="skills-experience">
+                <div class="guide-min">
+                    <p>Skills and experience speak a lot about your qualifications and capabilities. Tell people about the experince that you have. Do not shy away from letting
+                        people know about your skills either.
+                    </p>
+                </div>
+                
+                <div class="carousel">
+
+                    <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
+                    <div class="card-holder" id="skill-holder">
+
+                        <div class="quality carousel-card active" id="card" onclick="clicked(this)">
+                            
+                            <div class="card-title quality-title">
                                 
-                                <div class="card-title quality-title">
-                                    
-                                    <input type="text" name="quality" id="quality" placeholder="0Type in a quality, skill or experience you posses">
-                                </div>
-
-                                <div class="card-detail quality-detail">
-                                    
-                                    <textarea name="qualitydescription" id="quality-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
-                                
-                            </div>
-                            <div class="quality carousel-card left-stack" id="card" onclick="clicked(this)">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
-                                <div class="card-title quality-title">
-                                    
-                                    <input type="text" name="quality" id="quality" placeholder="1Type in a quality, skill or experience you posses">
-                                </div>
-
-                                <div class="card-detail quality-detail">
-                                    
-                                    <textarea name="qualitydescription" id="quality-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
-                                
-                            </div>
-                            <div class="quality carousel-card right-stack" id="card" onclick="clicked(this)">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
-                                <div class="card-title quality-title">
-                                    
-                                    <input type="text" name="quality" id="quality" placeholder="2Type in a quality, skill or experience you posses">
-                                </div>
-
-                                <div class="card-detail quality-detail">
-                                    
-                                    <textarea name="qualitydescription" id="quality-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
-                                
+                                <input type="text" name="quality1" id="quality" placeholder="0Type in a quality, skill or experience you posses">
                             </div>
 
-                            <div class="quality carousel-card right-stack" id="card" onclick="clicked(this)">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
-                                <div class="card-title quality-title">
-                                    
-                                    <input type="text" name="quality" id="quality" placeholder="3Type in a quality, skill or experience you posses">
-                                </div>
-
-                                <div class="card-detail quality-detail">
-                                    
-                                    <textarea name="qualitydescription" id="quality-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
+                            <div class="card-detail quality-detail">
                                 
+                                <textarea name="qualitydescription1" id="quality-description" placeholder="describe the skill or experience"></textarea>
                             </div>
-
-
-                            <span class="add-card" id="add-skill" title="Add a skill" onclick="addskill()">+</span>
-
+                            
                         </div>
                         
-                        <span class="quality-scroll right-arrow" onclick="scrollCarouselQ(event)">></span>
+
+
+                        <span class="add-card" id="add-skill" title="Add a skill" onclick="addskill()">+</span>
 
                     </div>
                     
-                   
+                    <span class="quality-scroll right-arrow" onclick="scrollCarouselQ(event)">></span>
+
                 </div>
+                
+               
             </div>
 
             <div class="projects">
@@ -206,26 +175,12 @@
                                 
                                 <div class="card-title project-title">
                                     
-                                    <input type="text" name="project" id="project" placeholder="0Type in a past project or work you have done">
+                                    <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done">
                                 </div>
 
                                 <div class="card-detail project-detail">
                                     
-                                    <textarea name="projectdescription" id="project-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="project carousel-card right-stack" id="card" onclick="clicked(this)">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
-                                <div class="card-title project-title">
-                                    
-                                    <input type="text" name="project" id="project" placeholder="Type in a past project or work you have done">
-                                </div>
-
-                                <div class="card-detail quality-detail">
-                                    
-                                    <textarea name="projectdescription" id="project-description" placeholder="describe the work or project"></textarea>
+                                    <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience"></textarea>
                                 </div>
                                 
                             </div>
@@ -255,26 +210,12 @@
                                 
                                 <div class="card-title cproject-title">
                                     
-                                    <input type="text" name="cproject" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
+                                    <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail cproject-detail">
                                     
-                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the skill or experience"></textarea>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="cproject carousel-card right-stack" id="card" onclick="clicked(this)">
-                                <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
-                                <div class="card-title cproject-title">
-                                    
-                                    <input type="text" name="cproject" id="cproject" placeholder="2Type in a quality, skill or experience you posses">
-                                </div>
-
-                                <div class="card-detail cproject-detail">
-                                    
-                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the skill or experience"></textarea>
+                                    <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience"></textarea>
                                 </div>
                                 
                             </div>
@@ -353,7 +294,7 @@
 <script type="application/javascript" defer>
                          
     var zooomOut1;
-    var board, canvasArea,canvImg;
+    var board, canvasArea,canvImg, finalImg;
     var ctx = ctx2 = null;
   window.onload = ()=>{
 
@@ -371,7 +312,7 @@
         //console.log(canvasArea);
         
         board.width = canvasArea.clientWidth;
-        board.height= board.width / 2;
+        board.height= 500;
         board.draggable = false;
         ctx2 = board.getContext('2d');
         ctx = board.getContext('2d');
@@ -466,6 +407,7 @@
         document.getElementById('z-out').addEventListener('click', function(e){
            
             Zoom(-1);
+            
         }); 
         document.getElementById('clear').addEventListener('click', ()=>{
             alert("width: "+board.width+" Height: "+board.height);
@@ -536,10 +478,16 @@
         
 
             function redraw(){
-                var finalImg = new Image();
+                 finalImg = new Image();
                 finalImg.src =  board.toDataURL('image/jpeg', 1.0);
-                console.log(finalImg.width+" "+finalImg.height);
-                console.log(board.width+" "+finalImg.height);
+               /* console.log(finalImg.width+" "+finalImg.height);
+                console.log(board.width+" "+finalImg.height); */
+
+                var imagedatainput = document.getElementById('finalImg');
+                imagedatainput.value = finalImg.src;
+                
+               // console.log(imagedatainput);
+                
                    
 
                 var pt1 = ctx.transformPoint(0,0);
@@ -555,12 +503,16 @@
                 ctx.restore();
                 
                 ctx.drawImage(canvImg, 0,0);
+                var filen, fnImg;
+
+               
+
+              
+                
                // $('#imagePre').css('background-image', 'url("' + finalsrc + '")');
               
                // finalImg.src =  board.toDataURL('image/jpeg', 1.0);
                
-                
-                console.log(finalImg);
                 $('#imagePre').css('background-image', 'url("' + finalImg.src + '")');
                
 
@@ -656,7 +608,7 @@
 //*add skill funcvtion*/
 function addskill(){
             //alert('hihiho');
-            var i = 1;
+            var i = 2;
             var cardHolder = document.getElementById("skill-holder");
 
             var divCard = document.createElement('DIV');
@@ -668,12 +620,12 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality`+i+`" id="quality" placeholder="Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
                                     
-                                    <textarea name="qualitydescription" id="quality-description" placeholder="describe the skill or experience"></textarea>
+                                    <textarea name="qualitydescription`+i+`" id="quality-description" placeholder="describe the skill or experience"></textarea>
                                 </div>`;
                                
                                 
@@ -681,11 +633,12 @@ function addskill(){
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
             stackCards(divCard);
+            ++i;
             
         }
         function addproject(){
             //alert('hihiho');
-            var i = 1;
+            var i = 2;
             var cardHolder = document.getElementById("project-holder");
 
             var divCard = document.createElement('DIV');
@@ -697,12 +650,12 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title project-title">
                                     
-                                    <input type="text" name="project" id="project" placeholder="Type in a project or work you have handled in the past">
+                                    <input type="text" name="project`+i+`" id="project" placeholder="Type in a project or work you have handled in the past">
                                 </div>
 
                                 <div class="card-detail project-detail">
                                     
-                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                    <textarea name="projectdescription`+i+`" id="cproject-description" placeholder="describe the work or project"></textarea>
                                 </div>`;
                                
                                 
@@ -710,11 +663,12 @@ function addskill(){
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
             stackCards(divCard);
+            ++i;
             
         }
         function addcproject(){
             //alert('hihiho');
-            var i = 1;
+            var i = 2;
             var cardHolder = document.getElementById("cproject-holder");
 
             var divCard = document.createElement('DIV');
@@ -726,12 +680,12 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title cproject-title">
                                     
-                                    <input type="text" name="cproject" id="cproject" placeholder="Type in your current project or work">
+                                    <input type="text" name="cproject`+i+`" id="cproject" placeholder="Type in your current project or work">
                                 </div>
 
                                 <div class="card-detail cproject-detail">
                                     
-                                    <textarea name="cprojectdescription" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                    <textarea name="cprojectdescription`+i+`" id="cproject-description" placeholder="describe the work or project"></textarea>
                                 </div>`;
                                
                                 
@@ -739,6 +693,7 @@ function addskill(){
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
             stackCards(divCard);
+            ++i;
             
         }
 function removeCard( e){
@@ -961,6 +916,10 @@ function clicked(e) {
             }
             //var cards = document.getElementsByClassName('carousel-')
         }
+
+        // window.onload(()=>{
+        //     alert('its okay');
+        // });
 
     function stackCards(card){
         var activeCard;
