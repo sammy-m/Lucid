@@ -418,6 +418,9 @@ canvas{
     transform: rotate(360deg);
     background-color: rgba(241, 12, 12, 0.397);
 }
+.rm-s , .rm-p, .rm-cp{
+    display: none;
+}
 .carousel .card-holder .quality{
     background-image: url('/images/portfolio/skills/skill1.svg');
     background-repeat: no-repeat;

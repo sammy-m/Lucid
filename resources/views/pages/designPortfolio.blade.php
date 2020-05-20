@@ -134,6 +134,7 @@
                     <div class="card-holder" id="skill-holder">
 
                         <div class="quality carousel-card active" id="card" onclick="clicked(this)">
+                            <span class="rm-card rm-s" id="rm-card" onclick="removeCard(event)">X</span>
                             
                             <div class="card-title quality-title">
                                 
@@ -172,6 +173,7 @@
                         <div class="card-holder" id="project-holder">
 
                             <div class="project carousel-card active" id="card" onclick="clicked(this)">
+                                <span class="rm-card rm-p" id="rm-card" onclick="removeCard(event)">X</span>
                                 
                                 <div class="card-title project-title">
                                     
@@ -203,10 +205,11 @@
                     
                     <div class="carousel">
 
-                        <span class="cproject-scroll left-arrow" onclick="scrollCarouselPC(event)"><</span>
+                        <span class="cproject-scroll left-arrow" onclick="scrollCarouselCP(event)"><</span>
                         <div class="card-holder" id="cproject-holder">
 
                             <div class="cproject carousel-card active" id="card" onclick="clicked(this)">
+                                <span class="rm-card rm-cp" id="rm-card" onclick="removeCard(event)">X</span>
                                 
                                 <div class="card-title cproject-title">
                                     
@@ -605,10 +608,14 @@
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////* Carousel cards dynamics*/
 
+var s=p=cp=2;
 //*add skill funcvtion*/
 function addskill(){
             //alert('hihiho');
-            var i = 2;
+            var noOfCards = document.querySelectorAll('.quality', '.carousel-card').length;
+            
+            if(noOfCards <= 20){
+           
             var cardHolder = document.getElementById("skill-holder");
 
             var divCard = document.createElement('DIV');
@@ -620,25 +627,31 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title quality-title">
                                     
-                                    <input type="text" name="quality`+i+`" id="quality" placeholder="Type in a quality, skill or experience you posses">
+                                    <input type="text" name="quality`+s+`" id="quality" placeholder="Type in a quality, skill or experience you posses">
                                 </div>
 
                                 <div class="card-detail quality-detail">
                                     
-                                    <textarea name="qualitydescription`+i+`" id="quality-description" placeholder="describe the skill or experience"></textarea>
+                                    <textarea name="qualitydescription`+s+`" id="quality-description" placeholder="describe the skill or experience"></textarea>
                                 </div>`;
                                
+                     
                                 
             //cardHolder.innerHTML += newCard;
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
             stackCards(divCard);
-            ++i;
+            ++s;
+            var projects = document.querySelectorAll('.quality', '.carousel-card');
+           inputNames(projects, 'quality');
+            }
             
         }
         function addproject(){
             //alert('hihiho');
-            var i = 2;
+            var noOfCards = document.querySelectorAll('.project', '.carousel-card').length;
+            
+            if(noOfCards <= 20){            
             var cardHolder = document.getElementById("project-holder");
 
             var divCard = document.createElement('DIV');
@@ -650,25 +663,29 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title project-title">
                                     
-                                    <input type="text" name="project`+i+`" id="project" placeholder="Type in a project or work you have handled in the past">
+                                    <input type="text" name="project`+p+`" id="project" placeholder="Type in a project or work you have handled in the past">
                                 </div>
 
                                 <div class="card-detail project-detail">
                                     
-                                    <textarea name="projectdescription`+i+`" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                    <textarea name="projectdescription`+p+`" id="cproject-description" placeholder="describe the work or project"></textarea>
                                 </div>`;
                                
-                                
+                                ++p;                   
             //cardHolder.innerHTML += newCard;
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
             stackCards(divCard);
-            ++i;
+           var projects = document.querySelectorAll('.project', '.carousel-card');
+           inputNames(projects, 'projects');    
+            }       
             
         }
         function addcproject(){
             //alert('hihiho');
-            var i = 2;
+            var noOfCards = document.querySelectorAll('.cproject', '.carousel-card').length;
+            
+            if(noOfCards <= 20){
             var cardHolder = document.getElementById("cproject-holder");
 
             var divCard = document.createElement('DIV');
@@ -680,20 +697,39 @@ function addskill(){
             divCard.innerHTML = ` <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                 <div class="card-title cproject-title">
                                     
-                                    <input type="text" name="cproject`+i+`" id="cproject" placeholder="Type in your current project or work">
+                                    <input type="text" name="cproject`+cp+`" id="cproject" placeholder="Type in your current project or work">
                                 </div>
 
                                 <div class="card-detail cproject-detail">
                                     
-                                    <textarea name="cprojectdescription`+i+`" id="cproject-description" placeholder="describe the work or project"></textarea>
+                                    <textarea name="cprojectdescription`+cp+`" id="cproject-description" placeholder="describe the work or project"></textarea>
                                 </div>`;
                                
                                 
             //cardHolder.innerHTML += newCard;
             divCard.classList.add('active');
             cardHolder.appendChild(divCard);
+            console.log('cproject'+cp);
             stackCards(divCard);
-            ++i;
+            ++cp;
+            var projects = document.querySelectorAll('.cproject', '.carousel-card');
+           inputNames(projects, 'cproject');
+            }
+            
+        }
+
+        function inputNames(cards, type) {
+            console.log(type);
+            var i = 1;
+            cards.forEach(card => {
+                card.children[1].children[0].name = type+i;
+                card.children[2].children[0].name = type+'description'+i;
+
+                // console.log(card.children[1].children[0].name);
+                // console.log(card.children[2].children[0].name);
+                i++;
+                
+            });
             
         }
 function removeCard( e){
@@ -751,12 +787,15 @@ function removeCard( e){
     }
     
     stackCards(newActive);
+
+    var clanOfCards = document.querySelectorAll(`.${cardType}`, '.carousel-card');
+    inputNames(clanOfCards, cardType);
     
 }
 
 function scrollCarouselQ(e){
     var cards = document.getElementsByClassName('quality');
-    var actives =document.querySelectorAll('.active', '.quality');
+    var actives =document.querySelectorAll('.active.quality');
     var currentActive = actives[0];
     var newActive;
     var ActiveIndex = Array.prototype.indexOf.call(cards, currentActive); 
@@ -804,6 +843,104 @@ function scrollCarouselQ(e){
             stackCards(newActive);
 }
 
+function scrollCarouselP(e){
+    var cards = document.getElementsByClassName('project');
+    var actives =document.querySelectorAll('.active.project');
+    var currentActive = actives[0];
+    var newActive;
+    var ActiveIndex = Array.prototype.indexOf.call(cards, currentActive); 
+    var lastIndex = cards.length - 1;
+
+    if(e.target.classList.contains('right-arrow')){
+    var newActiveIndex = ActiveIndex+1;
+
+        if(cards[newActiveIndex] != null){
+                var cardss = document.getElementsByClassName('project');
+            
+                newActive = cardss[newActiveIndex];
+                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+            
+                }else{    
+                    newActive = cards[0];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+
+    } else{
+        var newActiveIndex = ActiveIndex-1;
+
+        if(cards[newActiveIndex] != null){
+                var cardss = document.getElementsByClassName('project');
+            
+                newActive = cardss[newActiveIndex];
+                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+            
+                }else{    
+                    newActive = cards[lastIndex];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+
+    }
+            stackCards(newActive);
+}
+
+function scrollCarouselCP(e){
+    var cards = document.getElementsByClassName('cproject');
+    var actives =document.querySelectorAll('.cproject.active');    
+    var currentActive = actives[0];
+    var newActive;
+    var ActiveIndex = Array.prototype.indexOf.call(cards, currentActive); 
+    var lastIndex = cards.length - 1;
+
+    if(e.target.classList.contains('right-arrow')){
+    var newActiveIndex = ActiveIndex+1;
+
+        if(cards[newActiveIndex] != null){
+           
+                var cardss = document.getElementsByClassName('cproject');                
+                newActive = cardss[newActiveIndex];                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+            
+                }else{  
+                      
+                    newActive = cards[0];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+
+    } else{
+        var newActiveIndex = ActiveIndex-1;
+
+        if(cards[newActiveIndex] != null){
+                var cardss = document.getElementsByClassName('cproject');            
+                newActive = cardss[newActiveIndex];                
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');            
+                }else{    
+                    newActive = cards[lastIndex];
+                newActive.classList.add('active');
+                newActive.classList.remove('left-stack');
+                newActive.classList.remove('right-stack');
+                } 
+    }
+    console.log('new active '+newActive);
+    console.log(newActive);    
+            stackCards(newActive);
+}
+
 
 ///this is for new created cards
     document.querySelectorAll(".card-holders").forEach(holder=>{
@@ -816,28 +953,22 @@ function scrollCarouselQ(e){
                             thisCard = e.target;
                             deactivateCard(e,thisCard);
                             e.target.classList.remove('left-stack', 'right-stack');
-                            e.target.classList.add('active');
-                            console.log("1");
+                            e.target.classList.add('active');                           
                             
                         } else{
                             if(e.target.parentElement.id == "card"){
                                 thisCard = e.target.parentElement;
                                 deactivateCard(e,thisCard);
                                 thisCard.classList.remove('left-stack', 'right-stack');
-                                thisCard.classList.add('active');
-                                console.log("2");
+                                thisCard.classList.add('active');                                
                             }else if(e.target.parentElement.id != "card"){
                                 thisCard = e.target.parentElement.parentElement;
                                 deactivateCard(e,thisCard);
                                 thisCard.classList.remove('left-stack', 'right-stack');
-                                thisCard.classList.add('active');
-                                console.log("3");
-                                
+                                thisCard.classList.add('active');                                
                             }
                         }
                         stackCards(thisCard);
-
-                        
                     }, false);
                 });
         });
@@ -845,10 +976,7 @@ function scrollCarouselQ(e){
 
 function clicked(e) {
 
-    //console.log(e.classList.contains('active'));
-   
-    
-    
+    //console.log(e.classList.contains('active'));    
     var thisCard = e;
 
             if(!thisCard.classList.contains('active')){
@@ -856,43 +984,10 @@ function clicked(e) {
             thisCard.classList.remove('left-stack', 'right-stack');
             thisCard.classList.add('active');
             stackCards(thisCard);
-            }
-    
-   
-   // stackCards(thisCard); */
-    
+            }   
+   // stackCards(thisCard); */   
 }
 
-  /*  document.querySelectorAll('.carousel-card').forEach(card=>{
-        card.addEventListener('click', (e)=>{
-            //console.log(e);
-            var thisCard;
-            if(e.target.id == 'card'){
-                 thisCard = e.target;
-               
-                deactivateCard(e,thisCard);
-                thisCard.classList.remove('left-stack', 'right-stack');
-                e.target.classList.add('active');
-            } else{
-                if(e.target.parentElement.id == "card"){
-                    thisCard = e.target.parentElement;
-                    deactivateCard(e,thisCard);
-                    thisCard.classList.remove('left-stack', 'right-stack');
-                    thisCard.classList.add('active');
-                }else if(e.target.parentElement.id != "card"){
-                    thisCard = e.target.parentElement.parentElement;
-                    deactivateCard(e,thisCard);
-                    thisCard.classList.remove('left-stack', 'right-stack');
-                    thisCard.classList.add('active');
-                }
-            }
-           // stackCards(thisCard);
-
-            
-        }, false);
-
-
-    }); */
 
     function deactivateCard(thisCard){
            // alert('called');
@@ -939,7 +1034,8 @@ function clicked(e) {
         let cards = document.getElementsByClassName(cardType);
         console.log('the card');
         
-        console.log(activeCard);
+        console.log(activeCard.children[1].firstElementChild);
+        console.log(activeCard.children[2].firstElementChild);
         
         //console.log(cards);
         

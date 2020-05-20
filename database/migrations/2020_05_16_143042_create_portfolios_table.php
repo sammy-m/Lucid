@@ -19,7 +19,7 @@ class CreatePortfoliosTable extends Migration
             $table->integer('client');
             $table->string('paymentId');
             $table->string('subscriptionType');
-            $table->date('activeTill');
+            $table->dateTime('activeTill');
 
 
             
