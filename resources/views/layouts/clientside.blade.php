@@ -9,7 +9,7 @@
     <meta name="keywords" content="Homework help, Do my homework for me, cheap online homework assistance, studyref, complete my essay, write my essay, solve my homework, best online homework, cheap online essay, cheap online homework, do my homework for me cheap">
     <meta name="description" content="Get your homework, essay or project done by professionals. &quot;Can you do my homework for me?” - Yes, we can! Save big with Studyref">
 
-    <title>Do My Homework Essay for Me | {{ config('app.name', 'Studyref') }}| Online Homework Guide</title>
+    <title>{{ config('app.name', 'LucidPortfolio') }}| My Online Portfolio</title>
     <!-- opengraphics -->
     <meta property="og:title" content="Do My Homework Essay for Me| Online Homework Guide" />
     <meta property="og:type" content="website" />
@@ -58,6 +58,23 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script type="application/javascript">
+        var input = document.getElementById('intro-portrait');
+    var label = input.nextElementSibling; 
+    var labelVal = label.innerHTML;
+    //console.log(labelVal);
+    input.addEventListener('change', function(e){
+        var fileName = '';
+        fileName = e.target.value.split(' \ ').pop();
+        console.log('haha');
+        
+
+    });
+    function log(){
+        console.log('bs bs');
+        
+    }
+    </script>
     </body>
     </html>
     

@@ -66,4 +66,6 @@ class ClientsController extends Controller
             return view('pages.clientOrderHistory')->with('name', $name)->with('orders', $clientOrders);
         }
     }
+
+    
 }

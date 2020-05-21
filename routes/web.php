@@ -43,6 +43,9 @@ Route::get('dashboard/orderhist', 'ClientsController@History');
 //order instance
 Route::get('/dashboard/myorders/{id}', 'OrdersController@showOrder');
 Route::get('/admin/view-order/{id}', 'OrdersController@adminShowOrder')->middleware('admin');
+//client portfolio
+Route::get('/design/portfolio', 'PortfolioController@designPortfolio')->middleware('auth');
+Route::post('/portfolio/store', 'PortfolioController@savePortfolio')->name('storePortfolio')->middleware('auth');
 
 //consultant routes
 Route::get('/consultant/auth', 'ConsultantController@auth')->name('consAuth');

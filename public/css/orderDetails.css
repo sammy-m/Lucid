@@ -70,7 +70,7 @@ html {
 .middle input[type="radio"]:checked + .box span:before {
   transform: translateY(0px);
   opacity: 1;
-}
+} 
 .middle .box {
   width: 201px;
   height: 100px;

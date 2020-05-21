@@ -23,7 +23,7 @@
             
                             <text x="10%" y="100" font-family='Verdana' font-size='40pt' style="fill:white;">STUCK WITH
                                     <tspan x="10%" y="150">YOUR</tspan>
-                                    <tspan x="10%" y="200">HOMEWORK?</tspan>
+                                    <tspan x="10%" y="200">WORK?</tspan>
                                   </text>
 
                                   <text x="10%" y="250" font-family='fantacy' font-size='14pt' style="fill:white;"> No need to struggle and spend
