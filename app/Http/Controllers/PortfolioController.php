@@ -87,4 +87,7 @@ class PortfolioController extends Controller
        //return json_decode($data)->skills;
 
     }
+    public function previewPortfolio(Request $request){
+        
+    }
 }
