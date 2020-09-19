@@ -46,6 +46,7 @@ Route::get('/admin/view-order/{id}', 'OrdersController@adminShowOrder')->middlew
 //client portfolio
 Route::get('/design/portfolio', 'PortfolioController@designPortfolio')->middleware('auth');
 Route::post('/portfolio/store', 'PortfolioController@savePortfolio')->name('storePortfolio')->middleware('auth');
+Route::get('/portfolio/preview', 'PortfolioController@previewPortfolio')->middleware('auth');
 
 //consultant routes
 Route::get('/consultant/auth', 'ConsultantController@auth')->name('consAuth');

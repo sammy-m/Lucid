@@ -26,7 +26,7 @@ Vue.use(VueChatScroll);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('chat-log', require('./components/ChatLog.vue').default);
 Vue.component('chat-message', require('./components/ChatMessage.vue').default);
-Vue.component('message-composer', require('./components/MessageComposer.vue').default);
+//Vue.component('message-composer', require('./components/MessageComposer.vue').default);
 Vue.component('order-id', require('./components/orderId.vue').default);
 
 /**

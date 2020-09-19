@@ -3,14 +3,18 @@
        <div class="chat-view" style="" v-chat-scroll>
            <chat-message v-for="(message,index) in messages" :messagess="message" v-bind:key="index" :logedInUser="logedInUser"></chat-message> <br>
            </div> 
-         <message-composer v-on:messagesent="addmessage" v-bind:messages="messages" :orderId="orderId" :userId="userId" :userName='userName'></message-composer>
-       
+         <!-- <message-composer v-on:messagesent="addmessage" v-bind:messages="messages" :orderId="orderId" :userId="userId" :userName='userName'></message-composer> -->
+        <MessageComposer v-on:messagesent="addmessage" v-bind:messages="messages" :orderId="orderId" :userId="userId" :userName='userName'/>
     </div>
 </template>
 
 <script>
+    import MessageComposer from '../components/MessageComposer'
     export default {
        props: ['messagessss', 'orderId', 'newText'],
+       components: {
+           MessageComposer
+       },
        data: function(){
            return{
                messages: [],
@@ -125,13 +129,13 @@
     
      
  }
- .chat-view ::-webkit-scrollbar{
+ .chat-view::-webkit-scrollbar{
      width: 3px !important;
  }
- .chat-log ::-webkit-scrollbar-track{
+ .chat-log::-webkit-scrollbar-track{
      background: transparent;
  }
-.chat-view ::-webkit-scrollbar-thumb{
+.chat-view::-webkit-scrollbar-thumb{
      background: grey;
      max-height: 30px;
  }
