@@ -90,7 +90,7 @@ class PortfolioController extends Controller
     public function previewPortfolio(Request $request){
         $thisUser = Auth::User()->sysId;
        $dataFile  = Storage::get('users/'.$thisUser.'/portconf.txt');
-       $json = json_decode($dataFile);
+       $json = $dataFile; //json_decode($dataFile);
      // print_r($json);
       
       //return $json->theme;

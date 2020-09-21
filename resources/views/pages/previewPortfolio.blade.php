@@ -6,14 +6,22 @@
 
 <div class="cta">
     <div class="edit">
+        <p>Need to change something?</p>
+
+        <div class="edit-btn">
+            <a href="#" class="btn btn-primary">Edit</a>
+        </div>
 
     </div>
     <div class="save">
-
+        <p>All set?</p>
+        <div class="save-btn">
+            <a href="#" class="btn btn-success">Save</a>
+        </div>
     </div>
 </div>
 <div class="prevw">
-    
+
 </div>
     
 @endsection
