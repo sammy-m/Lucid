@@ -94,6 +94,21 @@ class PortfolioController extends Controller
      // print_r($json);
       
       //return $json->theme;
-      return view('pages.previewPortfolio')->with($json);
+      return view('pages.previewPortfolio')->with($thisUser);
+    }
+
+    public function showPortfolio(Request $request, $urlSys)
+    {
+       
+       // $thisUser = Auth::User()->sysId;
+        $dataFile  = Storage::get('users/'.$urlSys.'/portconf.txt');
+        $json = $dataFile; //json_decode($dataFile);
+        if ($json->theme == dark) {
+            return view('pages.portfolioThemes.dark')-with($json);
+        }
+      // print_r($json);
+       
+       //return $json->theme;
+       return view('pages.showPortfolio')->with($json);  
     }
 }

@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="prevw">
-
+<iframe src="/portfolio/{{Auth::user()->sysId}}" frameborder="0"></iframe>
 </div>
     
 @endsection
