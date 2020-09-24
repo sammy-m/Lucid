@@ -102,13 +102,16 @@ class PortfolioController extends Controller
        
        // $thisUser = Auth::User()->sysId;
         $dataFile  = Storage::get('users/'.$urlSys.'/portconf.txt');
-        $json = $dataFile; //json_decode($dataFile);
+        
+        $json = json_decode($dataFile);
+       // $json = $dataFile;
+       // die($json->theme);
         if ($json->theme == "dark") {
-            return view('pages.portfolioThemes.dark')-with($json);
+            return view('pages.portfolioThemes.dark')->with($dataFile);
         } elseif ($json->theme == "light") {
-            return view('pages.portfolioThemes.light')-with($json);
+            return view('pages.portfolioThemes.light')->with($json);
         }elseif ($json->theme == "vibrant") {
-            return view('pages.portfolioThemes.vibrant')-with($json);
+            return view('pages.portfolioThemes.vibrant')->with($json);
         }
       // print_r($json);
        
