@@ -1,0 +1,622 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+	scroll-behavior: smooth;
+}
+
+html, body{
+	padding: 0 !important;
+	
+	
+	
+}
+*,*::after,*::before{
+	box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+p{
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+}
+.mt-30{
+	margin-top: 30px;
+}
+body{
+	margin: 0;
+	font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+nav{
+	height: 80px;
+	width: 100%;
+	position: fixed;
+	z-index: 5;
+	background-color: rgba(0,0,0,0.0);
+	display: flex !important;
+	padding-left: 3%;
+	padding-right: 2%;
+	align-items: center;
+	transition: all 0.6s ease-in-out;
+	
+}
+.nav-tinted{
+	background-color: rgba(0,0,0,0.9);
+	height: 70px !important;
+}
+.nav-container{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+nav .nav-container .colapsible-nav{
+	/*background-color: blueviolet;*/
+	display: flex;
+	position: relative;
+	min-height: 30px;
+	
+	
+}
+nav .nav-container .colapsible-nav ul{
+	list-style: none;
+	
+}
+.colapsible-nav ul li a{
+	color: white;
+}
+.colapsible-nav ul li a:hover, .colapsible-nav ul li:hover a{
+	color: yellow !important;
+	text-decoration: none;
+}
+.visible-menu{
+	display: block !important;
+	transition: all 0.6s ease-in-out;
+	visibility: visible!important;
+}
+.menu-button{
+	display: flex;
+	flex-flow: column;
+	/*background-color: red;*/
+	width: 30px;
+	padding-left: 0px;
+	padding-top: 5px;
+	position: absolute;
+	right: 30px;
+	visibility: hidden;
+}
+.menu-button .m-btn-slice{
+	line-height: 2px;
+	margin-top: 5px;
+	color: white;
+	font-size: 55px;
+	transform: scaleX(1.5);
+	cursor: pointer;
+	
+}
+.menu-button:hover span[class ="m-btn-slices"]{
+	background-color: yellow !important;
+}
+.m-btn-slices{
+	width: 25px;
+	height: 3px;
+	background-color: white;
+	margin: 1.5px;
+	border-radius: 15% 15% 15% 15%;
+	
+	}
+
+.navbar-navs{
+	display: flex;
+	width: 40%;
+	max-width: 500px;
+	min-width: 300px;
+	/*justify-content: space-around;*/
+	/*background-color: aqua;*/
+	
+}
+.navbar-navs .nav-item{
+	text-decoration: none;
+	text-emphasis: none;
+	color: white !important;
+	margin-left: auto;
+	margin-right: auto;
+	
+	
+}
+.active-link{
+	color: yellow !important;
+}
+.row{
+	margin: 0 !important;
+}
+.container{
+	/*background-color: aqua;*/
+	margin: 0 !important;
+	padding: 0!important;
+	width: 100%;
+	min-width: 100%;
+	min-height: calc(100vh - 70px);
+}
+.landing{
+	background-color: black;
+	color: white;
+	display: flex;
+	height: calc(100vh - 0px) !important;
+	background-image: url(images/intro2.png);
+	background-repeat: no-repeat;
+	background-position: 80% 0%;
+	background-size: auto 100vh;
+	position: relative;
+}
+.landing canvas{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-image: linear-gradient(to right,  rgba(0,0,0,0.4) -1.8%, rgba(248,135,13,0.2) 60.3%, rgba(245,253,35,0.2) 118%);
+}
+.intro-writeup{
+	margin-top: auto !important;
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: 5%;
+	z-index: 2
+	
+	
+}
+.about{
+	min-height: 100vh;
+	background-color: yellow;
+	padding: 70px 3% 50px 3%;
+	box-sizing: border-box;
+	margin-top: 1px;
+}
+.about .row .b-left{
+	min-height: calc(100vh / 2);
+	padding: 30px 20px 30px 20px;
+}
+.about .row .b-right{
+	min-height: calc(100vh / 2);
+	padding: 30px 30px 30px 40px;
+}
+.about .row .b-right img{
+	width: 80%;
+	margin-left: 5%;
+	box-shadow: 20px 20px 0 orange;
+	transition: all 0.6s ease-in;	
+}
+.about .row .b-right img:hover{
+	box-shadow: 0px 0px 0 orange;
+}
+.bio{
+	padding-top: 50px;
+	font-size: 18px !important;
+}
+.sec-header{
+	border-bottom: orange 2px solid;
+}
+.skills{
+	text-align: center;
+	background-color: #000;
+	color: white;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 50px;
+}
+.skill{
+	text-align: left;
+	padding-left: 80px;
+	position: relative;
+}
+.s-mt{
+	margin-top: 80px;
+	padding: 0!important;
+}
+.s-icon{
+	position: absolute;
+	left: 0px;
+	width: 60px;
+	height: 100%;
+	/*background-color: orange;*/
+	
+}
+
+.web-design::before{
+	content: url(images/icons/webdesign.svg);
+}
+.programing::before{
+	content: url(images/icons/programming.svg);
+}
+.algorithms::before{
+	content: url(images/icons/algorithm.svg);
+}
+.seo::before{
+	content: url(images/icons/seo.svg);
+}
+.Cybersecurity::after{
+	content: url(images/icons/cyber-security.svg);
+}
+.photoshop::before{
+	content: url(images/icons/photoshop.svg);
+}
+.graphic-design::before{
+	content: url(images/icons/graphicdesign.svg);
+}
+.databases::before{
+	content: url(images/icons/databases.svg);
+}
+.wwm{
+	color: white;
+	text-align: center;
+	padding: 30px;
+	height: 490px;
+	display: flex;
+	background-color: blueviolet;
+}
+.wwm .cta{
+	margin: auto;
+}
+.cta h2{
+	text-transform: uppercase;
+	font-size: 45px;
+	font-weight: 900;
+	line-height: 60px;
+}
+.dt-button{
+	border: 2px solid white;
+	padding: 10px 30px;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin: 30px auto;
+	cursor: pointer;
+	max-width: 300px;
+	width: max-content;
+	display: block;
+}
+.custom-bt{
+	
+}
+.custom-bts{
+	position: relative;
+}
+.custom-bts::after{
+	width: 100%;
+	position: absolute;
+	content: "";
+	bottom: 0px;
+	height: 0;
+	z-index: -1;
+	background-color: white;
+	left: 0;
+	transition: all 0.3s ease-in-out;
+	
+}
+.custom-bts:hover{
+	color: black;
+}
+.custom-bts:hover::after{
+	height: 100%;
+	top: 0px
+}
+.work{
+	min-height: 100vh;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
+	padding-top: 100px;
+}
+.tiles{
+	 
+	padding: 50px 1%;
+	display: flex;
+	
+}
+
+.tiles .tile{
+	min-height: 290px;
+	width: 33.33%;
+	padding-bottom: 25%;
+	min-width: 300px;
+	position: relative;
+}
+.tiles .tile .w-desc{
+	position: absolute;
+	top: 15px;
+	bottom: 15px;
+	left: 15px;
+	right: 15px;
+	border: black 1px solid;
+	border-radius: 10px;
+}
+.tiler{
+	position: relative;
+}
+.wo-desc{
+	position: absolute;
+	top: 20%;
+	border-radius: 10px 0px 10px 10px;
+	background-color: white;
+	color: black;
+	height: 80%;
+	width: 100%;
+	padding: 10px;
+}
+.wo-desc p{
+	color: #4F4F4F;
+	font-weight: 500;
+}
+.wo-desc a{
+	color: orangered !important;
+	font-weight: 500;
+}
+.wo-desc a:hover{
+	color: yellow !important;
+	text-decoration: none;
+	background-color: black;
+	
+}
+.wd::before{
+	content: "";
+	position: absolute;
+	height: 40%;
+	top: 0px;
+	width: 100%;
+	left: 0;
+	z-index: -1;
+	border-radius: 8px;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	
+}
+.wd-seo::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/seo.png") ;
+}
+.wd-pmng::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/project-manager.png") ;
+	background-position: center;
+}
+.wd-sdev::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/sdeveloper.png") ;
+	background-position: center;
+}
+.wd-pdgn::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/pdsgn.png") ;
+	background-position: center;
+}
+.wd-gdgn::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/graphicdesign.png") ;
+	background-position: center;
+}
+.wd-lucid::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/startup.png") ;
+	background-position: bottom;
+}
+.wd-sdev-welf::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/sdeveloper.png") ;
+	background-position: center;
+}
+.wd-gadjet::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/startup.png") ;
+	
+}
+.wd-urban::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/startup1.png") ;
+	background-position: top;
+}
+.contact{
+	min-height: 100vh;
+	background-color: black;
+	color: white;
+	
+	padding-top: 100px;
+	padding-bottom: 50px;
+	text-align: center;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+.contact input{
+	background-color: transparent;
+	width: 100%;
+	border: #616161 1px solid;
+	color: white;
+	padding: 12px 18px;
+}
+.contact input::-webkit-input-placeholder, .contact textarea::-webkit-input-placeholder{
+	color: #616161 !important;
+}
+.contact input:-moz-placeholder, .contact textarea:-moz-placeholder{
+	color: #616161 !important;
+}
+.contact input::-moz-placeholder, .contact textarea::-moz-placeholder{
+	color: #616161 !important;
+}
+.contact input::placeholder, .contact textarea::placeholder{
+	color: #616161 !important;
+}
+
+.contact textarea{
+	background-color: transparent;
+	width: 100%;
+	border: #616161 1px solid;
+	color: white;
+	padding: 12px 18px;
+	min-height: 250px;
+}
+.contact textarea:focus ,.contact input:focus{
+	border-color: white;
+}
+.footer{
+	min-height: 150px;
+/*background-image: linear-gradient(to right,  rgba(190,11,215,0.8) -18.7%, rgba(246,234,11,0.9) 90.9% );*/
+	background-image: linear-gradient( 112.1deg,  rgba(0,0,0,1) -1.8%, rgba(248,135,13,1) 60.3%, rgba(245,253,35,1) 118% );
+
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+.footer .social{
+	display: flex;
+	width: 50%;
+	/*background-color: yellow;*/
+	margin-left: auto;
+	margin-right: auto;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.social a{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/*@media only screen and (max-width: 1083px){
+	.work{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}*/
+
+@media only screen and (max-width: 990px){
+	.tiles{
+		/*width: 90%;*/
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.tiles .tile{
+		width: 50%;
+		padding-bottom: 40%;
+	}
+	.navbar-navs{
+		/*display: none;*/
+	}
+	.menu-button{
+		visibility: visible;
+	}
+	#menuList{
+		position: fixed;
+		background: #FFF;
+		top: 70px;
+		right: 0;
+		width: 100%;
+		/*display: block;*/
+		height: calc(100vh - 70px);
+		text-align: center;
+		padding-top: 100px;
+		visibility: hidden;
+		transition: all 0.6s ease-in-out;
+	}
+	.colapsible-nav ul{
+		display: none;
+	}
+	#menuList li{
+		box-sizing: border-box;
+		padding: 12px 20px;
+		margin: auto;
+		/*border-top: 1px rgba(81,81,81,0.51) solid;*/
+		color: #000000 !important;
+	}
+	#menuList li a{
+		color: #000000 !important;
+		font-size: 24px;
+		width: 100%;
+		display: inline-block;
+		
+	}
+	#menuList li a:hover, #menuList li a:active{
+		color: yellow !important;
+	}
+}
+@media only screen and (max-width: 768px){
+	.tiles{
+		/*width: 90%;*/
+		padding-left: 35px;
+		padding-right: 35px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+}
+@media only screen and (max-width: 740px){
+	.tiles .tile{
+		width: 100%;
+		padding-bottom: 85%;
+	}
+}
+@media only screen and (max-width: 430px){
+	.tiles{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.tiles .tile{
+		min-width: 200px;
+	}
+	
+}
+@media only screen and (max-width: 300px){
+	.wwm{
+		padding: 20px 2%;
+	}
+}
+@media only screen and (max-width: 265px){
+	.dt-button{
+		margin: 0 auto;
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+}
+/*@media only screen and (max-width: 500px){
+	.landing{
+		background-image: url(images/introiphone6p.png);
+		background-position: center center;
+		background-size: 500px auto;
+		
+	}
+}
+@media only screen and (max-width: 400px){
+	.landing{
+		background-image: url(images/introiphone6p.png);
+		background-position: center center;
+		background-size: 400px auto;
+		
+	}
+}
+@media only screen and (max-width: 300px){
+	.landing{
+		background-image: url(images/introiphone6p.png);
+		background-position: center 40%;
+		background-size: 350px auto;
+		
+	}
+}*/
