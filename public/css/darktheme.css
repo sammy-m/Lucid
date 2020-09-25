@@ -250,14 +250,14 @@ nav .nav-container .colapsible-nav ul{
 	
 }
 
-.web-design::before{
-	content: url(images/icons/webdesign.svg);
+.sk::before{
+	content: url(../images/icons/webdesign.svg);
 }
 .programing::before{
-	content: url(images/icons/programming.svg);
+	content: url(/public/images/icons/programming.svg);
 }
 .algorithms::before{
-	content: url(images/icons/algorithm.svg);
+	content: url(../images/icons/algorithm.svg);
 }
 .seo::before{
 	content: url(images/icons/seo.svg);
@@ -427,7 +427,11 @@ nav .nav-container .colapsible-nav ul{
 	background-position: center;
 }
 .wd-gadjet::before{
-	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("images/sm-img/startup.png") ;
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("/images/sm-img/startup.png") ;
+	
+}
+.wdi::before{
+	background-image:  linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(248,135,13,0.7) 60.3%, rgba(245,253,35, 0.7) 118%), url("../images/sm-img/startup.png") ;
 	
 }
 .wd-urban::before{

@@ -9,16 +9,18 @@
 <link rel="stylesheet" type="text/css" href="/css/darktheme.css">
 <link rel="stylesheet" href="/css/aos.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	
 <!-- MDBootstrap -->
   <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="md-bootstrap/css/mdb.min.css">
+  <link rel="stylesheet" href="/css/mdb.min.css">
   <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
-<script src="js/aos.min.js"></script>
-<script src="js/darktheme.js"></script>
-<script src="js/long-shadow.js"></script>
+<script src="/js/aos.min.js"></script>
+<script src="/js/darktheme.js"></script>
+<script src="/js/long-shadow.js"></script>
 	
 </head>
 
@@ -82,56 +84,56 @@ In my field, which is Computer Science and Information Technology, I am driven b
 			<div class="row">
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon programing"></div>
+						<div class="s-icon sk"></div>
 						<h4>Programing</h4>
 						<p>I have immense skills in C, R, Java, PHP, JavaScript, Vue.js, MEARN stack, and Python.</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon algorithms"></div>
+						<div class="s-icon sk"></div>
 						<h4>Algorithm Design</h4>
 						<p>I believe that every pice of program should solve its task in the most efficient way possible</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon web-design"></div>
+						<div class="s-icon sk"></div>
 						<h4>Web Design</h4>
 						<p>I have great skills in UI, UX, and web immerging technologies such as React, Angular, and Vue.</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon photoshop"></div>
+						<div class="s-icon sk"></div>
 						<h4>Photoshop</h4>
 						<p>Through freelance and graphical design gigs, I have perfected my skills in Adobe Photoshop.</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon graphic-design"></div>
+						<div class="s-icon sk"></div>
 						<h4>Graphic Design</h4>
 						<p>Graphical design using tools such as Adobe Illustrator. I consider this as one of my hobbies.</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon databases"></div>
+						<div class="s-icon sk"></div>
 						<h4>Databases</h4>
 						<p>Knowledge and experience in SQL, mySQL, and MongoDB. I also have skills in DB indexing and optimization</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon seo"></div>
+						<div class="s-icon sk"></div>
 						<h4>SEO</h4>
 						<p>I do SEO optimization as part of my freelance. I also design web applications with Search Indexing in mind.</p>
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon Cybersecurity"></div>
+						<div class="s-icon sk"></div>
 						<h4>Cyber Security</h4>
 						<p>I am an enthusiast for cybersecurity. I have knowledge in the security of information systems.</p>
 					</div>
@@ -155,7 +157,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 		<h2 data-aos="fade-up" data-aos-duration="1000">Recent Work</h2>
 		<div class="row tiles">
 			<div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
-				<div class="w-desc wd wd-seo waves-effect ">
+				<div class="w-desc wd wdi waves-effect ">
 				<div class="wo-desc">
 					<h4>SEO</h4>
 					<p>After entrusting me to manage their Search Engine Optimization, <a href="https://rubikstech.co.ke">RubiksTech</a> now boasts of improved search results. This has boosted thier clientelle by up to 40%.</p>
@@ -163,7 +165,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-				<div class="w-desc wd wd-pmng waves-effect">
+				<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>Project Manager - EUCOSSA</h4>
 						<p> I am the former Project Manager for Egerton University Computer Science Students Association (<a href="https://twitter.com/eucossake?lang=en">EUCOSSA</a>). Here, I got to develop and apply teams and project management skills </p>
@@ -172,7 +174,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-sdev waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>Software Developer - CoElib</h4>
 						<p>Working at <a href="https://coelib.org/">CoElib</a> nurtured my skills in team-work and rubust systems development. At CoElib, I undertook various software projects as well as Business Training by <a href="#">QPoint</a>.</p>
@@ -181,7 +183,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-pdgn waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>Product Designer - DetaWald</h4>
 						<p> I was part of a larger team at <a href="https://detawald.org/">DetaWald</a> that consulted for various clients and helped them design their products while offering advice on all matters IT. </p>
@@ -190,7 +192,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-gdgn waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>Graphic Design</h4>
 						<p>I have participated in and freelanced in numerous graphical design works through which I have gained substancial skills in Adobe Photoshop and Adobe Illustrator. </p>
@@ -199,7 +201,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-lucid waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>StartUp - Lucid</h4>
 						<p>Lucid is a startup that empowers corporate individuals through easy, fast, and cost efficient design of state of the art online portfolios. <br>
@@ -209,7 +211,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-sdev-welf waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>Software Development</h4>
 						<p> While still a student at Egerton University,I consulted with the Directorate of University Welfare and developed their complaint ticketing and follow-up system.</p>
@@ -218,7 +220,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-gadjet waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>StartUp - Gadgeteers</h4>
 						<p><a href="#">Gadgeteers</a>, as a brand, is a community of people who love tech gadgets, computing and gaming devices, phones etc. Gadgeteers is a tech-hub that connects these people while providing gadgets at friendly prices.</p>
@@ -227,7 +229,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 				</div>
 			</div>
 			<div class="tile" data-aos="fade-up" data-aos-duration="1500">
-			<div class="w-desc wd wd-urban waves-effect">
+			<div class="w-desc wd wdi waves-effect">
 					<div class="wo-desc">
 						<h4>StartUp - UrbanFit</h4>
 						<p><a href="#">UrbanFit</a> is an E-commerce platform that specializes in clotheware and general fasion for all sexes and ages. <br>
@@ -283,19 +285,19 @@ In my field, which is Computer Science and Information Technology, I am driven b
 		</div>
 		<div class="social">
 			<a href="https://linkedin.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="images/icons/linkedin.svg" alt="LinkedIn-Sam" width="15px">
+			<img src="/images/icons/linkedin.svg" alt="LinkedIn-Sam" width="15px">
 			</a>
 			<a href="https://github.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="images/icons/github.svg" alt="GitHub-Sam" width="15px">
+			<img src="/images/icons/github.svg" alt="GitHub-Sam" width="15px">
 			</a>
 			<a href="https://gmail.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="images/icons/envelope.svg" alt="Email-Sam" width="15px">
+			<img src="/images/icons/envelope.svg" alt="Email-Sam" width="15px">
 			</a>
 			<a href="https://facebook.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="images/icons/facebook.svg" alt="Facebook-Sam" width="15px">
+			<img src="/images/icons/facebook.svg" alt="Facebook-Sam" width="15px">
 			</a>
 			<a href="https://instagram.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="images/icons/instagram.svg" alt="instagram-Sam" width="15px">
+			<img src="/images/icons/instagram.svg" alt="instagram-Sam" width="15px">
 			</a>
 		</div>
 	</div>
@@ -305,7 +307,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 	
 
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="/js/mdb.min.js"></script>
+ 
 	
 </body>
 	

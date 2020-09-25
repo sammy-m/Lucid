@@ -37,7 +37,7 @@ window.onload = ()=>{
 		setVisible(-1);
 	});
 	contacts.addEventListener('click', ()=>{
-		console.log(pcontacts);
+		//console.log(pcontacts);
 		//document.documentElement.scrollTop = pcontacts;
 		pcontacts.scrollIntoView({
 			behavior: 'smooth'
@@ -112,7 +112,7 @@ window.onload = ()=>{
 		} else if (document.documentElement.scrollTop < nav[0].clientHeight){
 			nav[0].classList.remove('nav-tinted');
 		}
-		console.log(pabout.getBoundingClientRect().top +''+ -pabout.clientHeight);
+	//	console.log(pabout.getBoundingClientRect().top +''+ -pabout.clientHeight);
 		if(pwork.getBoundingClientRect().top <= 0 && pwork.getBoundingClientRect().top >= -pwork.clientHeight){
 			work.classList.add('active-link');
 			home.classList.remove('active-link');
