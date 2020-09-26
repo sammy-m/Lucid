@@ -107,15 +107,15 @@ class PortfolioController extends Controller
        // $json = $dataFile;
        // die($json->theme);
         if ($json->theme == "dark") {
-            return view('pages.portfolioThemes.dark')->with($dataFile);
+            return view('pages.portfolioThemes.dark')->with('data',$dataFile);
         } elseif ($json->theme == "light") {
-            return view('pages.portfolioThemes.light')->with($json);
+            return view('pages.portfolioThemes.dark')->with('data', $json);
         }elseif ($json->theme == "vibrant") {
-            return view('pages.portfolioThemes.vibrant')->with($json);
+            return view('pages.portfolioThemes.dark')->with('data', $json);
         }
       // print_r($json);
        
        //return $json->theme;
-       return view('pages.showPortfolio')->with($json);  
+       return view('pages.showPortfolio')->with('data', $json);  
     }
 }

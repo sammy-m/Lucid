@@ -53,9 +53,13 @@
 			<div class="landing" id="phome">
 				<canvas id="canvas"></canvas>
 			  <div class="intro-writeup">
-			  	  <h1 id="greet"></h1>
+                    <h1 id="greet"></h1>
+                    @php
+                        $data = json_decode($data);
+                    @endphp
+              <p style="display: none;" id="nameText">I am {{$data->name}}</p>
 					<h2 id="nm"></h2>
-					<p>I do amazing software design.</p>
+              <p>I {{$data->profession}}</p>
 				</div>
 				
 					
@@ -68,10 +72,7 @@
 							<h2>Get To Know Me.</h2>
 						</div>
 						<div class="bio" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-							<p>“He tries everything!” Or as my friends and colleagues like to describe: I am a person who believes in trying out new things. Nothing is difficult. As my mantra goes, “Impossible is just a big word thrown around by small men who find it easier to live in the world they've been given than to explore the power they have to change it. Impossible is not a fact. It is an opinion. Impossible is not a declaration. It is a dare. Impossible is potential. Impossible is temporary. Impossible is nothing.” I have taken courage and empowerment from these words by Muhammad Ali. <br> &nbsp; &nbsp;
-In my field, which is Computer Science and Information Technology, I am driven by the urge to do better by being a source of solutions for people around me. I am an optimistic tech fan, driven by the passion for change, learning and making an impact in all my capacities. 
-
-							</p>
+                        <p>{{$data->bio}}</p>
 						</div>
 					</div>
 					<div class="col-md-12 col-lg-6 b-right">
@@ -82,10 +83,23 @@ In my field, which is Computer Science and Information Technology, I am driven b
 					<h2 data-aos="fade-up" data-aos-duration="1000">What I Do.</h2>
 					<p data-aos="fade-up" data-aos-duration="1500">I take pride in all that I do. With that in mind, I strive to ensure perfection. Quality, I believe, is not debateable.</p>
 			<div class="row">
-				<div class="col-md-6 col-sm-12 s-mt">
+                @php
+                            $skills = json_decode($data->skills);                            
+                        @endphp
+
+                        @foreach ($skills as $skill)
+                        <div class="col-md-6 col-sm-12 s-mt">
+                            <div class="skill" data-aos="fade-up" data-aos-duration="1500">
+                                <div class="s-icon sk"></div>
+                                <h4>{{$skill->title}}</h4>
+                                <p>{{$skill->description}}</p>
+                            </div>
+                        </div>
+                        @endforeach
+				{{-- <div class="col-md-6 col-sm-12 s-mt">
 					<div class="skill" data-aos="fade-up" data-aos-duration="1500">
-						<div class="s-icon sk"></div>
-						<h4>Programing</h4>
+                        <div class="s-icon sk"></div>
+                        <h4>Programing</h4>
 						<p>I have immense skills in C, R, Java, PHP, JavaScript, Vue.js, MEARN stack, and Python.</p>
 					</div>
 					</div>
@@ -137,7 +151,7 @@ In my field, which is Computer Science and Information Technology, I am driven b
 						<h4>Cyber Security</h4>
 						<p>I am an enthusiast for cybersecurity. I have knowledge in the security of information systems.</p>
 					</div>
-					</div>
+					</div> --}}
 				</div>
 				</div>
 
@@ -156,7 +170,21 @@ In my field, which is Computer Science and Information Technology, I am driven b
 	<div class="recent-work">
 		<h2 data-aos="fade-up" data-aos-duration="1000">Recent Work</h2>
 		<div class="row tiles">
-			<div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
+            @php
+                $pworks = json_decode($data->previousWork);
+            @endphp
+
+            @foreach ($pworks as $pwork)
+            <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
+				<div class="w-desc wd wdi waves-effect ">
+				<div class="wo-desc">
+                <h4>{{$pwork->title}}</h4>
+                <p>{{$pwork->description}}</p>
+				</div>					
+				</div>
+			</div>
+            @endforeach
+			{{-- <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
 				<div class="w-desc wd wdi waves-effect ">
 				<div class="wo-desc">
 					<h4>SEO</h4>
@@ -237,11 +265,26 @@ In my field, which is Computer Science and Information Technology, I am driven b
 					</div>
 				
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 	<div class="current-work">
-	
+        <h2 data-aos="fade-up" data-aos-duration="1000">Current Work</h2>
+		<div class="row tiles">
+            @php
+                $cworks = json_decode($data->currentWork);
+            @endphp
+
+            @foreach ($cworks as $cwork)
+            <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
+				<div class="w-desc wd wdi waves-effect ">
+				<div class="wo-desc">
+                <h4>{{$cwork->title}}</h4>
+                <p>{{$cwork->description}}</p>
+				</div>					
+				</div>
+			</div>
+            @endforeach
 	</div>
 
 </div>

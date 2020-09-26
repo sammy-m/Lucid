@@ -64,7 +64,8 @@ window.onload = ()=>{
 	var salutSpeed = 50;
 	var s = 0, n = 0;
 	var name = document.getElementById('nm');
-	var nameText = 'I am Sam.';
+	//var nameText = 'I am Sam.';
+	var nameText = document.getElementById('nameText').innerHTML;
 
 	function write() {
 		if (s < salutText.length){
