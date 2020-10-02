@@ -9,7 +9,7 @@
         <p>Need to change something?</p>
 
         <div class="edit-btn">
-            <a href="#" class="btn btn-primary">Edit</a>
+        <a href="/poortfolio/edit/{{Auth::user()->sysId}}" class="btn btn-primary">Edit</a>
         </div>
 
     </div>

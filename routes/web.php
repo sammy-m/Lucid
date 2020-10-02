@@ -48,6 +48,7 @@ Route::get('/design/portfolio', 'PortfolioController@designPortfolio')->middlewa
 Route::post('/portfolio/store', 'PortfolioController@savePortfolio')->name('storePortfolio')->middleware('auth');
 Route::get('/portfolio/preview', 'PortfolioController@previewPortfolio')->middleware('auth');
 Route::get('/portfolio/{sysid}', 'PortfolioController@showPortfolio');
+Route::get('/portfolio/edit/{sysid}', 'PortfolioController@editPortfolio')->middleware('auth');
 
 //consultant routes
 Route::get('/consultant/auth', 'ConsultantController@auth')->name('consAuth');
