@@ -100,22 +100,15 @@ class PortfolioController extends Controller
     public function editPortfolio(Request $request, $sysID)
     {
         // $thisUser = Auth::User()->sysId;
-        $dataFile  = Storage::get('users/'.$urlSys.'/portconf.txt');
+        $dataFile  = Storage::get('users/'.$sysID.'/portconf.txt');
         
         $json = json_decode($dataFile);
        // $json = $dataFile;
        // die($json->theme);
-        if ($json->theme == "dark") {
-            return view('pages.portfolioThemes.dark')->with('data',$dataFile);
-        } elseif ($json->theme == "light") {
-            return view('pages.portfolioThemes.dark')->with('data', $json);
-        }elseif ($json->theme == "vibrant") {
-            return view('pages.portfolioThemes.dark')->with('data', $json);
-        }
-      // print_r($json);
-       
-       //return $json->theme;
-       return view('pages.showPortfolio')->with('data', $json); 
+        
+            return view('pages.editPortfolio')->with('data', $json);
+        
+     
     }
 
     public function showPortfolio(Request $request, $urlSys)
