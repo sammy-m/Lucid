@@ -60,7 +60,7 @@ class PortfolioController extends Controller
         $data =  json_encode(['theme'=>$request->theme, 'portrait'=>$request->landscapePic, 'name' => $request->name, 
         'profession' => $request->occupation, 'bio' => $request->bio, 'skills'=>$skills, 'previousWork'=>$projects,
         'currentWork'=>$cprojects,'email'=>$request->email, 'phone'=>$request->phone, 'linkedin'=>$request->linkedin, 'facebook'=>$request->facebook,
-        'twitter'=>$request->twitter, 'instragram'=>$request->instagram]);
+        'twitter'=>$request->twitter, 'instagram'=>$request->instagram]);
 
         $yesterday = Carbon::yesterday();
         $myPortfolio = Portfolio::where('client', Auth::User()->sysId)->first();

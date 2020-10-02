@@ -4,7 +4,7 @@
 
 <h2>This is the preview of your portfolio</h2>
 
-<div class="cta">
+<div class="cta" style="width: 100%; display: flex; justify-content: space-around;">
     <div class="edit">
         <p>Need to change something?</p>
 
@@ -27,7 +27,7 @@
 <div class="preview-end" style="width: 100%; text-align: center;">
     <p style="font-size: 50pt; color: rgba(0,0,0,0.2); font-weight: 600;">End of preview</p>
 </div>
-<div class="flex actions" style="width: 100%; display: flex; align-content: space-around;">
+<div class="flex actions" style="width: 40%; display: flex; justify-content: space-around; margin: auto;">
     <div class="save"><a href="/portfolio/subscribe" class="btn btn-primary">Save</a></div>
     <div class="edit"><a href="/portfolio/edit" class="btn btn-success">Edit</a></div>
 </div>

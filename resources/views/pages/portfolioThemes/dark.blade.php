@@ -168,22 +168,27 @@
 			
 <div class="work" id="pwork">
 	<div class="recent-work">
-		<h2 data-aos="fade-up" data-aos-duration="1000">Recent Work</h2>
+        @if ($data->previousWork)
+        <h2 data-aos="fade-up" data-aos-duration="1000">Recent Work</h2>
+        @endif
 		<div class="row tiles">
-            @php
-                $pworks = json_decode($data->previousWork);
-            @endphp
+            @if ($data->previousWork)
+                @php
+                  $pworks = json_decode($data->previousWork);
+                @endphp
 
-            @foreach ($pworks as $pwork)
-            <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
-				<div class="w-desc wd wdi waves-effect ">
-				<div class="wo-desc">
-                <h4>{{$pwork->title}}</h4>
-                <p>{{$pwork->description}}</p>
-				</div>					
-				</div>
-			</div>
-            @endforeach
+                @foreach ($pworks as $pwork)
+                <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
+                    <div class="w-desc wd wdi waves-effect ">
+                    <div class="wo-desc">
+                    <h4>{{$pwork->title}}</h4>
+                    <p>{{$pwork->description}}</p>
+                    </div>					
+                    </div>
+                </div>
+                @endforeach               
+            @endif
+
 			{{-- <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
 				<div class="w-desc wd wdi waves-effect ">
 				<div class="wo-desc">
@@ -267,27 +272,29 @@
 				</div>
 			</div> --}}
 		</div>
-	</div>
+    </div>
+    @if ($data->currentWork)
 	<div class="current-work">
-        <h2 data-aos="fade-up" data-aos-duration="1000">Current Work</h2>
-		<div class="row tiles">
-            @php
-                $cworks = json_decode($data->currentWork);
-            @endphp
+            <h2 data-aos="fade-up" data-aos-duration="1000">Current Work</h2>
+            <div class="row tiles">
+                
+                    @php
+                        $cworks = json_decode($data->currentWork);
+                    @endphp
 
-            @foreach ($cworks as $cwork)
-            <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
-				<div class="w-desc wd wdi waves-effect ">
-				<div class="wo-desc">
-                <h4>{{$cwork->title}}</h4>
-                <p>{{$cwork->description}}</p>
-				</div>					
-				</div>
-			</div>
-            @endforeach
-	</div>
-
-</div>
+                    @foreach ($cworks as $cwork)
+                    <div class="tile tiler" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="w-desc wd wdi waves-effect ">
+                        <div class="wo-desc">
+                        <h4>{{$cwork->title}}</h4>
+                        <p>{{$cwork->description}}</p>
+                        </div>					
+                        </div>
+                    </div>
+                    @endforeach             
+        </div>
+    </div>
+    @endif
 			<div class="contact" id="pcontacts">
 				<div class="call-cont">
 				<h2 data-aos="fade-up" data-aos-duration="1000">Get Intouch</h2>
@@ -321,27 +328,40 @@
 		</div>
 	<div class="footer">
 		<div class="footer-logo" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="0">
-			<h2>SAM</h2>
+			<h2>LUCID</h2>
 		</div>
 		<div class="copy">
 			<p data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">Copy Right &copy; By Sam 2020 &#124; All Rights Reserved </p>
 		</div>
 		<div class="social">
-			<a href="https://linkedin.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="/images/icons/linkedin.svg" alt="LinkedIn-Sam" width="15px">
-			</a>
-			<a href="https://github.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="/images/icons/github.svg" alt="GitHub-Sam" width="15px">
-			</a>
-			<a href="https://gmail.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="/images/icons/envelope.svg" alt="Email-Sam" width="15px">
-			</a>
-			<a href="https://facebook.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="/images/icons/facebook.svg" alt="Facebook-Sam" width="15px">
-			</a>
-			<a href="https://instagram.com" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-			<img src="/images/icons/instagram.svg" alt="instagram-Sam" width="15px">
-			</a>
+            @if ($data->linkedin)
+                <a href="https://{{$data->linkedin}}" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                    <img src="/images/icons/linkedin.svg" alt="LinkedIn" width="15px">
+                </a>
+            @endif
+            
+            {{-- @if ($data->github)
+                <a href="{{$data->github}}" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                    <img src="/images/icons/github.svg" alt="GitHub" width="15px">
+                </a>   
+            @endif --}}
+            @if ($data->email)
+                <a href="https://{{$data->theme}}" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                    <img src="/images/icons/envelope.svg" alt="Email" width="15px">
+                </a>
+            @endif
+            @if ($data->facebook)
+                <a href="https://{{$data->facebook}}" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                    <img src="/images/icons/facebook.svg" alt="Facebook" width="15px">
+                </a>                
+            @endif
+            @if ($data->instagram)
+                <a href="https://{{$data->instagram}}" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                    <img src="/images/icons/instagram.svg" alt="instagram" width="15px">
+                </a>
+            @endif
+			
+			
 		</div>
 	</div>
 	</div>
