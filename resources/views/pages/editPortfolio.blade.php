@@ -49,17 +49,17 @@
                 
                 <label for="theme">Pick your prefered theme.</label> <br>
                     <label id="dark">
-                        <input type="radio" name="theme" id="dark" value="dark" checked >
+                        <input type="radio" name="theme" id="dark" value="dark" @if($data->theme == 'dark') checked @endif>
                         <div class="box-preview" id="box-dark"></div>
                         <span>Dark Theme</span>
                     </label> 
                     <label class="light">
-                        <input type="radio" name="theme" id="light" value="light">
+                        <input type="radio" name="theme" id="light" value="light"  @if($data->theme == 'light') checked @endif>
                         <div class="box-preview" id="box-light"></div>
                         <span>Light Theme</span>
                     </label>
                     <label class="vibrant">
-                        <input type="radio" name="theme" id="vibrant" value="vibrant">
+                        <input type="radio" name="theme" id="vibrant" value="vibrant"  @if($data->theme == 'vibrant') checked @endif>
                         <div class="box-preview" id="box-vibrant"></div>
                         <span>Vibrant Theme</span>
                     </label>
@@ -296,8 +296,7 @@
 </div>
 
 <script type="application/javascript" defer>
-                var themeSelected = "{{ $data->theme }}";         
-             alert(themeSelected);           
+                     
     var zooomOut1;
     var board, canvasArea,canvImg, finalImg;
     var ctx = ctx2 = null;
