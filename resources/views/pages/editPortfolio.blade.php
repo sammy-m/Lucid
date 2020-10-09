@@ -64,9 +64,7 @@
                         <span>Vibrant Theme</span>
                     </label>
             </div>
-            <script type="application/javascript">
-                alert({{$data}});
-            </script>
+           
             <div class="intro">
                 <div class="guide-min">
                 <p>Welcome your viewers with a greeting! Tell them your name and occupation. You can also provide an image of yourself that will appear</p>
@@ -298,7 +296,8 @@
 </div>
 
 <script type="application/javascript" defer>
-                         
+                var themeSelected = "{{ $data->theme }}";         
+             alert(themeSelected);           
     var zooomOut1;
     var board, canvasArea,canvImg, finalImg;
     var ctx = ctx2 = null;
