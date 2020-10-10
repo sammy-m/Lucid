@@ -168,7 +168,7 @@
 			
 <div class="work" id="pwork">
 	<div class="recent-work">
-        @if ($data->previousWork)
+        @if (property_exists($data, "previousWork"))
         <h2 data-aos="fade-up" data-aos-duration="1000">Recent Work</h2>
         @endif
 		<div class="row tiles">
@@ -273,7 +273,7 @@
 			</div> --}}
 		</div>
     </div>
-    @if ($data->currentWork)
+    @if (property_exists($data, "currentWork"))
 	<div class="current-work">
             <h2 data-aos="fade-up" data-aos-duration="1000">Current Work</h2>
             <div class="row tiles">

@@ -115,7 +115,7 @@
                         <p>A short story about yourself is important in telling the world about yourself. Make it as captivating and interesting as it can be.</p>
                     </div>
                     <textarea name="bio" id="bio-text" cols="30" rows="5" placeholder="Type something about you here...">
-
+                        {{$data->bio}}
                     </textarea>
                    
                 </div>
@@ -130,6 +130,9 @@
                 </div>
                 
                 <div class="carousel">
+                    @php
+                      $skills = json_decode($data->skills);  
+                    @endphp
 
                     <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
                     <div class="card-holder" id="skill-holder">
@@ -259,19 +262,19 @@
                     <div class="social">
                         <div class="linkedin">
                             <label for="linkedin">Provide your LinkedIn URL</label>
-                            <input type="text"  class="text" name="linkedin" id="linkedin" value="{{$data->linkedin}}">
+                            <input type="text"  class="text" name="linkedin" id="linkedin"  @if(property_exists($data, "linkedin")) value="{{$data->linkedin}}" @endif>
                         </div>
                         <div class="facebook">
                             <label for="facebook">Provide your Facebook URL</label>
-                            <input type="text" class="text" name="facebook" id="facebook" value="{{$data->facebook}}">
+                            <input type="text" class="text" name="facebook" id="facebook" @if(property_exists($data, "facebook")) value="{{$data->facebook}}" @endif>
                         </div>
                         <div class="twitter">
                             <label for="twitter">Provide your Twitter URL</label>
-                            <input type="text" class="text" name="twitter" id="twitter" value="{{$data->twitter}}">
+                            <input type="text" class="text" name="twitter" id="twitter"  @if(property_exists($data, "twitter")) value="{{$data->twitter}}" @endif>
                         </div>
                         <div class="instagram">
                             <label for="instagram">Provide your Instagram URL</label>
-                            <input type="text" class="text" name="instagram" id="instagram" value="{{$data->instagram}}">
+                            <input type="text" class="text" name="instagram" id="instagram" @if(property_exists($data, "instagram")) value="{{$data->instagram}}" @endif>
                         </div>
                     </div>
                 </div>
