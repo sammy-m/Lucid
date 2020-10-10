@@ -137,20 +137,24 @@
                     <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
                     <div class="card-holder" id="skill-holder">
 
-                        <div class="quality carousel-card active" id="card" onclick="clicked(this)">
+                        @foreach ($skills as $skill)
+                        <div class="quality carousel-card" id="card" onclick="clicked(this)">
                             <span class="rm-card rm-s" id="rm-card" onclick="removeCard(event)">X</span>
                             
                             <div class="card-title quality-title">
                                 
-                                <input type="text" name="quality1" id="quality" placeholder="0Type in a quality, skill or experience you posses">
+                                <input type="text" name="quality1" id="quality" placeholder="0Type in a quality, skill or experience you posses" value="{{$skill->title}}">
                             </div>
 
                             <div class="card-detail quality-detail">
                                 
-                                <textarea name="qualitydescription1" id="quality-description" placeholder="describe the skill or experience"></textarea>
+                            <textarea name="qualitydescription1" id="quality-description" placeholder="describe the skill or experience"> {{$skill->description}}</textarea>
                             </div>
                             
                         </div>
+                        <script type="application/javascript" defer> stackCards(document.getElementById('card'));</script>
+                        @endforeach
+                       
                         
 
 
@@ -166,30 +170,35 @@
             </div>
 
             <div class="projects">
+               
                 <div class="past-work-projects">
                     <div class="guide-min">
                         <p>Tell us about the exciting projects and achievements that you have had previously.</p>
                     </div>
                     
                     <div class="carousel">
-
+                        @php
+                             $prevWrks = json_decode($data->previousWork);
+                         @endphp
                         <span class="project-scroll left-arrow" onclick="scrollCarouselP(event)"><</span>
                         <div class="card-holder" id="project-holder">
-
-                            <div class="project carousel-card active" id="card" onclick="clicked(this)">
-                                <span class="rm-card rm-p" id="rm-card" onclick="removeCard(event)">X</span>
-                                
-                                <div class="card-title project-title">
+                            @foreach ($prevWrks as $pw)
+                                <div class="project carousel-card" id="card" onclick="clicked(this)">
+                                    <span class="rm-card rm-p" id="rm-card" onclick="removeCard(event)">X</span>
                                     
-                                    <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done">
-                                </div>
+                                    <div class="card-title project-title">
+                                        
+                                        <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done">
+                                    </div>
 
-                                <div class="card-detail project-detail">
+                                    <div class="card-detail project-detail">
+                                        
+                                        <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience"></textarea>
+                                    </div>
                                     
-                                    <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience"></textarea>
                                 </div>
-                                
-                            </div>
+                            @endforeach
+                            
 
                            
 
@@ -208,24 +217,34 @@
                     </div>
                     
                     <div class="carousel">
+                        @php
+                        $currentWrks;
+                            if(property_exists($data, "currentWork")){
+                                $currentWrks = json_encode($data->currentWork);
+                            }
+                        @endphp
 
                         <span class="cproject-scroll left-arrow" onclick="scrollCarouselCP(event)"><</span>
                         <div class="card-holder" id="cproject-holder">
 
-                            <div class="cproject carousel-card active" id="card" onclick="clicked(this)">
-                                <span class="rm-card rm-cp" id="rm-card" onclick="removeCard(event)">X</span>
-                                
-                                <div class="card-title cproject-title">
+                            @foreach ($currentWrks as $cw)
+                                <div class="cproject carousel-card active" id="card" onclick="clicked(this)">
+                                    <span class="rm-card rm-cp" id="rm-card" onclick="removeCard(event)">X</span>
                                     
-                                    <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
-                                </div>
+                                    <div class="card-title cproject-title">
+                                        
+                                        <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
+                                    </div>
 
-                                <div class="card-detail cproject-detail">
+                                    <div class="card-detail cproject-detail">
+                                        
+                                        <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience"></textarea>
+                                    </div>
                                     
-                                    <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience"></textarea>
                                 </div>
-                                
-                            </div>
+                            @endforeach
+
+                            
 
                            
 
