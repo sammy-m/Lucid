@@ -78,10 +78,10 @@
                     </span>
                     <div class="greetings-text">
                     <p>Hi there! I am</p>
-                    <input type="text" name="name" id="name" class="text" placeholder="Enter your name...">
+                    <input type="text" name="name" id="name" class="text" placeholder="Enter your name..." value="{{$data->name}}">
                     <div class="occupation">
                         <p>I</p>
-                        <input type="text" name="occupation" id="occupation" class="text" placeholder="am an architect working with Doe Company">
+                    <input type="text" name="occupation" id="occupation" class="text" placeholder="am an architect working with Doe Company" value="{{$data->profession}}">
                     </div>
                     </div>
                     <div class="greetings-portraits" id="port-views">
@@ -250,28 +250,28 @@
                 <div class="contacts col-md-6">
                     <div class="email">
                         <label for="email">This is your email.</label>
-                        <input type="text" class="text" name="email" id="email">
+                    <input type="text" class="text" name="email" id="email" value="{{$data->email}}">
                     </div>
                     <div class="phone">
                         <label for="phone">Provide a phone number that potential employers can use to contact you</label>
-                        <input type="text" class="text" name="phone" id="phone">
+                        <input type="text" class="text" name="phone" id="phone" @if(property_exists($data, "phone")) value="{{$data->phone}}" @endif>
                     </div>
                     <div class="social">
                         <div class="linkedin">
                             <label for="linkedin">Provide your LinkedIn URL</label>
-                            <input type="text"  class="text" name="linkedin" id="linkedin">
+                            <input type="text"  class="text" name="linkedin" id="linkedin" value="{{$data->linkedin}}">
                         </div>
                         <div class="facebook">
                             <label for="facebook">Provide your Facebook URL</label>
-                            <input type="text" class="text" name="facebook" id="facebook">
+                            <input type="text" class="text" name="facebook" id="facebook" value="{{$data->facebook}}">
                         </div>
                         <div class="twitter">
                             <label for="twitter">Provide your Twitter URL</label>
-                            <input type="text" class="text" name="twitter" id="twitter">
+                            <input type="text" class="text" name="twitter" id="twitter" value="{{$data->twitter}}">
                         </div>
                         <div class="instagram">
                             <label for="instagram">Provide your Instagram URL</label>
-                            <input type="text" class="text" name="instagram" id="instagram">
+                            <input type="text" class="text" name="instagram" id="instagram" value="{{$data->instagram}}">
                         </div>
                     </div>
                 </div>
