@@ -178,7 +178,10 @@
                     
                     <div class="carousel">
                         @php
-                             $prevWrks = json_decode($data->previousWork);
+                        $prevWrks = null;
+                         if(property_exists($data, "previousWork")){
+                            $prevWrks = json_decode($data->previousWork);
+                        }
                          @endphp
                         <span class="project-scroll left-arrow" onclick="scrollCarouselP(event)"><</span>
                         <div class="card-holder" id="project-holder">
@@ -188,12 +191,12 @@
                                     
                                     <div class="card-title project-title">
                                         
-                                        <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done">
+                                    <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done" value="{{$pw->title}}">
                                     </div>
 
                                     <div class="card-detail project-detail">
                                         
-                                        <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience"></textarea>
+                                    <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience">{{$pw->description}}</textarea>
                                     </div>
                                     
                                 </div>
@@ -218,36 +221,32 @@
                     
                     <div class="carousel">
                         @php
-                        $currentWrks;
+                        $currentWrks = null;
                             if(property_exists($data, "currentWork")){
-                                $currentWrks = json_encode($data->currentWork);
+                                $currentWrks = json_decode($data->currentWork);
                             }
                         @endphp
 
                         <span class="cproject-scroll left-arrow" onclick="scrollCarouselCP(event)"><</span>
                         <div class="card-holder" id="cproject-holder">
 
-                            @foreach ($currentWrks as $cw)
-                                <div class="cproject carousel-card active" id="card" onclick="clicked(this)">
+                            @foreach ($currentWrks as $cWork)
+                                <div class="cproject carousel-card" id="cardcw" onclick="clicked(this)">
                                     <span class="rm-card rm-cp" id="rm-card" onclick="removeCard(event)">X</span>
                                     
                                     <div class="card-title cproject-title">
                                         
-                                        <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses">
+                                    <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses" value="{{$cWork->title}}">
                                     </div>
 
                                     <div class="card-detail cproject-detail">
                                         
-                                        <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience"></textarea>
+                                    <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience">{{$cWork->description}}</textarea>
                                     </div>
                                     
                                 </div>
+                                <script type="application/javascript" defer> stackCards(document.getElementById("cardcw"));</script>
                             @endforeach
-
-                            
-
-                           
-
 
                             <span class="add-card" id="add-skill" title="Add a current project or work" onclick="addcproject()">+</span>
 
