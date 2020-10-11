@@ -139,7 +139,7 @@
 
                         @foreach ($skills as $skill)
                         <div class="quality carousel-card" id="card" onclick="clicked(this)">
-                            <span class="rm-card rm-s" id="rm-card" onclick="removeCard(event)">X</span>
+                            <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                             
                             <div class="card-title quality-title">
                                 
@@ -152,7 +152,7 @@
                             </div>
                             
                         </div>
-                        <script type="application/javascript" defer> stackCards(document.getElementById('card'));</script>
+                        {{-- <script type="application/javascript" defer> stackCards(document.getElementById('card'));</script> --}}
                         @endforeach
                        
                         
@@ -186,8 +186,8 @@
                         <span class="project-scroll left-arrow" onclick="scrollCarouselP(event)"><</span>
                         <div class="card-holder" id="project-holder">
                             @foreach ($prevWrks as $pw)
-                                <div class="project carousel-card" id="card" onclick="clicked(this)">
-                                    <span class="rm-card rm-p" id="rm-card" onclick="removeCard(event)">X</span>
+                                <div class="project carousel-card" id="cardpw" onclick="clicked(this)">
+                                    <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                     
                                     <div class="card-title project-title">
                                         
@@ -232,7 +232,7 @@
 
                             @foreach ($currentWrks as $cWork)
                                 <div class="cproject carousel-card" id="cardcw" onclick="clicked(this)">
-                                    <span class="rm-card rm-cp" id="rm-card" onclick="removeCard(event)">X</span>
+                                    <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                     
                                     <div class="card-title cproject-title">
                                         
@@ -245,7 +245,7 @@
                                     </div>
                                     
                                 </div>
-                                <script type="application/javascript" defer> stackCards(document.getElementById("cardcw"));</script>
+                                {{-- <script type="application/javascript" defer> stackCards(document.getElementById("cardcw"));</script> --}}
                             @endforeach
 
                             <span class="add-card" id="add-skill" title="Add a current project or work" onclick="addcproject()">+</span>
@@ -297,7 +297,7 @@
                     </div>
                 </div>
                 
-                
+           
 
             </div>
             <div class="finalizing">
@@ -323,6 +323,17 @@
     var ctx = ctx2 = null;
   window.onload = ()=>{
 
+      ////stacking cards automatically
+      var skillact = document.getElementById("card");
+        skillact.classList.add("active");
+        if(skillact){stackCards(skillact);}
+        var cwact = document.getElementById("cardcw");
+        cwact.classList.add("active");
+         if(cwact){stackCards(cwact);}
+        var pwact = document.getElementById("cardpw");
+        pwact.classList.add("active");
+         if(pwact){stackCards(pwact);}
+
       
         var inputs = document.querySelectorAll( '.inp-portrait-image' );
         //var ctx = null;
@@ -330,6 +341,9 @@
         canvImg = new Image();
         var canvImg2 = new Image();
         canvImg2.src ="http://lucid.test/images/themes/portfolio%20dark%20theme.jpg";
+
+        var  initImg = new Image();
+        initImg.src = "{{$data->portrait}}";
        
         
         var canvasArea = document.getElementById('canvd');
@@ -344,7 +358,7 @@
         canvasArea.appendChild(board);
         //console.log(board);
         
-        ctx.drawImage(canvImg2,0,0);
+        ctx.drawImage(initImg,0,0);
         transformations(ctx);
 
         //lastX and lastY are the last points to be touched. default set to the middle of canvas
@@ -550,6 +564,48 @@
 
            
         }
+
+        function initdraw(){
+               var  initImg = new Image();
+                initImg.src = "{{$data->portrait}}"; //{{"$data->portrait"}}; //board.toDataURL('image/jpeg', 1.0);
+               /* console.log(finalImg.width+" "+finalImg.height);
+                console.log(board.width+" "+finalImg.height); */
+
+                var imagedatainput = document.getElementById('finalImg');
+                imagedatainput.value = initImg.src;
+                
+             // alert("{{$data->portrait}}");
+                        var trImg = document.getElementById('trImg');
+                        trImg.src = "{{$data->portrait}}";
+                   
+
+                var pt1 = ctx.transformPoint(0,0);
+                var pt2 = ctx.transformPoint(board.width,board.height);
+               // alert(pt2.x+" "+pt2.y);
+                ctx.clearRect(pt1.x, pt1.y, pt2.x-pt1.x, pt2.y-pt1.y);
+                ctx.save();
+                //restore transformation matrix to normal
+                ctx.setTransform(1,0,0,1,0,0);
+
+                ctx.clearRect(0,0,board.width,board.height);
+
+                ctx.restore();
+                
+                ctx.drawImage(initImg, 0,0);
+                var filen, fnImg;
+
+               
+
+              
+                
+               // $('#imagePre').css('background-image', 'url("' + finalsrc + '")');
+              
+               // finalImg.src =  board.toDataURL('image/jpeg', 1.0);
+               
+                $('#imagePre').css('background-image', 'url("' + initImg.src + '")');
+           
+        }
+        //initdraw();
             
 
             
@@ -1156,6 +1212,10 @@ function clicked(e) {
         
 
 
+    }
+
+    window.onloadeddata = function () {
+        
     }
 
    
