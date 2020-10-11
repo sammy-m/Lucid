@@ -131,7 +131,8 @@
                 
                 <div class="carousel">
                     @php
-                      $skills = json_decode($data->skills);  
+                      $skills = json_decode($data->skills); 
+                      $ss = 1; 
                     @endphp
 
                     <span class="quality-scroll left-arrow" onclick="scrollCarouselQ(event)"><</span>
@@ -143,7 +144,7 @@
                             
                             <div class="card-title quality-title">
                                 
-                                <input type="text" name="quality1" id="quality" placeholder="0Type in a quality, skill or experience you posses" value="{{$skill->title}}">
+                                <input type="text" name="quality{{$ss}}" id="quality" placeholder="0Type in a quality, skill or experience you posses" value="{{$skill->title}}">
                             </div>
 
                             <div class="card-detail quality-detail">
@@ -152,6 +153,9 @@
                             </div>
                             
                         </div>
+                        @php
+                            ++$ss;
+                        @endphp
                         {{-- <script type="application/javascript" defer> stackCards(document.getElementById('card'));</script> --}}
                         @endforeach
                        
@@ -179,6 +183,7 @@
                     <div class="carousel">
                         @php
                         $prevWrks = null;
+                        $pw = 1;
                          if(property_exists($data, "previousWork")){
                             $prevWrks = json_decode($data->previousWork);
                         }
@@ -191,14 +196,16 @@
                                     
                                     <div class="card-title project-title">
                                         
-                                    <input type="text" name="project1" id="project" placeholder="0Type in a past project or work you have done" value="{{$pw->title}}">
+                                    <input type="text" name="project{{$pw}}" id="project" placeholder="0Type in a past project or work you have done" value="{{$pw->title}}">
                                     </div>
 
                                     <div class="card-detail project-detail">
                                         
                                     <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience">{{$pw->description}}</textarea>
                                     </div>
-                                    
+                                    @php
+                                        ++$pw;
+                                    @endphp
                                 </div>
                             @endforeach
                             
@@ -222,6 +229,7 @@
                     <div class="carousel">
                         @php
                         $currentWrks = null;
+                        $cw = 1;
                             if(property_exists($data, "currentWork")){
                                 $currentWrks = json_decode($data->currentWork);
                             }
@@ -236,14 +244,16 @@
                                     
                                     <div class="card-title cproject-title">
                                         
-                                    <input type="text" name="cproject1" id="cproject" placeholder="0Type in a quality, skill or experience you posses" value="{{$cWork->title}}">
+                                    <input type="text" name="cproject{{$cw}}" id="cproject" placeholder="0Type in a quality, skill or experience you posses" value="{{$cWork->title}}">
                                     </div>
 
                                     <div class="card-detail cproject-detail">
                                         
                                     <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience">{{$cWork->description}}</textarea>
                                     </div>
-                                    
+                                    @php
+                                        ++$cw;
+                                    @endphp
                                 </div>
                                 {{-- <script type="application/javascript" defer> stackCards(document.getElementById("cardcw"));</script> --}}
                             @endforeach
@@ -540,8 +550,16 @@
                 ctx.clearRect(0,0,board.width,board.height);
 
                 ctx.restore();
+                if(canvImg.src == ""){
+                    var userImg = new Image();
+                    userImg.src = "{{$data->portrait}}"
+                    ctx.drawImage(userImg, 0,0);
+                } else{
+                    ctx.drawImage(canvImg, 0,0);
+                }
                 
-                ctx.drawImage(canvImg, 0,0);
+                
+               // ctx.drawImage(finalImg, 0,0);
                 var filen, fnImg;
 
                
