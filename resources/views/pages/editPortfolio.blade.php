@@ -144,12 +144,12 @@
                             
                             <div class="card-title quality-title">
                                 
-                                <input type="text" name="quality{{$ss}}" id="quality" placeholder="0Type in a quality, skill or experience you posses" value="{{$skill->title}}">
+                                <input type="text" name="quality{!!$ss!!}" id="quality" placeholder="0Type in a quality, skill or experience you posses" value="{{$skill->title}}">
                             </div>
 
                             <div class="card-detail quality-detail">
                                 
-                            <textarea name="qualitydescription1" id="quality-description" placeholder="describe the skill or experience"> {{$skill->description}}</textarea>
+                            <textarea name="qualitydescription{!!$ss!!}" id="quality-description" placeholder="describe the skill or experience"> {{$skill->description}}</textarea>
                             </div>
                             
                         </div>
@@ -190,18 +190,18 @@
                          @endphp
                         <span class="project-scroll left-arrow" onclick="scrollCarouselP(event)"><</span>
                         <div class="card-holder" id="project-holder">
-                            @foreach ($prevWrks as $pw)
+                            @foreach ($prevWrks as $pwrk)
                                 <div class="project carousel-card" id="cardpw" onclick="clicked(this)">
                                     <span class="rm-card" id="rm-card" onclick="removeCard(event)">X</span>
                                     
                                     <div class="card-title project-title">
                                         
-                                    <input type="text" name="project{{$pw}}" id="project" placeholder="0Type in a past project or work you have done" value="{{$pw->title}}">
+                                    <input type="text" name="project{{$pw}}" id="project" placeholder="0Type in a past project or work you have done" value="{{$pwrk->title}}">
                                     </div>
 
                                     <div class="card-detail project-detail">
                                         
-                                    <textarea name="projectdescription1" id="project-description" placeholder="describe the skill or experience">{{$pw->description}}</textarea>
+                                    <textarea name="projectdescription{{$pw}}" id="project-description" placeholder="describe the skill or experience">{{$pwrk->description}}</textarea>
                                     </div>
                                     @php
                                         ++$pw;
@@ -244,12 +244,12 @@
                                     
                                     <div class="card-title cproject-title">
                                         
-                                    <input type="text" name="cproject{{$cw}}" id="cproject" placeholder="0Type in a quality, skill or experience you posses" value="{{$cWork->title}}">
+                                    <input type="text" name="cproject{!!$cw!!}" id="cproject" placeholder="0Type in a quality, skill or experience you posses" value="{{$cWork->title}}">
                                     </div>
 
                                     <div class="card-detail cproject-detail">
                                         
-                                    <textarea name="cprojectdescription1" id="cproject-description" placeholder="describe the skill or experience">{{$cWork->description}}</textarea>
+                                    <textarea name="cprojectdescription{!!$cw!!}" id="cproject-description" placeholder="describe the skill or experience">{{$cWork->description}}</textarea>
                                     </div>
                                     @php
                                         ++$cw;

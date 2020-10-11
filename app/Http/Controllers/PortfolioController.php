@@ -85,6 +85,7 @@ class PortfolioController extends Controller
         Storage::put('users/'.$thisUser.'/portconf.txt', $data);
 
        //return json_decode($data)->skills;
+       return redirect("/portfolio/preview");
 
     }
     public function previewPortfolio(Request $request){
