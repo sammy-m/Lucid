@@ -132,3 +132,27 @@
 .main table .btn{
     padding: 0.4rem 0.44rem !important;
 }
+.sq{
+    position: relative;
+    padding-top: 70%;
+}
+.sq .sq-cont{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+}
+.rect{
+    position: relative;
+    padding-top: 70%;
+}
+.rect .rect-cont{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+}
