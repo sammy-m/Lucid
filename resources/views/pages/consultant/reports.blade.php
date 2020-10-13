@@ -11,7 +11,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                         <div class="sq-cont" style="background-color: rgba(255, 164, 100, 0.2)">
-                            <div>134</div>
+                            <div class="number">134</div>
                             <div>
                                 <div>Jobs</div>
                                 <div>Available</div>
@@ -22,7 +22,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                         <div class="sq-cont" style="background-color: rgba(248, 212, 7, 0.2)">
-                            <div>5</div>
+                            <div class="number">5</div>
                             <div>
                                 <div>Jobs</div>
                                 <div>I am handling</div>
@@ -33,7 +33,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                         <div class="sq-cont" style="background-color: rgba(252, 108, 5, 0.2)">
-                            <div>134</div>
+                            <div class="number">134</div>
                             <div>
                                 <div>Jobs</div>
                                 <div>I have completed</div>
@@ -42,10 +42,11 @@
                     </div>
                 </div>
             </div>
-            <div class="work-freq">
-                <div class="graph rect">
-                    <div class="rect-cont">
-                        <canvas id="myChart" width="100%" height="100%"></canvas>
+            <div class="work-freq" style="margin: 70px 0; text-align: center;">
+                <h2>Track your delivery progress</h2>
+                <div class="graph rect" style="width: 70%; margin: auto;">
+                    <div class="rect-cont" id="graph-holder">
+                        <canvas id="myChart" width="100%" ></canvas>
                     </div>
                     
                 </div>
@@ -55,21 +56,19 @@
     <script type="application/javascript" defer>
     window.onload = function(){
         var ctx = document.getElementById('myChart');
+        var ctx2 = document.createElement('canvas').getContext('2d');
+        var gradientFill = ctx2.createLinearGradient(0, 100, 0, 500);
+        gradientFill.addColorStop(0, "rgba(3, 132, 252, 0.8)");
+        gradientFill.addColorStop(1, "rgba(244, 144, 128, 0.1)");
+        ctx.height = document.getElementById('graph-holder').clientHeight+'px';
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
+                    label: 'Tasks',
+                    data: [12, 19, 3, 5, 2, 3, 7],
+                    backgroundColor: gradientFill,
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
@@ -86,9 +85,18 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
+                        }, 
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
                         }
                     }]
-                }
+                },
+                responsive: true,
             }
         });
     }
