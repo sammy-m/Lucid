@@ -335,16 +335,20 @@
 
       ////stacking cards automatically
       var skillact = document.getElementById("card");
-        skillact.classList.add("active");
-        if(skillact){stackCards(skillact);}
-        var cwact = document.getElementById("cardcw");
-        cwact.classList.add("active");
-         if(cwact){stackCards(cwact);}
-        var pwact = document.getElementById("cardpw");
-        pwact.classList.add("active");
-         if(pwact){stackCards(pwact);}
+        
+        if(skillact  != null){skillact.classList.add("active");
+        stackCards(skillact);}
 
-      
+        var cwact = document.getElementById("cardcw");       
+         if(cwact  != null){ cwact.classList.add("active");
+         stackCards(cwact);}
+
+        var pwact = document.getElementById("cardpw");        
+         if(pwact != null){
+            pwact.classList.add("active");
+             stackCards(pwact);}
+
+      //redraw();
         var inputs = document.querySelectorAll( '.inp-portrait-image' );
         //var ctx = null;
         
@@ -581,7 +585,7 @@
               
 
            
-        }
+        } redraw();
 
         function initdraw(){
                var  initImg = new Image();

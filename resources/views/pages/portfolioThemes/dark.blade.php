@@ -365,7 +365,14 @@
 		</div>
 	</div>
 	</div>
+	<script type="application/javascript" defer>
+	var portraithm = new Image();
+	portraithm.src = "{{$data->portrait}}"
+	var hmP = document.getElementById("phome");
 	
+	hmP.style.backgroundImage = "url('"+portraithm.src+"')";
+	console.log(hmP.style);
+	</script>
 	<script src="/js/ls.js"></script>
 	
 

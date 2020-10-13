@@ -29,7 +29,7 @@
 </div>
 <div class="flex actions" style="width: 40%; display: flex; justify-content: space-around; margin: auto;">
     <div class="save"><a href="/portfolio/subscribe" class="btn btn-primary">Save</a></div>
-    <div class="edit"><a href="/portfolio/edit" class="btn btn-success">Edit</a></div>
+    <div class="edit"><a href="/portfolio/edit/{{Auth::user()->sysId}}" class="btn btn-success">Edit</a></div>
 </div>
     
 @endsection

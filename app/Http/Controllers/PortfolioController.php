@@ -36,8 +36,8 @@ class PortfolioController extends Controller
         }
 
         while($j <= 20){
-            if($request->{'projects'.$j} != null && $request->{'projectsdescription'.$j} != null ){
-            $projArray[$j] = ['title' => $request->{'projects'.$j}, 'description'=> $request->{'projectsdescription'.$j}];
+            if($request->{'project'.$j} != null && $request->{'projectdescription'.$j} != null ){
+            $projArray[$j] = ['title' => $request->{'project'.$j}, 'description'=> $request->{'projectdescription'.$j}];
             ++$j;
             } else{
             break;
@@ -85,7 +85,7 @@ class PortfolioController extends Controller
         Storage::put('users/'.$thisUser.'/portconf.txt', $data);
 
        //return json_decode($data)->skills;
-       return redirect("/portfolio/preview");
+       return redirect("/portfolio/preview/");
 
     }
     public function previewPortfolio(Request $request){

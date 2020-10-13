@@ -127,4 +127,8 @@ class ConsultantController extends Controller
        $task = array(['details'=>$details, 'instructions'=>$instructions]);
        return view('pages.consultant.workingOnTask')->with('task', $task);
     }
+    public function reports()
+    {
+        return view("pages.consultant.reports");
+    }
 }

@@ -57,6 +57,9 @@ Route::get('/consultant/signup', 'ConsultantController@signupForm')->name('consR
 Route::post('/consultant/authenticate', 'ConsultantController@logInCons')->name('logInCons');
 Route::post('/consultant/register', 'ConsultantController@register')->name('registerCons');
 Route::get('/consultant/dashboard', 'ConsultantController@home')->middleware('consultant');
+Route::get('/consultant/profile', 'ConsultantController@profile')->middleware('consultant');
+Route::get('/consultant/profile/edit', 'ConsultantController@editProfile')->middleware('consultant');
+Route::get('/consultant/reports', 'ConsultantController@reports')->middleware('consultant');
 Route::get('/consultant/work', 'ConsultantController@work')->middleware('consultant');
 Route::get('/consultant/work/history', 'ConsultantController@history')->middleware('consultant');
 Route::get('/consultant/work/ongoing', 'ConsultantController@inProgress')->middleware('consultant');
