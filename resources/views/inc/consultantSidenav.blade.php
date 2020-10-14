@@ -14,12 +14,12 @@
             <div class="tab-item"> <a href="/consultant/dashboard"> <span class="tab-lable">Home</span> </a></div>
            
         </div>
-        <div class="tab">
+        {{-- <div class="tab">
             <div class="tab-item"> <a href="/consultant/profile"><span class="tab-lable">Profile</span></a></div>
             <div class="tab-link-group">
                 <div class="tab-link"><a href="/consultant/profile/edit"> <span class="link-lable">Edit</span></a></div>
             </div>           
-        </div>
+        </div> --}}
 
         <div class="tab">
             <div class="tab-item"><a href="/consultant/work"> <span class="tab-lable">Work</span></a></div>
