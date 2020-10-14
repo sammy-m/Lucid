@@ -124,6 +124,60 @@ protected function generateRandomId(){
             return view('pages.admin.dashboard')->with('orders', $clientOrders);
         }
     }
+    public function ongoing()
+    {
+        $orders = Order::whereProgressstatus('in progress')->get();
+        //die($orders);
+        if(sizeof($orders) != 0){
+        foreach ($orders as $orderDetails){
+        $orderInstructions = OrderInstructions::whereRefid($orderDetails->refId)->get();
+        $clientOrders[] = array('orderDetails'=> $orderDetails, 'orderInstructions'=> $orderInstructions);
+        }
+       //return $clientOrders;
+       // return $clientOrders[1]['orderDetails'][0]->refId;
+        
+        return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Jobs In Progress');
+        } else{
+            $clientOrders = null;
+            return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Jobs In Progress');
+        }
+    }
+    public function unallocated()
+    {
+        $orders = Order::whereProgressstatus('new')->get();
+        //die($orders);
+        if(sizeof($orders) != 0){
+        foreach ($orders as $orderDetails){
+        $orderInstructions = OrderInstructions::whereRefid($orderDetails->refId)->get();
+        $clientOrders[] = array('orderDetails'=> $orderDetails, 'orderInstructions'=> $orderInstructions);
+        }
+       //return $clientOrders;
+       // return $clientOrders[1]['orderDetails'][0]->refId;
+        
+        return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Unallocated Orders');
+        } else{
+            $clientOrders = null;
+            return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Unallocated Orders');
+        }
+    }
+    public function completed()
+    {
+        $orders = Order::whereProgressstatus('completed')->get();
+        //die($orders);
+        if(sizeof($orders) != 0){
+        foreach ($orders as $orderDetails){
+        $orderInstructions = OrderInstructions::whereRefid($orderDetails->refId)->get();
+        $clientOrders[] = array('orderDetails'=> $orderDetails, 'orderInstructions'=> $orderInstructions);
+        }
+       //return $clientOrders;
+       // return $clientOrders[1]['orderDetails'][0]->refId;
+        
+        return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Completed Orders');
+        } else{
+            $clientOrders = null;
+            return view('pages.admin.orderlists')->with('orders', $clientOrders)->with('heading', 'Completed Orders');
+        }
+    }
     public function analytics()
     {
         return view('pages.admin.analytics');

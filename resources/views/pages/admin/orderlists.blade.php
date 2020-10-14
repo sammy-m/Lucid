@@ -9,10 +9,12 @@
         <a href="/admin/dash">All Orders</a>
         <a href="/admin/dash/ongoing">Ongoing Orders</a>
         <a href="/admin/dash/unallocated">Unallocated Orders</a>
-        <a href="/admin/dash/complete">Completed Orders</a>
         <a href="/admin/analytics">Analytics</a>
     </div>
     <div class="content-area">
+        <div class="heading" style="text-align: center;">
+        <h1>{{$heading}}</h1>
+        </div>
     
             <table class="table table-striped">
                    
@@ -43,42 +45,42 @@
                             while( $i<$len) {
                                 $ppp; $price; $status;
 
-                                if($orders[$i]['orderDetails'][0]->lineSpacing == 'double'){
+                                if($orders[$i]['orderDetails']->lineSpacing == 'double'){
                                     $ppp = 19;
                                 }
                                 else {
                                     $ppp = 39;
                                 }
 
-                                $price = $orders[$i]['orderDetails'][0]->pageCount * $ppp;
+                                $price = $orders[$i]['orderDetails']->pageCount * $ppp;
 
-                                if($orders[$i]['orderDetails'][0]->progressStatus == 'completed'){
+                                if($orders[$i]['orderDetails']->progressStatus == 'completed'){
                                     $status = 'Completed';
                                 }
-                                else if($orders[$i]['orderDetails'][0]->progressStatus == 'assigned'){
+                                else if($orders[$i]['orderDetails']->progressStatus == 'assigned'){
                                     $status = 'In Progress';
                                 }
-                                else if($orders[$i]['orderDetails'][0]->progressStatus == 'new'){
+                                else if($orders[$i]['orderDetails']->progressStatus == 'new'){
                                     $status = 'Unallocated';
                                 }
                                 else {
-                                    $status = $orders[$i]['orderDetails'][0]->progressStatus;
+                                    $status = $orders[$i]['orderDetails']->progressStatus;
                                 }
 
                                
                             echo"<tr>";
-                               echo" <td>{$orders[$i]['orderDetails'][0]->refId}</td>";
-                                echo "<td colspan='2'>{$orders[$i]['orderInstructions']->title}</td>";
+                               echo" <td>{$orders[$i]['orderDetails']->refId}</td>";
+                                echo "<td colspan='2'>{$orders[$i]['orderInstructions'][0]->title}</td>";
                                
                                 echo"<td>$ {$price}</td>";
                                 echo"<td>{$status}</td>";
-                                if($orders[$i]['orderDetails'][0]->paymentStatus == 'paid'){
+                                if($orders[$i]['orderDetails']->paymentStatus == 'paid'){
                                     echo"<td>Paid</td>";
                                 }
-                                else if($orders[$i]['orderDetails'][0]->paymentStatus != 'paid'){
+                                else if($orders[$i]['orderDetails']->paymentStatus != 'paid'){
                                     echo"<td>Unpaid</td>";
                                 }
-                                echo"<td><a class=' btn-success' href='/admin/view-order/{$orders[$i]['orderDetails'][0]->refId}'>View</a></td>";
+                                echo"<td><a class=' btn-success' href='/admin/view-order/{$orders[$i]['orderDetails']->refId}'>View</a></td>";
                                 
                             echo"</tr>";
 
