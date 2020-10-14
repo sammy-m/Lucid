@@ -59,9 +59,67 @@
             
             <div class="right-pane-top ongoing-tasks">
                 <h4>Currently Working On:</h4>
+                <table class="main-panel-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order #</th>                           
+                            <th scope="col">Project Type</th>                            
+                            <th scope="col">Deadline</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if($ongoing != null){
+                            foreach ($ongoing as $task ) {
+                                echo"<tr>";
+                                  echo "<td> {$task['details']->refId }</td>";
+                                  echo "<td> {$task['details']->typeOfService }</td>";
+                                  echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
+                                  echo "<td>  <a class='btn-success' href='work/task/view/{$task['details']->refId}'>View</a> </td>";
+                                echo"</tr>";
+   
+                            }
+                        } else{
+                            echo"<tr> <td colspan ='6'> Tasks are currently not available. </td> </tr>";
+                        }
+                        ?>
+                        
+                        
+                    </tbody>
+                </table>
             </div>
             <div class=" right-pane-bottom previous-tasks">
                 <h4>Previously Completed</h4>
+                <table class="main-panel-table table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order #</th>                           
+                            <th scope="col">Project Type</th>                            
+                            <th scope="col">Deadline</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if($complete != null){
+                            foreach ($complete as $task ) {
+                                echo"<tr>";
+                                  echo "<td> {$task['details']->refId }</td>";
+                                  echo "<td> {$task['details']->typeOfService }</td>";
+                                  echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
+                                  echo "<td>  <a class='btn-success' href='work/task/view/{$task['details']->refId}'>View</a> </td>";
+                                echo"</tr>";
+   
+                            }
+                        } else{
+                            echo"<tr> <td colspan ='4'> Tasks are currently not available. </td> </tr>";
+                        }
+                        ?>
+                        
+                        
+                    </tbody>
+                </table>
             </div>
 
         </div>

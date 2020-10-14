@@ -25,7 +25,7 @@
             <div class="tab-item"><a href="/consultant/work"> <span class="tab-lable">Work</span></a></div>
             <div class="tab-link-group">
                <div class="tab-link"> <a href="/consultant/work/ongoing"><span class="link-lable">Ongoing</span></a></div>
-               <div class="tab-link"><a href="/consultant/work/complete"><span class="link-lable">Complete</span></a></div>
+               {{-- <div class="tab-link"><a href="/consultant/work/complete"><span class="link-lable">Complete</span></a></div> --}}
                <div class="tab-link"><a href="/consultant/work/history"> <span class="link-lable">History</span></a></div>
             </div>
            

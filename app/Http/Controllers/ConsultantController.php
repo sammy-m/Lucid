@@ -109,8 +109,27 @@ class ConsultantController extends Controller
     } else{
         $tasks = null;
     }
-    //return $tasks;
-        return view('pages.consultant.work')->with('tasks', $tasks);
+    $ongoingTasks = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->take(5)->get();
+    
+    if(sizeof($ongoingTasks) > 0){
+        foreach($ongoingTasks as $ongoing){
+            $currentTasks[] = array('details'=>$ongoing,'instructions'=>OrderInstructions::where('refId', $ongoing->refId)->get());
+        } 
+      } else{
+          $currentTasks = null;
+      }
+
+      $completedTasks = Order::where('progressStatus', 'completed')->where('writerAssigned', Auth::User()->sysId)->take(5)->get();
+
+      if(sizeof($completedTasks) > 0){
+          foreach($completedTasks as $complete){
+              $endedTasks[] = array('details'=>$complete,'instructions'=>OrderInstructions::where('refId', $complete->refId)->get());
+          } 
+        } else{
+            $endedTasks = null;
+        }
+   // return $currentTasks;
+        return view('pages.consultant.work')->with('tasks', $tasks)->with('ongoing', $currentTasks)->with('complete', $endedTasks);
     }
     public function history()
     {
@@ -118,7 +137,37 @@ class ConsultantController extends Controller
     }
     public function inProgress()
     {
-        return view('pages.consultant.workInProgress');
+        $availableTasks = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->get();
+      // return sizeof($availableTasks);
+      if(sizeof($availableTasks) > 0){
+      foreach($availableTasks as $available){
+          $tasks[] = array('details'=>$available,'instructions'=>OrderInstructions::where('refId', $available->refId)->take(5)->get());
+      } 
+    } else{
+        $tasks = null;
+    }
+    $ongoingTasks = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->get();
+    
+    if(sizeof($ongoingTasks) > 0){
+        foreach($ongoingTasks as $ongoing){
+            $currentTasks[] = array('details'=>$ongoing,'instructions'=>OrderInstructions::where('refId', $ongoing->refId)->get());
+        } 
+      } else{
+          $currentTasks = null;
+      }
+
+      $completedTasks = Order::where('progressStatus', 'completed')->where('writerAssigned', Auth::User()->sysId)->take(5)->get();
+
+      if(sizeof($completedTasks) > 0){
+          foreach($completedTasks as $complete){
+              $endedTasks[] = array('details'=>$complete,'instructions'=>OrderInstructions::where('refId', $complete->refId)->get());
+          } 
+        } else{
+            $endedTasks = null;
+        }
+   // return $currentTasks;
+        return view('pages.consultant.workInProgress')->with('tasks', $tasks)->with('ongoing', $currentTasks)->with('complete', $endedTasks);
+        //return view('pages.consultant.workInProgress');
     }
     public function workOnTask($id)
     {
