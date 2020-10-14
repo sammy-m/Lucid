@@ -15,7 +15,7 @@ class consultant
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {/*
         //check if the user is a consultant
         //return $next($request);
         if(Auth::check()){
@@ -25,9 +25,16 @@ class consultant
             
             }
             
-            return redirect('/')->with('error',"ERR: InValid ReQUESt!");
+           // return redirect('/')->with('error',"ERR: InValid ReQUESt!");
         }
-        return redirect('/consultant/auth')->with('error', 'please reauthenticate');
+        return redirect('/consultant/auth')->with('error', 'please reauthenticate');*/
+        if(auth()->user()->role == 2){
+
+            return $next($request);
+            
+            }
+            
+            return redirect('/home')->with('error',"ERR: InValid ReQUESt!");
             
     }
 }

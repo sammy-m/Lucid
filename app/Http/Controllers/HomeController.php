@@ -30,6 +30,8 @@ class HomeController extends Controller
     {
         if(Auth::User()->role == 1){
             return redirect()->to('/admin/dash');
+        }elseif(Auth::User()->role == 2){
+            return redirect()->to('/consultant/dashboard');
         }else if(Auth::User()->role == null){
             return redirect()->to('/manage/dashboard');
         }
