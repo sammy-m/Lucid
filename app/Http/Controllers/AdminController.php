@@ -124,4 +124,8 @@ protected function generateRandomId(){
             return view('pages.admin.dashboard')->with('orders', $clientOrders);
         }
     }
+    public function analytics()
+    {
+        return view('pages.admin.analytics');
+    }
 }

@@ -6,10 +6,10 @@
 
 <div class="platform">
     <div class="fixed-sidenav">
-        <a href="#about">Home</a>
-        <a href="#">Orders</a>
-        <a href="#">Unassigned</a>
-        <a href="#">Unassigned</a>
+        <a href="/admin/dash">All Orders</a>
+        <a href="/admin/dash/ongoing">Ongoing Orders</a>
+        <a href="/admin/dash/unallocated">Unallocated Orders</a>
+        <a href="/admin/analytics">Analytics</a>
     </div>
     <div class="content-area">
     

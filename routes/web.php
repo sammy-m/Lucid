@@ -77,6 +77,10 @@ Route::get('/manage/admin/register', 'AdminauthController@register');
 Route::post('/admin/registration', 'AdminauthController@adminRegistering');
 Route::post('/admin/store', 'AdminauthController@adminStore');
 Route::get('/manage/admin/login', 'AdminauthController@loginForm');
+Route::get('/admin/dash/ongoing', 'AdminController@ongoing');
+Route::get('/admin/dash/unallocated', 'AdminController@unallocated')->middleware('admin');
+Route::get('/admin/dash/complete', 'AdminController@completed')->middleware('admin');
+Route::get('/admin/analytics', 'AdminController@analytics')->middleware('admin');
 Route::post('/manage/admin/logingin', 'AdminauthController@startSession');
 
 Route::get('/admin/dash', 'AdminController@dashBoard')->middleware('admin'); 
