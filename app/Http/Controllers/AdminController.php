@@ -9,6 +9,7 @@ use App\Order;
 use App\OrderInstructions;
 
 use Keygen;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -180,6 +181,19 @@ protected function generateRandomId(){
     }
     public function analytics()
     {
-        return view('pages.admin.analytics');
+        $availableTasks =   Order::where('progressStatus','new')->where('paymentStatus', 'paid')->count();
+        $ongoingJobs = Order::where('progressStatus', 'in progress')->count();
+        $jobsCompleted = Order::where('progressStatus', 'completed')->count();
+        $moneyIn = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->sum('pageCount') * 19;
+       
+        $totalUsers = User::count();
+
+        $date = Carbon::now();
+        $startOfYear = $date->copy()->startOfYear();
+    
+        $newUsers = User::where('created_at', '>' , $startOfYear->toDateTimeString())->count();
+        
+        return view('pages.admin.analytics')->with('available', $availableTasks)->with('ongoing', $ongoingJobs)->with('completed', $jobsCompleted)
+        ->with('money', $moneyIn)->with('totalUsers', $totalUsers)->with('newUsers', $newUsers);
     }
 }

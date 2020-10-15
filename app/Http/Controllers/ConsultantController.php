@@ -93,7 +93,27 @@ class ConsultantController extends Controller
     public function home()
     {
         if(Auth::check()){
-        return view('pages.consultant.home');
+            $workingOn = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->firstOrFail();
+             
+            if($workingOn){
+                
+                    $currentTasks[] = array('details'=>$workingOn,'instructions'=>OrderInstructions::where('refId', $workingOn->refId)->get());
+                
+              } else{
+                  $currentTasks = null;
+              }
+
+              $availableTasks = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->firstOrFail();
+              // return sizeof($availableTasks);
+              if($availableTasks){
+              
+                  $tasks[] = array('details'=>$availableTasks,'instructions'=>OrderInstructions::where('refId', $availableTasks->refId)->get());
+            
+            } else{
+                $tasks = null;
+            }
+          //return $currentTasks[0]['details'];
+        return view('pages.consultant.home')->with('tasks', $tasks)->with('ongoing', $currentTasks);
         }
         return \Redirect::to('/consultant/auth');
     }
@@ -207,6 +227,9 @@ class ConsultantController extends Controller
     }
     public function reports()
     {
-        return view("pages.consultant.reports");
+        $availableTasks =   Order::where('progressStatus','new')->where('paymentStatus', 'paid')->count();
+        $myJobs = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->count();
+        $jobsCompleted = Order::where('progressStatus', 'completed')->where('writerAssigned', Auth::User()->sysId)->count();
+        return view("pages.consultant.reports")->with('available', $availableTasks)->with('ongoing', $myJobs)->with('completed', $jobsCompleted);
     }
 }

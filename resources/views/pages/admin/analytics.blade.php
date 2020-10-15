@@ -19,7 +19,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(255, 164, 100, 0.2)">
-                                <div class="number">134</div>
+                            <div class="number">{{$available}}</div>
                                 <div>
                                     <div>Jobs</div>
                                     <div>Available</div>
@@ -30,7 +30,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(248, 212, 7, 0.2)">
-                                <div class="number">5</div>
+                            <div class="number">{{$ongoing}}</div>
                                 <div>
                                     <div>Jobs</div>
                                     <div>Ongoing</div>
@@ -41,7 +41,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(252, 108, 5, 0.2)">
-                                <div class="number">134</div>
+                            <div class="number">{{$completed}}</div>
                                 <div>
                                     <div>Jobs</div>
                                     <div>Completed</div>
@@ -57,7 +57,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(100, 162, 255, 0.2)">
-                                <div class="number">$134</div>
+                            <div class="number">${{$money}}</div>
                                 <div>
                                     <div>Money</div>
                                     <div>In</div>
@@ -68,7 +68,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(7, 71, 248, 0.2)">
-                                <div class="number">5</div>
+                            <div class="number">{{$newUsers}}</div>
                                 <div>
                                     <div>New</div>
                                     <div>Users</div>
@@ -79,7 +79,7 @@
                     <div class="col-sm-12 col-md-4">
                         <div class="sq" style="min-height: 100px; width: 70%; margin: auto;">
                             <div class="sq-cont" style="background-color: rgba(79, 5, 252, 0.2)">
-                                <div class="number">134</div>
+                            <div class="number">{{$totalUsers}}</div>
                                 <div>
                                     <div>Total</div>
                                     <div>Users</div>
