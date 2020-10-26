@@ -39,7 +39,7 @@
                            
                               echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
 
-                              echo "<td>  <a class='btn-success' href='work/task/view/{$task['details']->refId}'>View</a> </td>";
+                              echo "<td>  <a class='btn-success' href='/consultant/work/task/{$task['details']->refId}'>View</a> </td>";
                             echo"</tr>";
 
                         }
@@ -74,7 +74,7 @@
                                   echo "<td> {$task['details']->refId }</td>";
                                   echo "<td> {$task['details']->typeOfService }</td>";
                                   echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
-                                  echo "<td>  <a class='btn-success' href='work/task/view/{$task['details']->refId}'>View</a> </td>";
+                                  echo "<td>  <a class='btn-success' href='/consultant/work/task/view/{$task['details']->refId}'>View</a> </td>";
                                 echo"</tr>";
    
                             }
@@ -106,7 +106,7 @@
                                   echo "<td> {$task['details']->refId }</td>";
                                   echo "<td> {$task['details']->typeOfService }</td>";
                                   echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
-                                  echo "<td>  <a class='btn-success' href='work/task/view/{$task['details']->refId}'>View</a> </td>";
+                                  echo "<td>  <a class='btn-success' href='/consultant/work/task/view/{$task['details']->refId}'>View</a> </td>";
                                 echo"</tr>";
    
                             }
