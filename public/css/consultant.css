@@ -164,3 +164,16 @@
     font-weight: 600;
     color: rgba(58, 57, 57, 0.452);
 }
+span.upload-btn{
+    display: inline-block;
+    background-image: linear-gradient(to left, rgb(255, 200, 150), rgb(200, 150, 60));
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 40px;
+    
+}
+span.file-name{
+    border-bottom: 2px solid grey;
+}

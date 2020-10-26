@@ -63,6 +63,32 @@
             </tbody>
         </table>
 
+        <div class="files">
+            <div class="client-files">
+
+                <p>the client has not uploaded any files</p>
+
+            </div>
+            <div class="consultant-files">
+                <p>You have not uploaded any file yet.</p>
+            </div>
+            <div class="upload-file">
+                <p>Upload a file here.</p>
+                {{ Form::open(array('url' => "/consultant/uploadfile/".$task[0]['details']->refId, 'method'=>'post')) }}
+                <input type="file" name="fileToUpload" id="fileToUpload" hidden>
+                <label for="fileToUpload">
+                    <span class="upload-btn" style=""><img src="/images/icons/cloud-upload-outline.svg" alt="upload" height="30px" style="margin-bottom: 5px;">
+                    </span>
+                    <span class="file-name" id="file-name">No file choosen</span>
+                </label>
+                {{ Form::close() }}
+            </div>
+           
+        </div>
+        <div class="complete">
+            complete here
+        </div>
+
             </div>
             <div class="right-panel">
                 <div id="app" style="overflow-y: hidden !important; height:100%">
