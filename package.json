@@ -14,7 +14,7 @@
         "bootstrap": "^4.4.1",
         "chart.js": "^2.9.3",
         "cross-env": "^5.2.1",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "jquery-ui": "^1.12.1",
         "laravel-mix": "^4.1.4",
         "lodash": "^4.17.15",
