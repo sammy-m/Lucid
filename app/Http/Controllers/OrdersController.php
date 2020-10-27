@@ -112,7 +112,13 @@ class OrdersController extends Controller
     }
     public function getFiles(Request $request)
     {
-        return $request;
+        $thisOrder = OrderInstructions::where('refId', $request->order)->first();
+        $thisUser = $thisOrder->client;
+        $clientDir = 'users/'.$thisUser.'/orders\/'.$request->order.'/clientuploads\/';
+        $consultantDir = 'users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/';
+        $clientFiles = Storage::files($clientDir);
+        $consulatantFiles = Storage::files($consultantDir);
+        return array($clientFiles, $consulatantFiles);
     }
 
     

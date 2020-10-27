@@ -148,7 +148,7 @@
                 axios.get('/consultant/getfiles?order='+`{{$task[0]['details']->refId}}` ).then( function(res){
                     console.log(res);
                 })
-            }
+            } getFiles();
 
         }
  
