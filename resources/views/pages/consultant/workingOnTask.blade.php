@@ -107,14 +107,14 @@
         window.onload = function(){
            ///file upload
            var actualBtn = document.getElementById('fileToUpload');
-            console.log(document.getElementById('fileToUpload'));
+            //console.log(document.getElementById('fileToUpload'));
 
             var fileChosen = document.getElementById('file-name');
 
             actualBtn.addEventListener('change', function(){
             fileChosen.textContent = this.files[0].name;
           //  console.log(this.files[0].name);
-          console.log(fileChosen);
+         // console.log(fileChosen);
             });
             ////uploading a file
             var uploadFile = document.getElementById('upload-now');
@@ -137,6 +137,7 @@
                 if(resp.status >= 200 && resp.status <= 209){
                     document.getElementById('fileToUpload').value = null;
                     document.getElementById('file-name').textContent = "No file chosen";
+                    getFiles();
                 }
             })
                 }

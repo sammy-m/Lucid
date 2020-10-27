@@ -67,6 +67,7 @@ Route::get('/consultant/work/task/view/{id}', 'OrdersController@ConsultantView')
 Route::get('/consultant/work/handle/{id}', 'OrdersController@adoptOrder')->middleware('consultant');
 Route::get('/consultant/work/task/{id}', 'ConsultantController@workOnTask')->middleware('consultant');
 Route::post('/consultant/uploadfile', 'OrdersController@consultantFile');
+Route::get('/consultant/getfiles', 'OrdersController@getFiles');
 
 //chat
 Route::get('/fetch/messages/{id}', 'MessageController@fetch')->middleware('auth');

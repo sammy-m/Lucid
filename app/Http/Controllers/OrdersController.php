@@ -110,6 +110,10 @@ class OrdersController extends Controller
         //Storage::put('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $request->file);
          return $path;
     }
+    public function getFiles(Request $request)
+    {
+        return $request;
+    }
 
     
 }
