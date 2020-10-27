@@ -70,6 +70,31 @@
                 
 
             </table>
+
+            <div class="files" style="text-align: center">
+                <div class="client-files file-tab" id="clntFls">
+    
+                    <p>the client has not uploaded any files</p>
+    
+                </div>
+                <div class="consultant-files file-tab" id="consFls">
+                    <p>You have not uploaded any file yet.</p>
+                </div>
+                <div class="upload-file">
+                    <p>Upload a file here.</p>
+                    {{ Form::open(array('url' => "", 'method'=>'post')) }}
+                <input type="text" name="order" id="order-hidden" value="{{$thisOrder[0]['orderDetails']->refId}}" hidden>
+                    <input type="file" name="fileToUpload" id="fileToUpload" hidden>
+                    <label for="fileToUpload">
+                        <span class="upload-btn" style=""><img src="/images/icons/cloud-upload-outline.svg" alt="upload" height="30px" style="margin-top: 2px;">
+                        </span>
+                        <span class="file-name" id="file-name">No file choosen</span> 
+                    </label> <span class="upld btn-primary" id="upload-now" style="border-radius: 5px; padding: 3px; cursor: pointer;">Upload</span>
+                    {{ Form::close() }}
+                </div>
+               
+            </div>
+
         </div>
 
         <div class="messages-tab">
@@ -118,6 +143,63 @@
         </div>
     </div>
 </div>
+<script type="application/javascript" defer>
+
+    window.onload = function(){
+       ///file upload
+       var actualBtn = document.getElementById('fileToUpload');
+        //console.log(document.getElementById('fileToUpload'));
+
+        var fileChosen = document.getElementById('file-name');
+
+        actualBtn.addEventListener('change', function(){
+        fileChosen.textContent = this.files[0].name;
+      //  console.log(this.files[0].name);
+     // console.log(fileChosen);
+        });
+        ////uploading a file
+        var uploadFile = document.getElementById('upload-now');
+        var order = document.getElementById('order-hidden').value;
+        
+        uploadFile.addEventListener('click', function(){
+
+            var formData = new FormData();
+            var consultantFile = actualBtn;
+            if (consultantFile.files[0] != undefined || consultantFile.files[0] != null) {
+                console.log('file present');
+                formData.append("file", consultantFile.files[0]);
+                formData.append('order', order);
+                    axios.post('/client/uploadfile', formData, {
+                    headers: {
+                    'Content-Type': 'multipart/form-data'
+                    }
+        }).then(function(resp){
+          //  console.log(resp);
+            if(resp.status >= 200 && resp.status <= 209){
+                document.getElementById('fileToUpload').value = null;
+                document.getElementById('file-name').textContent = "No file chosen";
+                getFiles();
+            }
+        })
+            }
+          
+        } );
+
+        function getFiles() {
+            axios.get('/consultant/getfiles?order='+`{{$thisOrder[0]['orderDetails']->refId}}` ).then( function(res){
+                console.log(res.data[1]);
+                if (res.data[0].length != 0) {
+                    document.getElementById('clntFls').innerHTML = "";
+                }
+                if (res.data[1].length != 0) {
+                    document.getElementById('consFls').innerHTML = "";                        
+                }
+            })
+        } getFiles();
+
+    }
+
+    </script>
 
 
 @endsection

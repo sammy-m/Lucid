@@ -64,12 +64,12 @@
         </table>
 
         <div class="files">
-            <div class="client-files file-tab">
+            <div class="client-files file-tab" id="clntFls">
 
                 <p>the client has not uploaded any files</p>
 
             </div>
-            <div class="consultant-files file-tab">
+            <div class="consultant-files file-tab" id="consFls">
                 <p>You have not uploaded any file yet.</p>
             </div>
             <div class="upload-file">
@@ -146,7 +146,13 @@
 
             function getFiles() {
                 axios.get('/consultant/getfiles?order='+`{{$task[0]['details']->refId}}` ).then( function(res){
-                    console.log(res);
+                    console.log(res.data[1]);
+                    if (res.data[0].length != 0) {
+                        document.getElementById('clntFls').innerHTML = "";
+                    }
+                    if (res.data[1].length != 0) {
+                        document.getElementById('consFls').innerHTML = "";                        
+                    }
                 })
             } getFiles();
 
