@@ -8,6 +8,7 @@ use App\User;
 use App\Order;
 use App\OrderInstructions;
 use Redirect;
+use Illuminate\Support\Facades\Storage;
 
 
 class OrdersController extends Controller
@@ -94,6 +95,20 @@ class OrdersController extends Controller
 
         return redirect()->action('ConsultantController@workOnTask',[$id]);
 
+    }
+
+    public function consultantFile(Request $request)
+    {
+        $thisOrder = OrderInstructions::where('refId', $request->order)->first();
+       $thisUser = $thisOrder->client;
+       $nameOnly = pathinfo($request->file, PATHINFO_FILENAME);
+       $filename = $nameOnly.' '. time() . '.' .$request->file->getClientOriginalExtension();
+       return $filename;
+
+     //  $path = $request->file->storeAs('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $filename);
+
+        //Storage::put('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $request->file);
+         return $request->order;
     }
 
     

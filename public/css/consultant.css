@@ -113,6 +113,8 @@
     float: right;
     width: 30%;
     background-color: yellowgreen;
+    position: fixed;
+    right: 0px;
 }
 
 .main .right-panel .right-pane-top, .main .right-panel .right-pane-bottom{
@@ -163,6 +165,14 @@
     font-size: 40pt;
     font-weight: 600;
     color: rgba(58, 57, 57, 0.452);
+}
+.file-tab{
+    background-color: rgb(255,255,255);
+    border: rgba(100, 98, 98, 0.753) solid 1px;
+    border-radius: 5px;
+    margin: 5px auto;
+    max-width: 500px;
+    min-height: 100px;
 }
 span.upload-btn{
     display: inline-block;

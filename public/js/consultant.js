@@ -91,16 +91,6 @@ window.onscroll = function() {
 
 }
 
-///file upload
-
-
-const actualBtn = document.getElementById('fileToUpload');
-
-const fileChosen = document.getElementById('file-name');
-
-actualBtn.addEventListener('change', function(){
-  fileChosen.textContent = this.files[0].name
-})
 
 
  

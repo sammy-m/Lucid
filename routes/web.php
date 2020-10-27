@@ -66,6 +66,7 @@ Route::get('/consultant/work/ongoing', 'ConsultantController@inProgress')->middl
 Route::get('/consultant/work/task/view/{id}', 'OrdersController@ConsultantView')->middleware('consultant');
 Route::get('/consultant/work/handle/{id}', 'OrdersController@adoptOrder')->middleware('consultant');
 Route::get('/consultant/work/task/{id}', 'ConsultantController@workOnTask')->middleware('consultant');
+Route::post('/consultant/uploadfile', 'OrdersController@consultantFile');
 
 //chat
 Route::get('/fetch/messages/{id}', 'MessageController@fetch')->middleware('auth');
