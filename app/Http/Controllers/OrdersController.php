@@ -101,14 +101,14 @@ class OrdersController extends Controller
     {
         $thisOrder = OrderInstructions::where('refId', $request->order)->first();
        $thisUser = $thisOrder->client;
-       $nameOnly = pathinfo($request->file, PATHINFO_FILENAME);
+       $nameOnly = pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME);
        $filename = $nameOnly.' '. time() . '.' .$request->file->getClientOriginalExtension();
-       return $filename;
+      // return $filename;
 
-     //  $path = $request->file->storeAs('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $filename);
+       $path = $request->file->storeAs('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $filename);
 
         //Storage::put('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $request->file);
-         return $request->order;
+         return $path;
     }
 
     

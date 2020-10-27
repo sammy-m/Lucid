@@ -133,11 +133,21 @@
                         'Content-Type': 'multipart/form-data'
                         }
             }).then(function(resp){
-                console.log(resp);
+              //  console.log(resp);
+                if(resp.status >= 200 && resp.status <= 209){
+                    document.getElementById('fileToUpload').value = null;
+                    document.getElementById('file-name').textContent = "No file chosen";
+                }
             })
                 }
               
             } );
+
+            function getFiles() {
+                axios.get('/consultant/getfiles?order='+`{{$task[0]['details']->refId}}` ).then( function(res){
+                    console.log(res);
+                })
+            }
 
         }
  
