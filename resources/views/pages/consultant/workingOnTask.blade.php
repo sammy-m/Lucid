@@ -151,7 +151,20 @@
                         document.getElementById('clntFls').innerHTML = "";
                     }
                     if (res.data[1].length != 0) {
-                        document.getElementById('consFls').innerHTML = "";                        
+                        var consultantfilesHTML = '';
+                    res.data[1].forEach( file => {
+                        var splt =  file.split('/');
+                       // console.log(splt.length);
+                        var flnm = splt[splt.length - 1];
+                       // console.log(flnm);
+                        var extsplt = flnm.split('.');
+                        var ext = extsplt[extsplt.length - 1];
+                        //console.log(ext);
+                       
+                        consultantfilesHTML += `<a href="/file/download?path=`+file+`" class="`+ext+`">`+flnm+`</a> </br>`;
+                    });
+                    document.getElementById('consFls').innerHTML = consultantfilesHTML;
+                                             
                     }
                 })
             } getFiles();
