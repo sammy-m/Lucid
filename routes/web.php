@@ -29,6 +29,7 @@ Route::get('/order/details', 'PagesController@orderDetails');
 Route::post('/order/detailss', 'PagesController@postOrderDetails');
 Route::get ('/order/instructions', 'PagesController@orderInstructions');
 Route::post('/order/instructionss', 'PagesController@postOrderInstructions');
+Route::get('file/download', 'OrdersController@download');
 
 Route::get('/order/preview', 'PagesController@previewOrder');
 
@@ -39,6 +40,7 @@ Route::get('status', 'paymentController@getPaymentStatus');
 //client dashboard
 Route::get('/manage/dashboard', 'ClientsController@dashboard');
 Route::get('dashboard/orderhist', 'ClientsController@History');
+Route::post('/client/uploadfile', 'OrdersController@clientFile');
 
 //order instance
 Route::get('/dashboard/myorders/{id}', 'OrdersController@showOrder');

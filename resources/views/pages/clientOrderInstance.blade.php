@@ -189,10 +189,39 @@
             axios.get('/consultant/getfiles?order='+`{{$thisOrder[0]['orderDetails']->refId}}` ).then( function(res){
                 console.log(res.data[1]);
                 if (res.data[0].length != 0) {
-                    document.getElementById('clntFls').innerHTML = "";
+                    var clientfilesHTML = '';
+                    res.data[0].forEach( file => {
+                        var splt =  file.split('/');
+                       // console.log(splt.length);
+                        var flnm = splt[splt.length - 1];
+                       // console.log(flnm);
+                        var extsplt = flnm.split('.');
+                        var ext = extsplt[extsplt.length - 1];
+                        //console.log(ext);
+                        var Fclass = "";
+                        // if(ext == "word" || ext == 'doc' || ext == 'docx'){
+                        //     Fclass = "word";
+                        // }else if(ext == "pdf"){
+                        //     Fclass = "pdf";
+                        // } else if(ext ==)
+                        clientfilesHTML += `<a href="/file/download?path=`+file+`" class="`+ext+`">`+flnm+`</a> </br>`;
+                    });
+                    document.getElementById('clntFls').innerHTML = clientfilesHTML;
                 }
                 if (res.data[1].length != 0) {
-                    document.getElementById('consFls').innerHTML = "";                        
+                    var consultantfilesHTML = '';
+                    res.data[1].forEach( file => {
+                        var splt =  file.split('/');
+                       // console.log(splt.length);
+                        var flnm = splt[splt.length - 1];
+                       // console.log(flnm);
+                        var extsplt = flnm.split('.');
+                        var ext = extsplt[extsplt.length - 1];
+                        //console.log(ext);
+                       
+                        consultantfilesHTML += `<a href="/file/download?path=`+file+`" class="`+ext+`">`+flnm+`</a> </br>`;
+                    });
+                    document.getElementById('consFls').innerHTML = consultantfilesHTML;                        
                 }
             })
         } getFiles();

@@ -110,6 +110,19 @@ class OrdersController extends Controller
         //Storage::put('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $request->file);
          return $path;
     }
+    public function clientFile(Request $request)
+    {
+        $thisOrder = OrderInstructions::where('refId', $request->order)->first();
+       $thisUser = $thisOrder->client;
+       $nameOnly = pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME);
+       $filename = $nameOnly.' '. time() . '.' .$request->file->getClientOriginalExtension();
+      // return $filename;
+
+       $path = $request->file->storeAs('users/'.$thisUser.'/orders\/'.$request->order.'/clientuploads\/', $filename);
+
+        //Storage::put('users/'.$thisUser.'/orders\/'.$request->order.'/consultantuploads\/', $request->file);
+         return $path;
+    }
     public function getFiles(Request $request)
     {
         $thisOrder = OrderInstructions::where('refId', $request->order)->first();
@@ -119,6 +132,10 @@ class OrdersController extends Controller
         $clientFiles = Storage::files($clientDir);
         $consulatantFiles = Storage::files($consultantDir);
         return array($clientFiles, $consulatantFiles);
+    }
+    public function download(Request $request)
+    {
+        return Storage::download($request->path);
     }
 
     
