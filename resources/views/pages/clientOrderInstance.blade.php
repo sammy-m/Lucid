@@ -80,6 +80,7 @@
                 <div class="consultant-files file-tab" id="consFls">
                     <p>The consultant has not uploaded any file yet.</p>
                 </div>
+                @if ($thisOrder[0]['orderDetails']->progressStatus == "in progress")
                 <div class="upload-file">
                     <p>Upload a file here.</p>
                     {{ Form::open(array('url' => "", 'method'=>'post')) }}
@@ -92,6 +93,8 @@
                     </label> <span class="upld btn-primary" id="upload-now" style="border-radius: 5px; padding: 3px; cursor: pointer;">Upload</span>
                     {{ Form::close() }}
                 </div>
+                @endif
+
                
             </div>
 
@@ -146,6 +149,7 @@
 <script type="application/javascript" defer>
 
     window.onload = function(){
+        if(`{{$thisOrder[0]['orderDetails']->progressStatus}}` == 'in progress'){
        ///file upload
        var actualBtn = document.getElementById('fileToUpload');
         //console.log(document.getElementById('fileToUpload'));
@@ -184,6 +188,7 @@
             }
           
         } );
+        } //end if
 
         function getFiles() {
             axios.get('/consultant/getfiles?order='+`{{$thisOrder[0]['orderDetails']->refId}}` ).then( function(res){

@@ -29,6 +29,7 @@ Route::get('/order/details', 'PagesController@orderDetails');
 Route::post('/order/detailss', 'PagesController@postOrderDetails');
 Route::get ('/order/instructions', 'PagesController@orderInstructions');
 Route::post('/order/instructionss', 'PagesController@postOrderInstructions');
+Route::post('/order/markcomplete', 'OrdersController@markComplete');
 Route::get('file/download', 'OrdersController@download');
 
 Route::get('/order/preview', 'PagesController@previewOrder');

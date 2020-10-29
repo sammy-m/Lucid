@@ -91,12 +91,13 @@ class ConsultantController extends Controller
     }
 
     public function home()
-    {
+    {  // die("wtf");
         if(Auth::check()){
-            $workingOn = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->firstOrFail();
-             
-            if($workingOn){
-                
+            //die("authed");
+            $workingOn = Order::where('progressStatus', 'in progress')->where('writerAssigned', Auth::User()->sysId)->get();
+             //die(sizeOf($workingOn));
+            if(sizeof($workingOn) > 0){
+                die("yeeesss");
                     $currentTasks[] = array('details'=>$workingOn,'instructions'=>OrderInstructions::where('refId', $workingOn->refId)->get());
                 
               } else{
@@ -106,15 +107,18 @@ class ConsultantController extends Controller
               $availableTasks = Order::where('progressStatus','new')->where('paymentStatus', 'paid')->firstOrFail();
               // return sizeof($availableTasks);
               if($availableTasks){
+                 // die($availableTasks);
               
-                  $tasks[] = array('details'=>$availableTasks,'instructions'=>OrderInstructions::where('refId', $availableTasks->refId)->get());
+                  $tasks[] = array('details'=>$availableTasks,'instructions'=>OrderInstructions::where('refId', $availableTasks->refId)->firstOrFail());
             
             } else{
                 $tasks = null;
             }
           //return $currentTasks[0]['details'];
         return view('pages.consultant.home')->with('tasks', $tasks)->with('ongoing', $currentTasks);
-        }
+         } //else{
+        //     die('auth error');
+        // }
         return \Redirect::to('/consultant/auth');
     }
 

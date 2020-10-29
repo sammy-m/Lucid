@@ -137,6 +137,15 @@ class OrdersController extends Controller
     {
         return Storage::download($request->path);
     }
+    public function markComplete(Request $request)
+    {
+        //return $request->order;
+        $thisOrder = Order::where('refId', $request->order)->first();
+       // return $thisOrder;
+        $thisOrder->progressStatus = "completed";
+         $thisOrder->save();
+         return 'okay';
+    }
 
     
 }

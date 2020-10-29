@@ -72,6 +72,7 @@
             <div class="consultant-files file-tab" id="consFls">
                 <p>You have not uploaded any file yet.</p>
             </div>
+            @if ($task[0]['details']->progressStatus == 'in progress')
             <div class="upload-file">
                 <p>Upload a file here.</p>
                 {{ Form::open(array('url' => "/consultant/uploadfile/".$task[0]['details']->refId, 'method'=>'post')) }}
@@ -84,6 +85,7 @@
                 </label> <span class="upld btn-primary" id="upload-now" style="border-radius: 5px; padding: 3px; cursor: pointer;">Upload</span>
                 {{ Form::close() }}
             </div>
+            @endif
            
         </div>
 
@@ -105,10 +107,12 @@
             </div>
         
         </div>
-
-        <div class="complete">
-            <span class="btn btn-primary" id="myBtn">Mark Complete</span>
-        </div>
+        @if ($task[0]['details']->progressStatus == 'in progress')
+            <div class="complete">
+                <span class="btn btn-primary" id="myBtn">Mark Complete</span>
+            </div>
+        @endif
+        
 
             </div>
             <div class="right-panel">
@@ -125,7 +129,9 @@
         <script type="application/javascript" defer>
 
         window.onload = function(){
-           ///file upload
+            if(`{{$task[0]['details']->progressStatus}}` == 'in progress'){
+                //alert("in progress");
+                 ///file upload
            var actualBtn = document.getElementById('fileToUpload');
             //console.log(document.getElementById('fileToUpload'));
 
@@ -163,6 +169,9 @@
                 }
               
             } );
+
+            }
+          
 
             function getFiles() {
                 axios.get('/consultant/getfiles?order='+`{{$task[0]['details']->refId}}` ).then( function(res){
@@ -220,10 +229,10 @@ var span = document.getElementsByClassName("close")[0];
 //button that cancels the modal
 var cancBtn = document.getElementById("canc");
 //button that completes the task
-var complBtn = document.getElementById('compl');
+var complBtn = document.getElementById('conf');
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+if(btn != null)btn.onclick = function() {
   modal.style.display = "block";
 }
 
@@ -241,7 +250,10 @@ complBtn.onclick = function(){
     formData.append('order', `{{$task[0]['details']->refId}}`)
     axios.post('/order/markcomplete', formData, {  headers: {'Content-Type': 'multipart/form-data'}
      }).then(function(res){
-        
+    //console.log(res);
+    if(res.status >= 200 && res.status <= 209){
+     location.reload();
+    }
     })
 }
 
