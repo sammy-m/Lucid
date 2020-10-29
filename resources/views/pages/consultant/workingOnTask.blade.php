@@ -86,8 +86,28 @@
             </div>
            
         </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5 style="margin-top: 20px;">Do you wish to mark this work as complete?</h5>
+            <div class="action">
+                <div class="confirm">
+                    <span class="btn btn-primary" id="conf">Confirm</span>
+                </div>
+                <div class="cancl">
+                    <span class="btn btn-warning" id="canc">Cancel</span>
+                </div>
+            </div>
+            </div>
+        
+        </div>
+
         <div class="complete">
-            <span class="btn btn-primary">Mark Complete</span>
+            <span class="btn btn-primary" id="myBtn">Mark Complete</span>
         </div>
 
             </div>
@@ -187,7 +207,55 @@
                 })
             } getFiles();
 
+
+                    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+//button that cancels the modal
+var cancBtn = document.getElementById("canc");
+//button that completes the task
+var complBtn = document.getElementById('compl');
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+cancBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+complBtn.onclick = function(){
+    var formData = new FormData();
+    formData.append('order', `{{$task[0]['details']->refId}}`)
+    axios.post('/order/markcomplete', formData, {  headers: {'Content-Type': 'multipart/form-data'}
+     }).then(function(res){
+        
+    })
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 
+
         }
+
+
+
  
         </script>
     </div>
