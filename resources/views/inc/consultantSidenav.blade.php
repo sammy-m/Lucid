@@ -1,11 +1,11 @@
 <div class="side-content">
-    <h4>this is the sidenav</h4>
+    
     <br>
     <div class="user">
         <div class="picture">
             <img src="{{url('images/logo/studyref favicon.png')}}" alt="user" width="50px" height="50px">
         </div>
-        <div class="salutation"><span class="greeting">Welcome</span> <span class="name">Sammy</span></div>
+    <div class="salutation"><span class="greeting">Welcome</span> <br><span class="name">{{Auth::User()->name}}</span></div>
     </div>
     <div class="tabs">
         

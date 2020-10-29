@@ -8,7 +8,7 @@
 
 .side-nav{
     margin-top: 66px;
-    background-color: aqua;
+    background-color: rgba(138, 138, 138, 0.205);
     float: left;
     width: 10%;
     min-height: calc(100vh - 66px);
@@ -102,19 +102,24 @@
 
 .main .main-panel{
     min-height: calc(100vh - 66px) !important;
-    background-color: yellow;
+   /* background-color: yellow;*/
     width: 70%;
     float: left;
     text-align: center;
+    padding: 0 50px 0 10px;
 }
 .main .right-panel{
     height: calc(100vh - 66px) !important;
    
     float: right;
     width: 30%;
-    background-color: yellowgreen;
+    /*background-color: yellowgreen;*/
     position: fixed;
     right: 0px;
+}
+.chat-log{
+    background-color: rgba(60, 255, 0, 0.13);
+    background-image: url(/images/backgroundimages/chatbackground.jpg);
 }
 
 .main .right-panel .right-pane-top, .main .right-panel .right-pane-bottom{
