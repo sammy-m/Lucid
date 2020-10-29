@@ -8,7 +8,7 @@
       <h5 style="border-bottom: 1px solid grey"><strong>Order History</strong></h5>
 
       <div class="breadcrumbs">
-            <p> <a href="#">Dashboard</a> &nbsp; &frasl; <a href="#">My Orders</a> &nbsp; &frasl; Order #0788898 </p>
+            <p> <a href="/manage/dashboard">Dashboard</a> &nbsp; &frasl; <a href="/dashboard/orderhist">My Orders</a> &nbsp; </p>
       </div>
 
       <div class="orders">
@@ -40,7 +40,7 @@
      
                                          $price = $orders[$i]['orderDetails'][0]->pageCount * $ppp;
      
-                                         if($orders[$i]['orderDetails'][0]->progressStatus != 'complete'){
+                                         if($orders[$i]['orderDetails'][0]->progressStatus != 'completed'){
                                              $status = 'In progress';
                                          }
                                          else {

@@ -98,13 +98,40 @@
                
             </div>
 
+
+            <div class="guidelines">
+                <div class="title">
+                    <h6><strong>Files</strong></h6>
+                </div>
+                <div>
+                    <p>To upload a new file or check for incoming files, click on the 'Files' tab. If the file
+                        is too big to upload, you can simply email it to support@studyref.com
+                    </p>
+                </div>
+                <div class="title">
+                    <h6><strong>Messages.</strong></h6>
+                </div>
+                <div>
+                    <p>To communicate with your writer or speak to a support representative, use the 'Messages' tab.
+                        ask questions, get updates, control the order progress and more.
+                    </p>
+                </div>
+        
+                <div class="title">
+                    <h6><strong>Get more, pay less</strong> </h6>
+                </div>
+                <div>
+                    <p>Save big as you receive premium quality results.</p>
+                </div>
+            </div>
+
         </div>
 
-        <div class="messages-tab">
+        {{-- <div class="messages-tab">
             <div id="app" style="overflow-y: hidden !important; height:100%">
                 
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
@@ -120,31 +147,7 @@
 
     </div>
 
-    <div class="guidelines">
-        <div class="title">
-            <h6><strong>Files</strong></h6>
-        </div>
-        <div>
-            <p>To upload a new file or check for incoming files, click on the 'Files' tab. If the file
-                is too big to upload, you can simply email it to support@studyref.com
-            </p>
-        </div>
-        <div class="title">
-            <h6><strong>Messages.</strong></h6>
-        </div>
-        <div>
-            <p>To communicate with your writer or speak to a support representative, use the 'Messages' tab.
-                ask questions, get updates, control the order progress and more.
-            </p>
-        </div>
-
-        <div class="title">
-            <h6><strong>Get more, pay less</strong> </h6>
-        </div>
-        <div>
-            <p>Save big as you receive premium quality results.</p>
-        </div>
-    </div>
+    
 </div>
 <script type="application/javascript" defer>
 

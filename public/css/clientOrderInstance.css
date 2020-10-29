@@ -1,7 +1,7 @@
 .my-container{
     width: 100%;
     margin: 0 !important;
-    padding: 10px 100px !important;
+    padding: 10px 10px 10px 80px !important;
    
 }
 
@@ -25,6 +25,10 @@
     margin: 0;
     background-color: inherit;
     padding: 10px;
+    padding-left: 20px !important;
+    position: fixed;
+    right: 0;
+    max-height: 90vh;
     
 }
 

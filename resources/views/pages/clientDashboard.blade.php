@@ -80,7 +80,7 @@
 
                                     $price = $orders[$i]['orderDetails'][0]->pageCount * $ppp;
 
-                                    if($orders[$i]['orderDetails'][0]->progressStatus != 'complete'){
+                                    if($orders[$i]['orderDetails'][0]->progressStatus != 'completed'){
                                         $status = 'In progress';
                                     }
                                     else {
@@ -201,7 +201,7 @@
                         <img style="width:25px;" src="https://img.icons8.com/ios-filled/50/000000/reddit-inbox.png"> New Messages
                 </div>
                 <div class="card-body" style="min-height:100px">
-                    <p><img style="width:15px;" src="https://img.icons8.com/metro/26/000000/maintenance.png">Under maintenance. Please contact <a href = "mailto: support@studyref.com">support@studyref.com</a></p>
+                    <p><img style="width:15px;" src="https://img.icons8.com/metro/26/000000/maintenance.png">Under maintenance. Please contact <a href = "mailto: support@lucid.com">support@lucid.com</a></p>
                         <br>
                     <p>No New Messages</p>
                 </div>
@@ -212,7 +212,7 @@
                         <img style="width:20px;" src="https://img.icons8.com/material-sharp/24/000000/file.png"> &nbsp; New-files
                 </div>
                 <div class="card-body" style="min-height:100px">
-                        <p><img style="width:15px;" src="https://img.icons8.com/metro/26/000000/maintenance.png">Under maintenance. Please contact <a href = "mailto: support@studyref.com">support@studyref.com</a></p>
+                        <p><img style="width:15px;" src="https://img.icons8.com/metro/26/000000/maintenance.png">Under maintenance. Please contact <a href = "mailto: support@lucid.com">support@lucid.com</a></p>
                         <br>
                     <p>No New Files</p>
                         
@@ -229,7 +229,7 @@
         </div>
         <div>
             <p>To upload a new file or check for incoming files, click on the 'Files' tab. If the file
-                is too big to upload, you can simply email it to support@studyref.com
+                is too big to upload, you can simply email it to support@lucid.com
             </p>
         </div>
         <div class="title">
