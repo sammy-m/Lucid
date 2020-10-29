@@ -13,20 +13,22 @@ class MessageController extends Controller
 {
     //
     public function fetch($id)
-    {
+    {   
         $order_details = Order::whereRefid($id)->first();
         $order_instructions = OrderInstructions::whereRefid($id)->first();
         $messages = Message::where('orderId', $id)->get();
-        $strMsg;
+        $strMsg =[];
         $userId = \Auth::User()->sysId;
         $userName = \Auth::User()->name;
 
        $messages;
       // return (User::where('sysId', 94223043)->get())[0]->name;
-
-        foreach ( $messages as $msg) {
-            $strMsg[] = array('message'=> $msg->message, 'user'=> (User::where('sysId', $msg->userId)->get())[0]->name, 'userId'=> $msg->userId, 'orderId' => $msg->orderId);
+        if(sizeof($messages) > 0){
+            foreach ( $messages as $msg) {
+                $strMsg[] = array('message'=> $msg->message, 'user'=> (User::where('sysId', $msg->userId)->get())[0]->name, 'userId'=> $msg->userId, 'orderId' => $msg->orderId);
+            }
         }
+      
 
         //$order = array($order_details, $order_instructions, $messages);
 
@@ -53,11 +55,11 @@ class MessageController extends Controller
         'orderId' => $request->orderId,
      ]);
 
-     $message3 = Message::create([
-        'userId' => 12345,
-        'message' => 'i do not know',
-        'orderId' => 12344,
-     ]);
+    //  $message3 = Message::create([
+    //     'userId' => 12345,
+    //     'message' => 'i do not know',
+    //     'orderId' => 12344,
+    //  ]);
 
       //return $message2;
 
@@ -66,7 +68,7 @@ class MessageController extends Controller
         broadcast(new MessageSent($user, $message2))->toOthers();
    
 
-      return [$message1, $message3,'it is well'];
+      return [$message1, $message2,'it is well'];
        return ['status'=>'ok'];
     }
 

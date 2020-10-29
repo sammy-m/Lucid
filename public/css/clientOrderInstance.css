@@ -121,3 +121,21 @@ a.pdf::before{
     width: 20px;
     height: 20px;
     }
+
+
+    /*Messages stuff*/
+.chat-log{
+    min-height: 80vh;
+    max-height: 80vh;
+    height: 80vh;
+    position: relative;
+    background-image: url(/images/backgroundimages/chatbackground.jpg);
+}
+.chat-view{
+    height: calc(100% - 60px);
+}
+.message-composer{
+    position: absolute;
+    bottom: 20px;   
+    height: 50px;
+}

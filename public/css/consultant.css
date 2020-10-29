@@ -125,7 +125,7 @@
 .main .right-panel .right-pane-top, .main .right-panel .right-pane-bottom{
     min-height: calc(100vh/2 - 33px);
     height: 50%;
-    background-color: tomato;
+    
 
 }
 .main-panel-table{

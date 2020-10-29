@@ -46,7 +46,8 @@
            fetchMessages(id){
               
                axios.get('/fetch/messages/'+id).then(response => {
-                   console.log(response.data[1]);
+                   //console.log(response.data[1]);
+                   console.log(response);
 
                  var data =   JSON.stringify(response.data);
                   // console.log(data);

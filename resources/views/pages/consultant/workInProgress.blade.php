@@ -6,7 +6,7 @@
     <div class="side-nav">
         @include('inc.consultantSidenav')
     </div>
-    <div class="main" style="background-color: red;">
+    <div class="main" >
         <div class=" main-panel ongoing-tasks">
              <h3>Currently Working On</h3>
 
@@ -53,7 +53,7 @@
             </table>
 
         </div>
-        <div class="right-panel">
+        <div class="right-panel" style="background-color: rgba(128, 128, 128, 0.112)">
             
             <div class="right-pane-top available-tasks">
                 <h4>Available Tasks:</h4>
@@ -106,7 +106,7 @@
                                   echo "<td> {$task['details']->refId }</td>";
                                   echo "<td> {$task['details']->typeOfService }</td>";
                                   echo "<td> {$task['instructions'][0]->deadline} &nbsp; {$task['instructions'][0]->deadlineHour} 00 Hrs</td>";
-                                  echo "<td>  <a class='btn-success' href='/consultant/work/task/view/{$task['details']->refId}'>View</a> </td>";
+                                  echo "<td>  <a class='btn-success' href='/consultant/work/task/{$task['details']->refId}'>View</a> </td>";
                                 echo"</tr>";
    
                             }
