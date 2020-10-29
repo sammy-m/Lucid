@@ -73,6 +73,8 @@
     margin: 5px auto;
     max-width: 500px;
     min-height: 100px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 span.upload-btn{
     display: inline-block;
@@ -87,3 +89,31 @@ span.upload-btn{
 span.file-name{
     border-bottom: 2px solid grey;
 }
+
+a.doc, a.docx, a.word, a.pdf, a.png, a.jpeg, a.jpg, a.txt, a.svg{
+    display: flex;
+}
+a.doc::before, a.docx::before, a.word::before{
+content: "";
+background-image: url(/images/icons/wordicon.png);
+display: inline-block;
+background-size: 20px 20px;
+width: 20px;
+height: 20px;
+}
+a.jpg::before, a.jpeg::before, a.png::before, a.svg{
+    content: "";
+    background-image: url(/images/icons/photoicon.png);
+    display: inline-block;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    }
+a.pdf::before{
+    content: "";
+    background-image: url(/images/icons/pdficon.png);
+    display: inline-block;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    }

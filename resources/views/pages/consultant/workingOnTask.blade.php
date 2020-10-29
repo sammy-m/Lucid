@@ -148,7 +148,7 @@
                 axios.get('/consultant/getfiles?order='+`{{$task[0]['details']->refId}}` ).then( function(res){
                     console.log(res.data[1]);
                     if (res.data[0].length != 0) {
-                        var clientfilesHTML = '';
+                        var clientfilesHTML = '<h4>Client\'s Files</h4>';
                     res.data[0].forEach( file => {
                         var splt =  file.split('/');
                        // console.log(splt.length);
@@ -169,7 +169,7 @@
                         
                     }
                     if (res.data[1].length != 0) {
-                        var consultantfilesHTML = '';
+                        var consultantfilesHTML = '<h4>My Files</h4>';
                     res.data[1].forEach( file => {
                         var splt =  file.split('/');
                        // console.log(splt.length);

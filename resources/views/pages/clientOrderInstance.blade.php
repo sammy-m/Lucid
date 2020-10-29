@@ -74,11 +74,11 @@
             <div class="files" style="text-align: center">
                 <div class="client-files file-tab" id="clntFls">
     
-                    <p>the client has not uploaded any files</p>
+                    <p>You have not uploaded any files</p>
     
                 </div>
                 <div class="consultant-files file-tab" id="consFls">
-                    <p>You have not uploaded any file yet.</p>
+                    <p>The consultant has not uploaded any file yet.</p>
                 </div>
                 <div class="upload-file">
                     <p>Upload a file here.</p>
@@ -189,7 +189,7 @@
             axios.get('/consultant/getfiles?order='+`{{$thisOrder[0]['orderDetails']->refId}}` ).then( function(res){
                 console.log(res.data[1]);
                 if (res.data[0].length != 0) {
-                    var clientfilesHTML = '';
+                    var clientfilesHTML = '<h4>My Files</h4>';
                     res.data[0].forEach( file => {
                         var splt =  file.split('/');
                        // console.log(splt.length);
@@ -209,7 +209,7 @@
                     document.getElementById('clntFls').innerHTML = clientfilesHTML;
                 }
                 if (res.data[1].length != 0) {
-                    var consultantfilesHTML = '';
+                    var consultantfilesHTML = '<h4>Consultant\'s Files</h4>';
                     res.data[1].forEach( file => {
                         var splt =  file.split('/');
                        // console.log(splt.length);
